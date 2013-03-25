@@ -1,0 +1,26 @@
+<h1><%= link_to h(@product.name), @product, :target => '_blank' %>: 查看图片</h1>
+<br />
+
+<%= link_to '[修改本图片]', [:edit, :kadmin, @product, @photo] %> |
+<%= link_to '[图片列表]', [:kadmin, @product, :photos] %>
+<br />
+
+<p>
+  <b>图片名: </b>
+  <%=h @photo.name %>
+</p>
+
+<p>
+  <b>URL: </b>
+  <%=h @photo.url %>
+</p>
+<p>
+  <b>排序: </b>
+  <%=h @photo.popularity %>
+</p>
+
+<br />
+<p>
+  <b>显示效果: </b><br />
+  <img src="<%= @photo.url %>" />
+</p>

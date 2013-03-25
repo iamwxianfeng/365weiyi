@@ -1,0 +1,17 @@
+<h1>回复评论: </h1><br />
+[评论原文]: <%= link_to(truncate(@comment.name), [:kadmin, @comment], :target => '_blank') %>
+<br />
+<br />
+
+<% form_for([:kadmin, @comment, @reply]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, '回复：' %><br />
+    <%= f.text_area :name, :size => '50x5' %>
+  </p>
+  <br />
+  <p>
+    <%= f.submit '回复' %>
+  </p>
+<% end %>

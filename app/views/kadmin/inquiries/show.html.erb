@@ -1,0 +1,37 @@
+<h1>查看答疑</h1>
+<br />
+<%= link_to '[回复本提问]', edit_kadmin_inquiry_path(@inquiry) %> |
+<%= link_to '[答疑列表]', kadmin_inquiries_path %>
+<br /><br />
+
+<% unless @inquiry.reply.blank? %>
+<p>
+  <b>回复：</b>
+  <%= @inquiry.reply %>
+</p>
+<% end %>
+<br />
+
+<p>
+  <b>正文：</b>
+  <%=h @inquiry.description %>
+</p>
+<p>
+  <b>排序：</b>
+  <%=h @inquiry.popularity %>
+</p>
+<p>
+  <b>提问人：</b>
+  <% user = @inquiry.user %>
+
+  <% if user.blank? %>
+    [字段出错]
+  <% else %>
+    <%=link_to h(user.email), user %>
+  <% end %>
+</p>
+
+<p>
+  <b>发布时间：</b>
+  <%= show_time @inquiry.created_at %>
+</p>

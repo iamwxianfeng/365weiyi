@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%=h @subcategory.name %>
+</p>
+
+<p>
+  <b>Popularity:</b>
+  <%=h @subcategory.popularity %>
+</p>
+
+<p>
+  <b>Products count:</b>
+  <%=h @subcategory.products_count %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%=h @subcategory.category %>
+</p>
+
+
+<%= link_to 'Edit', edit_subcategory_path(@subcategory) %> |
+<%= link_to 'Back', subcategories_path %>

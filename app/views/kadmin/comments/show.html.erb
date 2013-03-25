@@ -1,0 +1,42 @@
+<% product = @comment.product %>
+<p>
+<h2>查看评论 (商品：<%= link_to(h(product.name), product, :target => '_blank') %>)</h2>
+<br />
+<%= link_to '[修改]', edit_kadmin_comment_path(@comment) %>
+<%= link_to '[回复本评论]', [:new, :kadmin, @comment, :reply] %>
+<%= link_to '[本商品的评论]', kadmin_comments_path(:product_id => product.id) %>
+<%= link_to '[评论列表]', kadmin_comments_path %>
+</p>
+<br /><br />
+<p>
+  <b>审核状态：</b>
+  <% if @comment.approved %>
+    <%= image_tag('admin/true_small.png', :title => '审核通过') %>
+  <% else %>
+    <%= @comment.approved %>
+  <% end %>
+</p>
+<p>
+  <b>评论人：</b>
+  <% user = @comment.user %>
+  <%= link_to(h(user.email), [:kadmin, user]) %>
+</p>
+<p>
+  <b>内容：</b>
+  <%=h @comment.name %>
+</p>
+<p>
+  <b>时间：</b>
+  <%= show_time @comment.created_at %>
+</p>
+<p>
+  <b>排序：</b>
+  <%= @comment.popularity %>
+</p>
+<br />
+<br />
+
+[所有回复]
+<% @comment.replies.each do |reply| %>
+<p><%=h("[#{show_time reply.created_at}] " + reply.name) %></p>
+<% end %>

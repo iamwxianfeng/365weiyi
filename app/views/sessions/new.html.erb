@@ -1,0 +1,45 @@
+<% title "用户登录" %>
+
+<div class="login">
+<strong>维衣登录</strong>
+</div>
+<div class="xian">
+
+<% form_tag session_path do -%>
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td colspan="3"><strong>已注册用户请在这里登录</strong></td>
+  </tr>
+
+  <tr>
+    <td width="14%" align="right">邮箱：</td>
+    <td width="32%"><label>
+        <%= text_field_tag :email, params[:email], :class => "bks" %>
+    </label></td>
+    <td width="54%" class="font_s">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">密码：</td>
+    <td>
+      <%= password_field_tag :password, '', :class => "bks" %>
+    </td>
+    <td class="font_s">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">记得我：</td>
+    <td><%= check_box_tag 'remember_me', 1, false %></td>
+    <td class="font_s">&nbsp;</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <%= submit_tag "登 录", :class => 'btns' %>
+    </td>
+    <td class="zst"><%= link_to '还没有帐户？点这里注册', register_path(:type => 'private') %>
+    </td>
+  </tr>
+</table>
+
+<% end %>
+
+</div><!-- xian -->

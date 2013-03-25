@@ -1,0 +1,39 @@
+<h1>查看banner</h1>
+<br />
+
+<%= link_to '[修改banner]', [:edit, :kadmin, @banner] %> |
+<%= link_to '[banner列表]', kadmin_banners_path %>
+<br />
+<br />
+
+<p>
+  <b>轮换广告：</br>
+	<% if @banner.popularity == Banner::TOP_BANNER %>
+		顶部banner
+  <% elsif @banner.can_scroll %>
+    <%= image_tag("admin/true_small.png") %>
+  <% end %>
+</p>
+<p>
+  <b>更新时间: </b>
+  <%=show_time @banner.updated_at %>
+</p>
+<p>
+  <b>Banner简介: </b>
+  <%=h @banner.name %>
+</p>
+<p>
+  <b>排序: </b>
+  <%=h @banner.popularity %>
+</p>
+
+<p>
+  <b>链接地址: </b>
+  <%= link_to(h(@banner.link_to), @banner.link_to) %>
+</p>
+
+<br />
+<p>
+  <b>图片效果: </b><br />
+  <img src="<%= @banner.photo_url %>" />
+</p>

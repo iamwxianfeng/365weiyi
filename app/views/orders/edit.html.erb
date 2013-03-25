@@ -1,0 +1,58 @@
+<div class="login">
+  <strong>修改订单</strong>
+  <%= link_to '[查看订单商品]', @order, :target => '_blank' %>
+</div>
+
+<div class="xian">
+
+  <% form_for(@order) do |f| %>
+    <p><%= f.error_messages %></p>
+    
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+        <tr>
+          <td colspan="2" bgcolor="#7A7F89"><span class="fonts"><strong class="fonts">邮寄地址</strong></span></td>
+        </tr>
+        <tr>
+          <td width="18%" height="40" align="right">* 收货人：</td>
+          <td width="82%"><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <td height="40" align="right">* 收货地址：</td>
+          <td><%= f.text_field :address %></td>
+        </tr>
+        <tr>
+          <td height="40" align="right">* 邮政编码：</td>
+          <td><%= f.text_field :zipcode %></td>
+        </tr>
+        <tr>
+          <td height="40" align="right">* 电话：</td>
+          <td><%= f.text_field :phone %></td>
+        </tr>
+        <tr>
+          <td height="40" align="right">* 支付方式：</td>
+          <td><%= f.select :payment, @payment %></td>
+        </tr>
+        <tr>
+          <td height="40" align="right">备注信息：</td>
+          <td><%= f.text_area :extra_information, :size => '30x4' %></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>如果您订购了定制衣服，请在下栏中确定您的量体时间</td>
+        </tr>
+        <tr>
+          <td height="40" align="right">量体时间：</td>
+          <td><%= f.text_area :appointment, :size => '30x5' %></td>
+        </tr>
+        <tr>
+          <td height="60" colspan="2" align="center">
+            <%= f.submit '', :class => :checkout %>
+          </td>
+        </tr>
+
+      </table>
+
+  <% end %>
+
+</div><!-- xian -->
+

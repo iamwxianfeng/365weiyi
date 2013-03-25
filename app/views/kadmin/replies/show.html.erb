@@ -1,0 +1,18 @@
+<h1>查看回复</h1>
+<br />
+<%= link_to '[修改]', [:edit, :kadmin, @comment, @reply] %>
+<br />
+<p>
+  <b>回复内容：</b>
+  <%=h @reply.name %>
+</p>
+<p>
+  <b>作者：</b>
+  <%=h @reply.user.name %>
+</p>
+<p>
+  <b>回复时间：</b>
+  <%=show_time @reply.created_at %>
+</p>
+<br /><br />
+[评论原文]: <%= link_to @reply.name, [:kadmin, @comment] %>

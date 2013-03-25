@@ -1,0 +1,27 @@
+<h1>底部信息列表</h1>
+<br />
+
+
+<table>
+  <tr class="tbCaption">
+    <th>标题</th>
+    <th>正文</th>
+    <th>发布时间</th>
+    <th>管理</th>
+  </tr>
+
+<% @helps.each do |help| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td>
+      <%= link_to(truncate(h(help.title)), help_path(help.name), :target => '_blank') %>
+    </td>
+    <td><%=truncate(h(help.description)) %></td>
+    <td><%= show_time help.created_at %></td>
+    <td><%= link_to '[修改]', edit_kadmin_help_path(help) %></td>
+    <td><%= link_to '[删除]', kadmin_help_path(help), :confirm => '确定删除?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<p>为减少数据库负担，前台底部信息为硬编码生成，故暂不提供自动添加新页面功能</p>
+<br />

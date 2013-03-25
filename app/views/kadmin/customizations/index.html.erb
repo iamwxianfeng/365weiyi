@@ -1,0 +1,30 @@
+<h1>定制</h1>
+<br />
+
+<%= link_to '[新定制项]', new_kadmin_customization_path %>
+
+<table>
+  <tr class="tbCaption">
+    <th>名称</th>
+    <th>描述</th>
+    <th>分类</th>
+    <th>排序</th>
+    <th>管理</th>
+  </tr>
+
+<% @customizations.each do |customization| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= link_to(h(customization.name), [:kadmin, customization]) %></td>
+    <td><%= truncate(h(customization.description)) %></td>
+    <td><%=h customization.category %></td>
+    <td><%=h customization.popularity %></td>
+    <td><%= link_to '[修改]', edit_kadmin_customization_path(customization) %></td>
+    <td><%= link_to '[删除]', [:kadmin, customization], :confirm => '确定删除?', :method => :delete %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<br />
+<%= will_paginate @customizations, :previous_label => '< ', :next_label => ' >' %>
+<br />

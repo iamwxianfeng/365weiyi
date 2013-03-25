@@ -1,0 +1,31 @@
+<h1>blog评论列表</h1>
+
+<table>
+  <tr class="tbCaption">
+    <th>文章</th>
+    <th>评论用户</th>
+    <th>内容</th>
+    <th>评论时间</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @blog_comments.each do |blog_comment| %>
+  <tr class="<%= cycle('odd','even') %>">
+    <% blog_post = blog_comment.blog_post %>
+    <% user = blog_comment.user %>
+    <td><%=link_to blog_post.title , blog_post_path(blog_post) , :target =>"_blank" %></td>
+    <td><%=link_to user.email , [:kadmin,user] , :target=>"_blank"  %></td>
+    <td><%= blog_comment.content %></td>
+    <td><%= blog_comment.created_at %></td>
+    <td><%= link_to '显示', [:kadmin,blog_comment] %></td>
+    <td><%= link_to '编辑', edit_kadmin_blog_comment_path(blog_comment) %></td>
+    <td><%= link_to '删除', [:kadmin,blog_comment], :confirm => '确定?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%#= link_to '新建', new_kadmin_blog_comment_path %>

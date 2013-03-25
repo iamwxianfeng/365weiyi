@@ -1,0 +1,33 @@
+<h1>新定制项</h1>
+<br />
+<%= link_to '[定制列表]', kadmin_customizations_path %>
+<br /><br />
+
+<% form_for([:kadmin, @customization]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, '*名称：' %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description, '*描述：' %>
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :category, "分类：" %>
+    <%= f.select :category, @customization_category %>
+  </p>
+  <p>
+    <%= f.label :photo, '照片：' %>
+    <%= f.text_field :photo %>
+  </p>
+  <p>
+    <%= f.label :popularity, '排序：' %>
+    <%= f.select :popularity, 0..9 %>
+  </p>
+  <br />
+  <p>
+    <%= f.submit '发布' %>
+  </p>
+<% end %>

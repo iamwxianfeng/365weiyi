@@ -1,0 +1,42 @@
+<h1>产品评论</h1>
+<br />
+<%= link_to '[新商品]', new_kadmin_product_path %>
+<br />
+只有审核通过（划勾的）的评论才显示在前台
+
+<table>
+  <tr class="tbCaption">
+    <th>审核</th>
+    <th>排序</th>
+    <th>评论简介</th>
+    <th>评论人</th>
+    <th>发布时间</th>
+    <th>商品</th>
+    <th>操作</th>
+  </tr>
+
+<% @comments.each do |comment| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td>
+    <% if comment.approved %>
+      <%= image_tag('admin/true_small.png', :title => '审核通过') %>
+    <% end %>
+    <td><%= comment.popularity %></td>
+    </td>
+    <td><%= link_to(h(comment.name), [:kadmin, comment], :target => '_blank') %></td>
+
+  <% user = comment.user %>
+    <td><%= (user.blank?)? '' : (link_to(h(user.email), [:kadmin, user])) %></td>
+    <td><%= show_time comment.created_at %></td>
+    <td>
+      <% product = comment.product %>
+      <%= (product.blank?)? '[数据出错]' : link_to(h(product.name), product) %>
+    </td>
+    <td><%= link_to '[回复]', [:new, :kadmin, comment, :reply], :target => '_blank' %></td>
+    <td><%= link_to '[修改]', edit_kadmin_comment_path(comment) %></td>
+    <td><%= link_to '[删除]', [:kadmin, comment], :confirm => '确定删除?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= will_paginate @comments, :previous_label => '< ', :next_label => ' >' %>

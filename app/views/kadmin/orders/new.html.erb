@@ -1,0 +1,60 @@
+<h1>提交订单</h1>
+<br />
+
+<% form_for(@order) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :address, '客户地址：' %>
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :phone, '联系电话：' %>
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.label :appointment, '预约量体时间：' %>
+    <%= f.text_field :appointment %>
+  </p>
+  <p>
+    <%= f.label :description, '备 注：' %> (其它联系方式，特别说明等)<br />
+    <%= f.text_area :description, :size => '40x5' %>
+  </p>
+  <br />
+  <p>
+    <%= f.submit '提交订单' %>
+  </p>
+<% end %>
+
+<hr />
+<h1>您的购物单</h1>
+<br />
+
+<table>
+<tr>
+  <td>商品</td>
+  <td>单价</td>
+  <td>数量</td>
+  <td>总价</td>
+</tr>
+
+<% if @items.empty? %>
+  <tr><p>您的购物车暂时为空</p></tr>
+<% else %>
+
+    <% @items.each do |i| %>
+    <tr>
+      <td><%=h i.name %></td>
+      <td><%=h i.product.our_price %></td>
+      <td><%=h i.quantity %></td>
+      <td><%= i.price %></td>
+    </tr>
+    <% end %>
+
+<% end #if else%>
+
+  <tr>
+    <td>订单总价：<%= @cart.price %></td>
+    <td><%= link_to '[返回修改]', :controller => :cart, :action => :edit %></td>
+  </tr>
+</table>

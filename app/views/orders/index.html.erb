@@ -1,0 +1,45 @@
+<div class="login">
+  <strong>我的所有订单</strong>
+  <%= link_to '[我的维衣]', current_user %>
+</div>
+
+<div class="xian">
+  <table width="100%" border="0" cellspacing="0" cellpadding="3">
+    <tr>
+      <td align="center" bgcolor="#7A7F89" class="fonts">状态</td>
+      <td align="center" bgcolor="#7A7F89" class="fonts">订单号</td>
+      <td align="center" bgcolor="#7A7F89" class="fonts">商品种类</td>
+      <td align="center" bgcolor="#7A7F89" class="fonts">总额</td>
+      <td align="center" bgcolor="#7A7F89" class="fonts">更新时间</td>
+      <td align="center" bgcolor="#7A7F89" class="fonts">管理</td>
+    </tr>
+
+<% @orders.each do |order| %>
+  <tr>
+    <td align="center"><%=h order.progress %></td>
+    <td align="center"><%= link_to order.id, order %></td>
+    <td align="center"><%=h order.items.count %></td>
+    <td align="center"><%=h(order.total_price * order.discount) %></td>
+    <td align="center"><%= show_time order.updated_at %></td>
+    <td align="center">
+      <%= link_to '[查看]', order %>
+      <%= link_to_if order.progress == Order::PENDING, '[修改]',
+        edit_order_path(order) %>
+      <%= link_to_if order.progress == Order::PENDING, '[删除]',
+        order, :confirm => '确定删除?', :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+
+  <tr>
+    <td height="30" colspan="5" align="left" class="fonts">
+      <p><%= will_paginate @orders, :previous_label => '< ', 
+          :next_label => ' >' %></p>
+    </td>
+  </tr>
+
+
+
+</table>
+
+</div><!-- xian -->

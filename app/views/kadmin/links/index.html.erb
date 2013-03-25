@@ -1,0 +1,32 @@
+<h1>友情链接</h1>
+[友情链接显示在网站首页的底部。状态为“隐藏”的链接不会显示在首页上,这些一般是待审核的链接]
+<br /><br />
+<a href="/links/new">[新链接]</a>
+<br />
+<br />
+
+<table>
+  <tr class="tbCaption">
+    <th>状态</th>
+    <th>排序</th>
+    <th>提交者</th>
+    <th>链接文字</th>
+    <th>LOGO</th>
+    <th>链接地址</th>
+    <th>管理</th>
+  </tr>
+
+  <% @links.each do |link| %>
+    <% user = link.user %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= (link.approved)? '显示' : '隐藏' %></td>
+    <td><%=h link.popularity %></td>
+    <td><%= user ? (link_to(truncate(h(user.email)), [:kadmin, user])) : '用户不存在' %></td>
+    <td><%= truncate(h(link.name)) %></td>
+    <td><img src="<%=h link.logo %>" width="150px" height="50px" /></td>
+    <td><%= link_to(h(link.url), h(link.url)) %></td>
+    <td><%= link_to '[修改]', edit_kadmin_link_path(link) %></td>
+    <td><%= link_to '[删除]', [:kadmin, link], :confirm => '确定删除?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

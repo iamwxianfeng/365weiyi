@@ -1,0 +1,28 @@
+<p>
+  <b>省:</b>
+  <%= @place.provice %>
+</p>
+
+<p>
+  <b>市:</b>
+  <%= @place.city %>
+</p>
+
+<p>
+  <b>区:</b>
+  <%= @place.area %>
+</p>
+
+<p>
+  <b>街道:</b>
+  <%= @place.street %>
+</p>
+
+<p>
+  <b>量体师:</b>
+  <%= @place.human_user %>
+</p>
+
+<br />
+<%= link_to '编辑', edit_kadmin_place_path(@place) %> |
+<%= link_to '返回', kadmin_places_path %>

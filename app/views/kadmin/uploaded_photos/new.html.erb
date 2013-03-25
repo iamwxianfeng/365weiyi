@@ -1,0 +1,28 @@
+<h1>上传任意图片</h1>
+<br />
+<%= link_to '[所有图片]',[:kadmin, :uploaded_photos] %>
+<br />
+<br />
+
+<% form_for(:uploaded_photo, @uploaded_photo, :url => {:controller => "kadmin/uploaded_photos", :action => "create"}, :html => {:multipart => true}) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :image, '*本地图片: ' %>
+    <%= f.file_field :image %> (jpg, gif, png, jpeg)
+  </p>
+  <br />
+  <p>
+    <%= f.label :name, '图片名称: ' %>
+    <%= f.text_field :name %>(会显示在图片下方)
+  </p>
+  <br />
+  <p>
+    <%= f.label :popularity, '排序: ' %>
+    <%= f.select :popularity, 0..11 %> * 越大越靠前
+  </p>
+  <br />
+  <p>
+    <%= f.submit '确定' %>
+  </p>
+<% end %>

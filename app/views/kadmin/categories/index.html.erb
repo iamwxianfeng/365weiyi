@@ -1,0 +1,32 @@
+<h1>所有分类</h1>
+<br />
+
+<%= link_to '[新分类]', new_kadmin_category_path %>
+<br />
+注意：点击“二级分类数”栏的信息，可以在当前大分类下添加二级小分类
+
+<table>
+  <tr class="tbCaption">
+    <th>分类名</th>
+    <th>URL</th>
+    <th>排序</th>
+    <th>二级分类数</th>
+    <th>修改时间</th>
+    <th>管理</th>
+  </tr>
+
+<% @categories.each do |category| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= link_to(h(category.name), "/#{category.url}", :target => '_blank', :title => '在前台查看') %></td>
+    <td><%=h category.url %></td>
+    <td><%=h category.popularity %></td>
+    <td>
+      <%= link_to '共 '+ category.subcategories.count.to_s + ' 项', [:kadmin, category, :subcategories] %>
+    </td>
+    <td><%= show_time category.updated_at %></td>
+    <td><%= link_to '[修改]', edit_kadmin_category_path(category) %></td>
+    <td><%= link_to '[删除]', [:kadmin, category], :confirm => '确定删除?', :method => :delete %></td>
+  </tr>
+<% end %>
+
+</table>

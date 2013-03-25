@@ -1,0 +1,37 @@
+<h1>预约量体 列表</h1>
+
+<table>
+  <tr class="tbCaption">
+    <th>预约量体师</th>
+    <th>体验店</th>
+    <th>预约条目</th>
+    <th>产品</th>
+    <th>预约时间</th>
+    <th>预约地点</th>
+    <th>手机</th>
+    <th>联系人</th>
+    <th>会员</th>
+    <th>预约类型</th>
+    <th>创建时间</th>
+    <th></th>
+  </tr>
+
+<% @reserve_rulers.each do |reserve_ruler| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= link_to reserve_ruler.try(:user).try(:profile).try(:name) , [:kadmin,reserve_ruler.try(:user)] if reserve_ruler.try(:user).present? %></td>
+    <td><%= reserve_ruler.try(:shop).try(:name) %></td>
+    <td><%= reserve_ruler.items.join(",") %></td>
+    <td><%=link_to reserve_ruler.product.name ,product_path(reserve_ruler.product)  , :target=>"_blank"  if reserve_ruler.product %></td>
+    <td><%= reserve_ruler.reserve_on %></td>
+    <td><%= reserve_ruler.where %></td>
+    <td><%= reserve_ruler.phone %></td>
+    <td><%= reserve_ruler.username %></td>
+    <td><%= link_to  reserve_ruler.reserve.try(:profile).try(:name) , [:kadmin,reserve_ruler.try(:reserve)] if reserve_ruler.try(:reserve).present? %></td>
+    <td><%= reserve_ruler.human_status %></td>
+    <td><%= reserve_ruler.created_at %></td>
+    <td><%= link_to "删除" , [:kadmin,reserve_ruler], :method=>:delete , :confirm=>"确定删除?" %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @reserve_rulers %>

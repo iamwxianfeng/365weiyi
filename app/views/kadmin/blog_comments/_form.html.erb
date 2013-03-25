@@ -1,0 +1,19 @@
+<%= form_for([:kadmin,@blog_comment]) do |f| %>
+  <%= error_messages_for @blog_comment %>
+
+  <div class="field">
+    <%= f.label "评论文章" %><br />
+    <%= f.text_field :blog_post_id %>
+  </div>
+  <div class="field">
+    <%= f.label "评论用户" %><br />
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label "评论内容" %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit '提交' %>
+  </div>
+<% end %>

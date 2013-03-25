@@ -1,0 +1,122 @@
+<div class="all">
+<div id="banner"><img src="/images/img/banner.jpg" /></div>
+
+<div class="fosdl bokd"><img src="/images/img/btsd.gif"/></div>
+
+<!--
+<div class="fosd bokd">
+  <div class="zi"><img src="/images/img/wz.jpg" /></div>
+</div>
+-->
+<div class="fosdt">
+  <div class="fosdn bokd">
+     <div class="pib"><img src="/images/img/dts.gif" /></div>
+  </div>
+</div>
+<div class="fosdt">
+  <div class="bt"><img src="/images/img/cai.jpg" /></div>
+  <div class="lif bokd">
+
+  <% form_for :user, :url => {:action => 'create'} do |f| %>
+    <%= error_messages_for :user %>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td colspan="3" class="bak">
+          <div class="tgd"><%= text_field_tag "price" %></div>
+        </td>
+      </tr>
+
+    <% unless logged_in? %>
+      <tr>
+        <td width="142" height="32" align="right"><span class="fonty">*我的邮箱:</span><br /></td>
+        <td width="235"><%= f.text_field :email, :class => "tsdd" %></td>
+        <td width="169" class="font_cou">相关结果将邮件通知</td>
+      </tr>
+      <tr>
+        <td height="32" align="right" class="fonty">*我的密码:</td>
+        <td><%= f.password_field :password, :class => "tsdd" %></td>
+        <td>&nbsp;</td>
+      </tr>
+	    <tr>
+        <td height="32" align="right" class="fonty">*再次确认密码:</td>
+        <td><%= f.password_field :password_confirmation, :class => "tsdd" %></td>
+        <td>&nbsp;</td>
+      </tr>
+    <% end %>
+
+	    <tr>
+        <td height="32" align="right" class="fonty">我的电话:</td>
+        <td><input type="text" class="tsdd" name="phone" value="<%= params[:phone] %>" /></td>
+        <td>&nbsp;</td>
+      </tr>
+
+	    <tr>
+        <td height="32" align="right" class="fonty">我的身高:</td>
+        <td><input type="text" class="tsdd" name="height" value="<%= params[:height] %>" />&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+	    <tr>
+        <td height="32" align="right" class="fonty">我的体型:</td>
+        <td>
+          <input type="radio" name="figure" value="偏胖" /><label>偏胖</label>
+          <input type="radio" name="figure" value="标准" /><label>标准</label>
+          <input type="radio" name="figure" value="偏廋" /><label>偏廋</label>
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="72" colspan="2" align="center"><%= f.submit "我要提交", :class => "botd" %></td>
+      <% unless logged_in? %>
+        <td align="right" class="fonty"><a href="/login?return_to=/events">已注册用户请登录参加活动</a></td>
+      <% end %>
+      </tr>
+    </table>
+    <% end %>
+
+  </div>
+  <div class=" rigs"><img width="304px" height="286px" src="/images/img/pics.jpg" /></div>
+</div>
+
+
+<div class="fosdt">
+  <div class="z">
+  <% form_for(@feedback) do |f| %>
+    <%= error_messages_for :feedback %>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height="45"><img src="/images/img/bsd.gif" width="202" height="33" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <%= f.text_area :description, :size => '45x5', :class => "ysd" %>
+      </td>
+    </tr>
+    <tr>
+      <td>昵称：<%= f.text_field :name, :class => 'tsdd' %></td>
+      <td align="right"><%= f.submit '发表评论', :class => "bost" %></td>
+    </tr>
+    </table>
+  <% end %>
+  </div><!-- z -->
+
+  <div class="u">
+    <ul class="liesd">
+
+    <% if @feedbacks.empty? %>
+      <li>暂无留言</li>
+    <% else %>
+
+      <% @feedbacks.each do |feedback| %>
+        <% content = h(feedback.name + ':' + feedback.description) %>
+        <li title="<%= content %>">
+        <%= truncate(content, 130) %>
+        </li>
+      <% end %>
+
+    <% end %>
+
+    </ul>
+  </div><!-- u -->
+
+</div><!-- fosdt -->

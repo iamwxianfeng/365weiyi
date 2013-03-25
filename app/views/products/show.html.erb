@@ -1,0 +1,258 @@
+<% title @product.name %>
+
+<%= render "top_box" %>
+
+<div id="box">
+  <div class="left_box">
+    <ul class="goods_title_tabbox">
+      <li class="cur"><a href="#">定制说明</a></li>
+      <li><a href="#gysm">工艺说明</a></li>
+      <li><a href="#tpzs">图片展示</a></li>
+      <li><a href="#kssm">款式说明</a></li>
+      <li><a href="#pzbz">品质保证</a></li>
+      <li><a href="#shfw">售后服务</a></li>
+      <li><a href="#xdsm">洗涤说明</a></li>
+      <li><a href="#gmzx">购买咨询</a></li>
+    </ul>
+
+    <div class="goods_description">
+      <div class="goods_pst">
+        <ul>
+          <dl>
+            <dt>面料产地：</dt>
+            <dd><%= @product.origin %>&nbsp;</dd>
+          </dl>
+          <dl>
+            <dt>纱支：</dt>
+            <dd><%= @product.yarn %>&nbsp;</dd>
+          </dl>
+          <dl>
+            <dt>克重：</dt>
+            <dd><%= @product.weight %>&nbsp;</dd>
+          </dl>
+          <dl>
+            <dt>面料图案：</dt>
+            <dd><%= @product.material_picture %>&nbsp;</dd>
+          </dl>
+          <dl>
+            <dt>适用人群：</dt>
+            <dd><%= @product.for_who %>&nbsp;</dd>
+          </dl>
+          <dl>
+            <dt>适用场合：</dt>
+            <dd><%= @product.for_where %>&nbsp;</dd>
+          </dl>
+          <dl>
+            <dt>咨询方式：</dt>
+            <dd><%= @product.contact %>&nbsp;</dd>
+          </dl>
+        </ul>
+      </div>
+      <div>
+        <%=raw @product.details.gsub(/www.inono.net/,'www.365weiyi.com')  %>
+      </div>
+      <dl class="goods_Washing">
+        <dt id="gysm">工艺说明</dt>
+        <dd>
+          <% if @category.url == "suit" %>
+            <p>&nbsp;</p>
+            <p><strong>西服工艺说明</strong></p>
+            <p>
+              西服定制包括五种工艺：套版(粘合衬)、套版(半毛衬)、单独制版(半毛衬)、单独制版（全毛衬）、全手工西服。<br/>
+              目前西服各品类标准报价默认工艺如下：仿毛西服为套版（粘合衬），毛料西服为套版（半毛衬）。<br/>
+              如采用单独制版（半毛衬）工艺需要在标准报价下加收600元，全毛衬单独制版工艺需要加收1000元（包含宾霸里料）。<br/>
+            </p>
+          <% end %>
+          <% if @category.url == "shirt" %>
+            <p>&nbsp;</p>
+            <p><strong>衬衫工艺说明：</strong></p>
+            <p>维衣衬衫定制包含套版和单独制版两种工艺。<br/>
+              目前衬衫标准报价工艺为套版报价。如您需要单独制版工艺，需额外收取100元。</p>
+            <p>&nbsp;</p>
+          <% end %>
+        </dd>
+      </dl>
+      <dl class="goods_Washing">
+        <dt id="tpzs">图片展示</dt>
+        <dd><br/><%=raw @product.pictures_show %><br/></dd>
+      </dl>
+      <dl class="goods_Washing">
+        <dt id="kssm">款式说明</dt>
+        <dd>
+          <% if @category.url == "suit" %>
+            <p>&nbsp;</p>
+            <p><strong>西服类：</strong></p>
+            <p>维衣提供丰富的款式选择，不管您是哪种体型，还是有自己钟爱的款式偏好，总能挑到称心的一款。<br/>
+              西服上衣的主要可选择款式包括：上衣扣子粒数、上衣后片是否开衩、驳头形状、驳头宽窄、胸兜和腰兜形状、袖口扣子粒数、是否真扣眼等。<br/>
+              西服裤子的可选款式包括：是否有褶、口袋形状和裤口形状等。<br/>
+              西裙的可选款式包括：裙摆是否开衩、A字裙或直筒裙等。</p>
+          <%  end %>
+
+          <% if @category.url == "shirt" %>
+
+            <p>&nbsp;</p>
+            <p><strong>衬衫类：</strong></p>
+            <p>维衣提供丰富的款式选择，不管您是哪种体型，还是有自己钟爱的款式偏好，总能挑到称心的一款。<br/>
+              衬衫的可选款式包括：领型、袖口形状、门襟、后背是否有褶、下摆形状、口袋形状等。</p>
+            <p>&nbsp;</p>
+          <% end %>
+        </dd>
+      </dl>
+      <dl class="goods_Washing">
+        <dt id="pzbz">品质保证</dt>
+        <dd>
+          <p>&nbsp;</p>
+          <p>
+            维衣供应商长期为国际一线奢侈品和国内一线品牌服务，拥有完备的品质控制。此外维衣坚信“好产品会说话”，不断完善原料采购和加工水平，为广大消费者提供高品质的产品。
+          </p>
+          <% if @category.url == 'suit' %>
+            <img src="/images/supplier_for_suit.gif"/>
+          <% end %>
+          <p>&nbsp;</p>
+        </dd>
+      </dl>
+      <dl class="goods_Washing">
+        <dt id="shfw">售后服务</dt>
+        <dd>
+          <p>&nbsp;</p>
+          1、提供电子数据管理服务，每位客户的身材数据和穿着偏好将在维衣官网（http://www.365weiyi.com）永久保存，客户可随时查阅。此外客户可持续地从维衣服装顾问处获得服装网购建议。<br/>
+          2、终身免费修改。（限改小等合理范围内）。
+          <p>&nbsp;</p>
+        </dd>
+      </dl>
+      <dl class="goods_Washing">
+        <dt id="xdsm">洗涤说明</dt>
+        <!-- <dd><p><img src="http://img2.vcotton.com/upload/9/9/1109.jpg" alt=""/></p></dd> -->
+      </dl>
+    </div>
+  </div>
+
+  <div class="right_box">
+    <div>
+      <!-- <h2 class="title">定制周期</h2> -->
+      <p><img src="/images/dzzq.png"></img></p>
+    </div>
+    <div class="dingzhi">
+      <h2 class="title">定制方式</h2>
+      <ul>
+        <!-- <tit><维衣为您提供以下购买方式></tit> -->
+        <li>
+          一: 预约上门量体
+          <span class="dec">限北京市内,量体师可上门服务.</span>
+          <span class="ordering">>> <em><a href="javascript:;" onclick="openReservePopup(<%= @product.id %>,'noshop');">预约上门量体</a></em></span>
+        </li>
+        <li>
+          二: 体验店量体
+          <span class="dec">光临维衣体验店量体,选择面料和完成量体.</span>
+          <span class="ordering">>> <em><a href="javascript:;" onclick="openReservePopup(<%= @product.id %>,'shop')">预约体验店量体</a></em></span>
+        </li>
+        <li>
+          三: 自助量体
+          <span class="dec">用户参照网站量体说明,直接完成数据采集,更多请咨询客服.</span>
+          <span class="ordering">>> <em><a href="/measure_pages" target="_blank">自主量体</a></em></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div id="bottom_box">
+  <!--
+  <div id="sppj" class="goods_comment">
+    <ul class="goods_title_tabbox">
+      <li class="cur"><a id="com" name="com">商品评价</a></li>
+      <li class="tabrels">只有购买过该商品的用户才可进行评价。</li>
+    </ul>
+
+    <div id="comment_html">
+      <dl class="comment  clear">
+        <dt>
+        <span class="uname">hwj****@126.com</span>
+        </dt>
+        <dd class="clear">质量不错, 送货也快。
+          <div class="comment_rey"><dl><dt>WEIYI 维衣：<span>2011-08-25 13:12:45</span></dt>
+              <dd>您好，感谢您对WEIYI维衣的支持！希望您继续关注支持WEIYI维衣</dd></dl>
+          </div>
+        </dd>
+      </dl>
+      <dl class="comment comment_bg clear">
+        <dt>
+        <span class="uname">hwj****@126.com</span>
+        </dt>
+        <dd class="clear">质量不错, 送货也快。
+          <div class="comment_rey"><dl><dt>WEIYI 维衣：<span>2011-08-25 13:12:45</span></dt>
+              <dd>您好，感谢您对WEIYI维衣的支持！希望您继续关注支持WEIYI维衣</dd></dl>
+          </div>
+        </dd>
+      </dl>
+    </div>
+  </div>
+  -->
+
+  <div id="gmzx" class="goods_comment clear martop">
+    <ul class="goods_title_tabbox goods_t_asr">
+      <li class="cur">购买咨询</li>
+      <li class="tabrels"></li>
+      <li class="post_comment"><a href="#post_2">[我要提问]</a></li>
+    </ul>
+
+    <!-- page start -->
+    <div id="comment_html2">
+      <% @comments.each do |comment| %>
+        <dl class="comment comment_bg clear">
+          <dt>
+          <span class="uname"><%= comment.user.name %>：</span>
+          </dt>
+          <dd class="clear"><%= comment.name %>
+            <div class="comment_rey comment_asr">
+              <dl><dt>维衣:</dt>
+                <% comment.replies.each do |reply| %>
+                  <dd><%= reply.name %>
+                    <br>回复时间: <%= reply.created_at %>
+                  </dd>
+                <% end %>
+              </dl>
+            </div>
+          </dd>
+        </dl>
+      <% end %>
+
+      <ul class="goods_title_tabbox goods_t_asr">
+        <li class="tabrels">如有任何购买疑问，请向维衣客服咨询。</li>
+      </ul>
+
+      <% if logged_in? %>
+        <%= form_for([@product, @comment]) do |f| %>
+          <dl id="post_2" class="post_comment_cont" style="display: block;">
+            <dt>发表提问</dt>
+            <dd class="clear">
+              <dl class="postopt">
+                <dt>内容：</dt>
+                <dd class="comment_content">
+                  <%= f.text_area :name %>
+                </dd>
+              </dl>
+              <dl class="postopt">
+                <dt></dt>
+                <dd>
+                  <%= submit_tag "提交" %>
+                  <p>
+                    <br>
+                    声明：<br>您可以在购买前对产品包装、颜色、运输、库存等方面进行咨询，我们有专人进行回复。该回复仅在当时对提问者有效，其他网友仅供参考！
+                  </p>
+                </dd>
+              </dl>
+            </dd>
+          </dl>
+        <% end %>
+      <% end %>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+

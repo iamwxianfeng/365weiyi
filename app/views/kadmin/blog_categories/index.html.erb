@@ -1,0 +1,23 @@
+<h1>blog分类列表</h1>
+
+<table>
+  <tr class="tbCaption">
+    <th>名字</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @blog_categories.each do |blog_category| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= blog_category.name %></td>
+    <td><%= link_to '显示', [:kadmin,blog_category] %></td>
+    <td><%= link_to '编辑', edit_kadmin_blog_category_path(blog_category) %></td>
+    <td><%= link_to '删除', [:kadmin,blog_category], :confirm => '确定?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '新建', new_kadmin_blog_category_path %>

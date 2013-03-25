@@ -1,0 +1,31 @@
+<h2>推荐量体师</h2>
+
+<div>首页列出的是按照最新推荐时间排序的</div>
+
+<div>
+  <%= form_tag kadmin_top_rulers_path , :method=>:post do %>
+    <%= error_messages_for @top_ruler %>
+    <p>
+      <label>量体师</label>
+      <%= select_tag :user_id , options_from_collection_for_select(User.where(:role=>User::RULER),'id',"username") , { :include_blank=>true } %>    
+      <%= submit_tag "推荐" %>
+    <p>    
+  <% end %>
+</div>
+
+
+<table>
+  <tr class="tbCaption">
+    <th>量体师</th>
+    <th>推荐时间</th>
+    <th></th>
+  </tr>
+
+<% @top_rulers.each do |top_ruler| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= link_to  top_ruler.user.profile.name , [:kadmin,top_ruler.user] %></td>
+    <td><%= top_ruler.created_at %></td>
+    <td><%= link_to '删除', [:kadmin,top_ruler], :confirm => '确定?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

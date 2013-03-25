@@ -1,0 +1,27 @@
+<h1>添加二级分类 (顶级分类：<%=link_to(h(@category.name), "/#{@category.url}", :target => '_blank') %>)</h1>
+<br />
+
+<%= link_to '[二级分类列表]', [:kadmin, @category, :subcategories] %>
+<br />
+<br />
+
+<% form_for([:kadmin, @category, @subcategory]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, '分类名: ' %>
+    <%= f.text_field :name %> (*)
+  </p>
+  <p>
+    <%= f.label :url, 'URL: ' %>
+    <%= f.text_field :url %> (*非常重要，用于构成URL)
+  </p>
+  <p>
+    <%= f.label :popularity, '排 序: ' %>
+    <%= f.select :popularity, 0..9 %>
+  </p>
+  <br />
+  <p>
+    <%= f.submit '确认添加' %>
+  </p>
+<% end %>

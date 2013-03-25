@@ -1,0 +1,27 @@
+<h1>量体中心</h1>
+<br />
+
+<%= link_to '[添加新页面]', new_kadmin_measure_page_path %>
+
+<table>
+  <tr class="tbCaption">
+    <th>名称</th>
+    <th>正文描述</th>
+    <th>排序</th>
+    <th>管理</th>
+  </tr>
+
+<% @measure_pages.each do |page| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= link_to(h(page.name), page) %></td>
+    <td><%= truncate((page.description)) %></td>
+    <td><%=h page.popularity %></td>
+    <td><%= link_to '[修改]', edit_kadmin_measure_page_path(page) %></td>
+    <td><%= link_to '[删除]', [:kadmin, page], :confirm => '确定删除?', :method => :delete %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<br />
+<%= will_paginate @measure_pages, :previous_label => '< ', :next_label => ' >' %>

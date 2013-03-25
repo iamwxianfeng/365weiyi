@@ -1,0 +1,27 @@
+<h1>修改图片</h1>
+<br />
+
+<%= link_to '[查看本图片]', [:kadmin, @product, @photo] %> |
+<%= link_to '[图片列表]', [:kadmin, @product, :photos] %>
+<br /><br />
+
+<% form_for([:kadmin, @product, @photo]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :url, 'URL: ' %>
+    <%= f.text_field :url %> (* 此项不可少)
+  </p>
+  <p>
+    <%= f.label :name, '图片名称: ' %>
+    <%= f.text_field :name %> (将会显示于图片下方)
+  </p>
+  <p>
+    <%= f.label :popularity, '排序: ' %>
+    <%= f.select :popularity, 0..11 %> * 越大越靠前，11=商品封面,10=商品详情左侧图
+  </p>
+  <br />
+  <p>
+    <%= f.submit '修改' %>
+  </p>
+<% end %>

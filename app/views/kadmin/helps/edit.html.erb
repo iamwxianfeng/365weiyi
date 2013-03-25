@@ -1,0 +1,29 @@
+<%= javascript_include_tag :ckeditor %>
+
+<h1>修改底部信息</h1>
+<br />
+
+<%= link_to '[前台查看]', help_path(@help.name), :target => '_blank' %> |
+<%= link_to '[底部信息列表]', kadmin_helps_path %>
+<br /><br />
+
+<% form_for([:kadmin, @help]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, 'URL：' %>
+    <%= f.text_field :name, :readonly => true %> *不要轻易修改！
+  </p>
+  <p>
+    <%= f.label :title, '标题：' %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description, '正文：' %><br />
+    <%= ckeditor_textarea("help", "description", :language => 'zh-cn') %>
+  </p>
+  <br />
+  <p>
+    <%= f.submit '确定' %>
+  </p>
+<% end %>

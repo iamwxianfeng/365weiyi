@@ -1,0 +1,24 @@
+<h1>Editing inquiry</h1>
+
+<% form_for(@inquiry) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :reply %><br />
+    <%= f.text_area :reply %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @inquiry %> |
+<%= link_to 'Back', inquiries_path %>

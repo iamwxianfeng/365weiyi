@@ -1,0 +1,10 @@
+<fieldset>
+<h5><%= @notice.name %></h5>
+<br /><br /><br />
+<p>发表于：<%= show_time @notice.created_at %></p>
+<br />
+
+<p>
+  <%=raw @notice.description %>
+</p>
+</fieldset>

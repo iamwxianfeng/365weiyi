@@ -1,0 +1,22 @@
+<h1>Listing measuring_steps</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+
+<% @measuring_steps.each do |measuring_step| %>
+  <tr>
+    <td><%=h measuring_step.name %></td>
+    <td><%=h measuring_step.description %></td>
+    <td><%= link_to 'Show', measuring_step %></td>
+    <td><%= link_to 'Edit', edit_measuring_step_path(measuring_step) %></td>
+    <td><%= link_to 'Destroy', measuring_step, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New measuring_step', new_measuring_step_path %>

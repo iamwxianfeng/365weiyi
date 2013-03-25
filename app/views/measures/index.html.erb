@@ -1,0 +1,45 @@
+<div class="login">
+  <strong>我的身材数据</strong>
+  <%= link_to '[添加身材数据]', new_measure_path %> | 
+  <%= link_to '[我的维衣]', current_user %>
+</div>
+
+<div class="xian">
+  <table width="100%" border="0" cellspacing="0" cellpadding="3">
+    <tr>
+      <td align="center" bgcolor="#7A7F89" class="fonts">数据编号</td>
+      <td align="center" bgcolor="#7A7F89" class="fonts">描述</td>
+      <td align="center" bgcolor="#7A7F89" class="fonts">最后更新</td>
+      <td align="center" bgcolor="#7A7F89" class="fonts">管理</td>
+    </tr>
+
+  <% if @measures.empty? %>
+    <tr><td><p>您还未量体</p></td></tr>
+  <% else %>
+
+    <% @measures.each do |measure| %>
+
+    <tr>
+      <td height="40" align="center"><%= measure.id %></td>
+      <td align="center"><%=h measure.description %></td>
+      <td align="center"><%= show_time measure.updated_at %></td>
+      <td align="center">
+        <%= link_to '[修改]', edit_measure_path(measure) %>
+        <%= link_to '[删除]', measure_path(measure), 
+          :confirm => '删除后数据不可恢复，您确定要删除？', :method => :delete %>
+      </td>
+    </tr>
+
+  <% end %>
+
+  <tr>
+    <td height="30" colspan="4" align="left" class="fonts">
+      <p><%= will_paginate @measures, :previous_label => '< ', 
+          :next_label => ' >' %></p>
+    </td>
+  </tr>
+
+<% end %>
+</table>
+
+</div><!-- xian -->

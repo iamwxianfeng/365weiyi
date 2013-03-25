@@ -1,0 +1,131 @@
+<p>
+  <% if @user.is_company %>
+    <b>** 公司用户 **</b>
+  <% else %>
+    <b>** 个人用户 **</b>
+  <% end %>
+</p>
+
+<%= link_to '[修改信息]', edit_kadmin_user_path(@user) %> |
+<%= link_to '[用户列表]', kadmin_users_path %>
+
+<p>
+  <b>Email: </b>
+  <%=h @user.email %>
+</p>
+
+<p>
+  <b>积分: </b>
+  <%=h @user.credit %>
+</p>
+
+<p>
+  <b>网站权限: </b>
+  <%= @user.human_role %>
+</p>
+<p>
+  <b>注册时间: </b>
+  <%= show_time @user.created_at %>
+</p>
+
+
+<% unless @profile.blank? %>
+  <p>
+    <b>昵称: </b>
+    <%=h(@profile.name) %>
+  </p>
+  <p>
+    <b>院校: </b>
+    <%=h @profile.institution %>
+  </p>
+
+  <p>
+    <b>地址: </b>
+    <%=h @profile.address %>
+    (邮编：<%=h @profile.zipcode %>)
+  </p>
+  <p>
+    <b>网站: </b>
+    <%=h @profile.website %>
+  </p>
+<% end %>
+
+<br />
+
+  <table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td height="30" colspan="7" align="left" bgcolor="#7A7F89" class="fonts">
+      <p style="color:white">
+      <strong>(共<%= @user.measures.count %>份)身材资料：</strong>
+      <%= link_to '[添加身材数据]', new_kadmin_user_measure_path(@user), :style => 'color:white' %> | 
+      <%= link_to '[查看所有]', kadmin_user_measures_path(@user), :style => 'color:white' %>
+      </p>
+    </td>
+  </tr>
+    <tr>
+      <td align="center">数据编号</td>
+      <td align="center">描述</td>
+      <td align="center">最后更新</td>
+      <td align="center">管理</td>
+    </tr>
+
+  <% if @measures.empty? %>
+    <tr><td><p>您还未量体</p></td></tr>
+  <% else %>
+
+    <% @measures.each do |measure| %>
+
+    <tr>
+      <td height="40" align="center"><%= measure.id %></td>
+      <td align="center"><%=h measure.description %></td>
+      <td align="center"><%= show_time measure.updated_at %></td>
+      <td align="center">
+        <%= link_to '[修改]', edit_kadmin_user_measure_path(@user, measure) %>
+        <%= link_to '[删除]', kadmin_user_measure_path(@user, measure), 
+          :confirm => '删除后数据不可恢复，您确定要删除？', :method => :delete %>
+      </td>
+    </tr>
+
+  <% end %>
+<% end %>
+
+  </table>
+
+
+  <table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td height="30" colspan="6" align="left" bgcolor="#7A7F89" class="fonts">
+      <p style="color:white">
+      <strong>(共<%= @user.orders.count %>笔)该用户的订单：</strong>
+      <%= link_to '[查看更多]', kadmin_orders_path(:user_id => @user.id), :style => 'color:white' %>
+      </p>
+    </td>
+  </tr>
+
+    <tr>
+      <th>状态</th>
+      <th>订单号</th>
+      <th>商品种类</th>
+      <th>总额</th>
+      <th>更新时间</th>
+      <th>管理</th>
+    </tr>
+
+  <% @orders.each do |order| %>
+    <tr style="text-align:center">
+      <td><%=h order.progress %></td>
+      <td><%= link_to order.id, order, :title => '创建于'+ order.created_at.to_s %> </td>
+      <td><%=h order.items.count %></td>
+      <td><%= (order.total_price * order.discount) %></td>
+      <td><%= show_time order.updated_at %></td>
+      <td>
+        <%= link_to '[查看]', [:kadmin, order] %>
+        <%= link_to '[修改]', edit_kadmin_order_path(order) %>
+        <%= link_to '[删除]', [:kadmin, order], :confirm => '确定删除?',
+          :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+
+
+  </table>

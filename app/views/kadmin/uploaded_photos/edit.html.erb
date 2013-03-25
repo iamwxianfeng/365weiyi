@@ -1,0 +1,32 @@
+<h1>修改图片</h1>
+<br />
+
+<%= link_to '[查看本图片]', kadmin_uploaded_photo_path(@uploaded_photo) %> |
+<%= link_to '[图片列表]', kadmin_uploaded_photos_path %>
+<br /><br />
+
+<% form_for(:uploaded_photo, @uploaded_photo, :url => kadmin_uploaded_photo_path(@uploaded_photo), :html => {:method => :put}) do |f| %>
+  <% if @uploaded_photo.errors.any? %>
+    <div id="error_explanation">
+      <h2>出现如下错误：</h2>
+      <ul>
+        <% @uploaded_photo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :name, '图片名称: ' %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :popularity, '排序: ' %>
+    <%= f.select :popularity, 0..11 %> * 越大越靠前
+  </p>
+  <br />
+  <p>
+    <%= f.submit '修改' %>
+  </p>
+<% end %>

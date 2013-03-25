@@ -1,0 +1,51 @@
+<% if current_user.email != "hejun@365weiyi.com" %> 
+  <h1>所有订单</h1>
+
+  <% form_tag kadmin_orders_path, :method => :get do %>
+    请选择您要查看的订单：<%= select_tag :c, options_for_select(@progress, @order_category), {:default => true} %>
+    <%= submit_tag '查看', :name => nil %>
+  <% end %>
+
+
+  <table>
+    <tr class="tbCaption">
+      <th>状态</th>
+      <th>订单号</th>
+      <th>用户</th>
+      <th>商品种类</th>
+      <th>送货方式</th>
+      <th>支付手段</th>
+      <th>原始价</th>
+      <th>折扣</th>
+      <th>折后价</th>
+      <th>管理</th>
+    </tr>
+
+    <% @orders.each do |order| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <td><%=h order.progress %></td>
+        <td><%= link_to order.id, [:kadmin, order] %></td>
+        <td>
+          <% user = order.user %>
+          <% if user %>
+            <%= link_to(h(user.email),
+              kadmin_user_path(user), :target => '_blank') %>
+          <% end %>
+        </td>
+        <td><%=h order.items.count %></td>
+        <td><%=h order.shipping %></td>
+        <td><%=h order.payment %></td>
+        <td><%=h order.total_price %></td>
+        <td><%= (order.discount * 100).to_s + '%' %></td>
+        <td><%= (order.total_price * order.discount) %></td>
+        <td><%= link_to '[修改]', edit_kadmin_order_path(order) %></td>
+        <td><%= link_to '[删除]', [:kadmin, order], :confirm => '确定删除?', :method => :delete %></td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <td colspan="8"><%= will_paginate @orders, :previous_label => '< ',
+          :next_label => ' >' %></td>
+    </tr>
+  </table>
+<% end %>

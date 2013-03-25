@@ -1,0 +1,47 @@
+<h1>产品列表</h1>
+<br />
+<%= link_to '[新商品]', new_kadmin_product_path %>
+<br />
+点击"图片"栏下的相应链接可以为本商品添加图片.(添加商品后即及时为商品上传图片)
+
+<table>
+  <tr class="tbCaption">
+    <th>ID</th>
+    <th>定制</th>
+    <th>品名</th>
+    <th>编号</th>
+    <th>产地</th>
+    <th>面料</th>
+    <th>纱支</th>
+    <th>颜色</th>
+    <th>原价</th>
+    <th>售价</th>
+    <th>分类</th>
+    <th>图片</th>
+    <th>排序</th>
+    <th>操作</th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= product.id %></td>
+    <td><%= image_tag('admin/true_small.png') if product.customizable %></td>
+    <td><%= link_to(product.name, product, :target => '_blank', :title => '在前台查看产品') %></td>
+    <td><%= product.serial_number %></td>
+    <td><%= product.origin %></td>
+    <td><%= product.component %></td>
+    <td><%= product.yarn %></td>
+    <td><%= product.color %></td>
+    <td><%= product.market_price %></td>
+    <td><%= product.our_price %></td>
+    <td><%= product.subcategory.name %></td>
+    <td><%= link_to '共' + h(product.photos.count) + '图',
+      kadmin_product_photos_path(product) %></td>
+    <td><%= product.popularity %></td>
+    <td><%= link_to '[修改]', edit_kadmin_product_path(product) %></td>
+    <td><%= link_to '[删除]', [:kadmin, product], :confirm => '确定删除?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= will_paginate @products, :previous_label => '< ', :next_label => ' >' %>

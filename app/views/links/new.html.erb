@@ -1,0 +1,48 @@
+<div class="login">
+<strong>提交友情链接</strong>
+</div>
+<div class="xian">
+
+
+  <% form_for(@link, :html => {:multipart => true}) do |f| %>
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td colspan="3"><strong>我们会及时审核您的申请</strong></td>
+  </tr>
+
+  <tr>
+    <td width="20%" align="right">*网站URL：</td>
+    <td width="32%"><label>
+        <%= f.text_field :url, :class => "bks" %> 记得 http:// 哦
+    </label></td>
+    <td width="48%" class="font_s">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">*网站名称：</td>
+    <td>
+      <%= f.text_field :name, :class => "bks" %>
+    </td>
+    <td class="font_s">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">*网站LOGO：</td>
+    <td>
+      <%= f.file_field :upload_photo %>
+    </td>
+    <td class="font_s">&nbsp; 大小：150x50</td>
+  </tr>
+  <tr>
+    <td align="right">申请理由：</td>
+    <td>
+      <%= f.text_area :description, :size => '45x5' %>
+    </td>
+    <td class="font_s">&nbsp;</td>
+  </tr>
+</table>
+
+<div class="btnss">
+  <%= submit_tag "提 交" %>
+</div>
+<% end %>
+
+</div><!-- xian -->

@@ -1,0 +1,38 @@
+<h1>新公司</h1>
+<br />
+
+<%= link_to '[公司列表]', kadmin_companies_path %>
+<br /><br />
+
+<% form_for(@company) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, '公司名：' %>
+    <%= f.text_field :name %> * 必填项
+  </p>
+  <p>
+    <%= f.label :address, '地 址：' %>
+    <%= f.text_field :address, :size => 60 %>
+  </p>
+  <p>
+    <%= f.label :user_id, '负责人：' %>
+    <%= f.text_field :user_id %> 数字ID编号，可留空
+  </p>
+  <p>
+    <%= f.label :phone, '电 话：' %>
+    <%= f.text_field :phone %> 示例：010-87878888
+  </p>
+  <p>
+    <%= f.label :website, '网 站：' %>
+    <%= f.text_field :website %> 示例：www.g.cn
+  </p>
+  <p>
+    <%= f.label :popularity, '排 序：' %>
+    <%= f.select :popularity, 0..9 %> 越大显示时越靠前
+  </p>
+  <br />
+  <p>
+    <%= f.submit '确认添加' %>
+  </p>
+<% end %>

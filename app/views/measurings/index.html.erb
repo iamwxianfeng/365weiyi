@@ -1,0 +1,22 @@
+<h1>Listing measurings</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Url</th>
+  </tr>
+
+<% @measurings.each do |measuring| %>
+  <tr>
+    <td><%=h measuring.name %></td>
+    <td><%=h measuring.url %></td>
+    <td><%= link_to 'Show', measuring %></td>
+    <td><%= link_to 'Edit', edit_measuring_path(measuring) %></td>
+    <td><%= link_to 'Destroy', measuring, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New measuring', new_measuring_path %>

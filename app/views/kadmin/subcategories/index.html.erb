@@ -1,0 +1,30 @@
+<h1><%= link_to(h(@category.name), "/#{@category.url}",
+                :target => '_blank') %>: 二级分类</h1>
+<br />
+
+<%= link_to '[新分类]', [:new, :kadmin, @category, :subcategory] %>
+<table>
+  <tr class="tbCaption">
+    <th>排序</th>
+    <th>分类名</th>
+    <th>URL</th>
+    <th>下属产品数</th>
+    <th>更新时间</th>
+    <th>管理</th>
+  </tr>
+
+<% @subcategories.each do |subcategory| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%=h subcategory.popularity %></td>
+    <td>
+      <%=link_to(h(subcategory.name), "/#{@category.url}/#{subcategory.url}",
+      :target => '_blank', :title => '前台查看所有下属产品') %>
+    </td>
+    <td><%=h subcategory.url %></td>
+    <td><%= link_to(h(subcategory.products.count.to_s + '种'), kadmin_products_path(:subcategory => subcategory), :target => '_blank') %></td>
+    <td><%= show_time subcategory.updated_at %></td>
+    <td><%= link_to '[修改]', [:edit, :kadmin, @category, subcategory] %></td>
+    <td><%= link_to '[删除]', [:kadmin, @category, subcategory], :confirm => '确定删除?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

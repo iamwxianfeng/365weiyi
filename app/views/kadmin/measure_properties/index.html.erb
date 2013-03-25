@@ -1,0 +1,51 @@
+<h1>量体之旅</h1>
+<br />
+
+<%= link_to '[添加新步骤]', new_kadmin_measure_property_path %>
+
+<table>
+  <tr class="tbCaption">
+    <th>图片</th>
+    <th>名称</th>
+    <th>量体说明</th>
+    <th>单位</th>
+    <th>排序</th>
+    <th>分类</th>
+    <td>添加时间</th>
+    <td>管理</td>
+  </tr>
+
+<% @measure_properties.each do |measure_property| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td>
+      <%= raw("<img src='#{measure_property.photo}' alt='#{measure_property.name}' />") %>
+    </td>
+    <td>
+      <%= link_to(truncate(h(measure_property.name)), [:kadmin, measure_property]) %>
+    </td>
+    <td>
+      <%= truncate(h(measure_property.description)) %>
+    </td>
+    <td>
+      <%=h measure_property.unit %>
+    </td>
+    <td><%=h measure_property.popularity %></td>
+    <td>
+      <% unless (measure_page = measure_property.measure_page) %>
+        [数据出错]
+      <% else %>
+        <%=link_to h(measure_page.name), [:kadmin, measure_page] %>
+      <% end %>
+    </td>
+    <td><%= show_time measure_property.created_at %></td>
+    <td><%= link_to '[修改]', edit_kadmin_measure_property_path(measure_property) %></td>
+    <td><%= link_to '[删除]', [:kadmin, measure_property], :confirm => '确定删除?', :method => :delete %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<br />
+<%= will_paginate @measure_properties, :previous_label => '< ', :next_label => ' >' %>
+
+

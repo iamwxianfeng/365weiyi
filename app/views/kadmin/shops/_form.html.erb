@@ -1,0 +1,11 @@
+<%= form_for [:kadmin,@shop] do |f| %>
+  <%= error_messages_for @shop %>
+
+  <div class="field">
+    <%= f.label "店名" %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit "提交" %>
+  </div>
+<% end %>

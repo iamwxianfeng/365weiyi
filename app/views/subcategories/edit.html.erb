@@ -1,0 +1,28 @@
+<h1>Editing subcategory</h1>
+
+<% form_for(@subcategory) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :popularity %><br />
+    <%= f.text_field :popularity %>
+  </p>
+  <p>
+    <%= f.label :products_count %><br />
+    <%= f.text_field :products_count %>
+  </p>
+  <p>
+    <%= f.label :category %><br />
+    <%= f.text_field :category %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @subcategory %> |
+<%= link_to 'Back', subcategories_path %>

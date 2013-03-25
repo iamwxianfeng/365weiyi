@@ -1,0 +1,86 @@
+<div class="login">
+  <strong>企业用户 修改资料</strong>
+</div>
+<div class="xian">
+  <%= error_messages_for @user %>
+  <%= form_for(@user) do |f| %>
+    <%= f.hidden_field :is_company %>    
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <td colspan="3"><strong>企业信息</strong></td>
+      </tr>              
+      <tr>
+        <td width="16%" align="right">
+          <span class="font_cou">*</span>电子邮件：
+        </td>
+        <td width="32%">
+          <label>
+            <%= f.text_field :email, :readonly => true %>
+          </label>
+        </td>
+        <td width="52%" class="font_s">(您的登录帐号)</td>
+      </tr>
+      <tr>
+        <td align="right"><span class="font_cou">*</span>公司名字：</td>
+        <td><%= f.text_field :name, :class =>'bks' %></td>
+        <td class="font_s">请输入全称</td>
+      </tr>
+      <tr>
+        <td align="right"><span class="font_cou">&nbsp;</span>公司地址：</td>
+        <td><%= text_field_tag "profile[address]" , @profile.address %></td>
+        <td class="font_s">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right"><span class="font_cou">&nbsp;</span>公司网站：</td>
+        <td><%= text_field_tag "profile[website]" , @profile.website %></td>
+        <td class="font_s">&nbsp;</td>
+      </tr>
+    </table>
+    <div class="btns">
+      <%= f.submit "修改" %>
+    </div>
+  <% end %>
+
+  <%= form_tag change_password_path, :method => :put do |f| %>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <td colspan="3"><strong>修改密码</strong></td>
+      </tr>
+      <% if @user.errors %>
+        <tr>
+          <%= error_messages_for :user %>
+        </tr>
+      <% end %>
+      <tr>
+        <td width="16%" align="right">
+          <span class="font_cou">*</span>旧密码：
+        </td>
+        <td width="32%">
+          <label><%= password_field_tag :old_password %></label>
+        </td>
+        <td width="52%" class="font_s"></td>
+      </tr>
+      <tr>
+        <td width="16%" align="right">
+          <span class="font_cou">*</span>新密码：
+        </td>
+        <td width="32%">
+          <label><%= password_field_tag :password %></label>
+        </td>
+        <td width="52%" class="font_s"></td>
+      </tr>
+      <tr>
+        <td width="16%" align="right">
+          <span class="font_cou">*</span>新密码确认：
+        </td>
+        <td width="32%">
+          <label><%= password_field_tag :password_confirmation %></label>
+        </td>
+        <td width="52%" class="font_s"></td>
+      </tr>
+    </table>
+    <div class="btns">
+      <%= submit_tag "修改" %>
+    </div>
+  <% end %>
+</div><!-- xian -->

@@ -1,0 +1,49 @@
+<h1>修改用户信息</h1>
+<%= link_to '[用户列表]', kadmin_users_path %>
+<%= form_for [:kadmin, @user] , :html => { :multipart => true }  do |f| %>
+  <%= error_messages_for @user %>
+  <p>
+    <label>头像:</label>
+    <%= f.file_field :avatar %>
+    <%= image_tag @user.avatar_medium %>
+  </p>
+  <p>
+    <%= f.label :email, 'Email: ' %>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :discount, '享受折扣: ' %>
+    <%= f.text_field :discount %> (&lt; 1.0)
+  </p>
+  <p>
+    <%= f.label :credit, '积分: ' %>
+    <%= f.text_field :credit, :size => 5 %>
+  </p>
+  <p>
+    <%= f.label :role, '权限: ' %>
+    <%= f.select :role, roles %>
+  </p>
+  <p>
+    <%= f.label :is_company, '企业用户' %>
+    <%= f.check_box :is_company %>
+  </p>
+  <p>
+    <label>姓名:</label>
+    <%= text_field_tag "profile[name]" , @profile.name %>
+  </p>  
+  <p>
+    <label>QQ:</label>
+    <%= text_field_tag "profile[qq]"  , @profile.qq %>
+  </p>
+  <p>
+    <label>手机号:</label>
+    <%= text_field_tag "profile[phone]" , @profile.phone %>
+  </p>
+  <p>
+    <label>微博:</label>
+    <%= text_field_tag "profile[weibo]" , @profile.weibo %>
+  </p>
+  <p>
+    <%= f.submit '确认修改' %>
+  </p>
+<% end %>

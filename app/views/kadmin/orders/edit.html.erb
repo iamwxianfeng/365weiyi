@@ -1,0 +1,78 @@
+<h1>修改订单</h1>
+<br />
+<%= link_to '[订单列表]', kadmin_orders_path %>
+<%= link_to '[查看本订单]', [:kadmin, @order] %>
+<br /><br />
+
+<% form_for([:kadmin, @order]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :progress, '订单状态：' %>
+    <%= f.select :progress, @progress %>
+  </p>
+  <p>
+    <%= f.label :name, '收货人：' %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :address, '收货地址：' %>
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :zipcode, '邮编：' %>
+    <%= f.text_field :zipcode %>
+  </p>
+  <p>
+    <%= f.label :phone, '联系电话：' %>
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.label :extra_information, '备 注：' %> (其它联系方式，特别说明等)<br />
+    <%= f.text_area :extra_information, :size => '30x4' %>
+  </p>
+  <p>
+    <%= f.label :appointment, '量体时间：' %><br />
+    <%= f.text_area :appointment, :size => '30x5' %>
+  </p>
+  <br />
+  <p>
+    <%= f.submit '确认修改' %>
+  </p>
+<% end %>
+
+<br />
+<hr />
+<h1>购物单详情</h1>
+<br />
+
+<table>
+
+<tr>
+  <td>订单总价：<%= @items.sum {|i| i.total_price} %></td>
+</tr>
+
+<tr>
+  <td>商品</td>
+  <td>单价</td>
+  <td>数量</td>
+  <td>总价</td>
+</tr>
+
+<% if @items.empty? %>
+  <tr>
+    <td>该订单中没有商品</td>
+  </tr>
+<% else %>
+
+    <% @items.each do |i| %>
+    <tr>
+      <td><%=h i.product.name %></td>
+      <td><%=h i.product.our_price %></td>
+      <td><%=h i.quantity %></td>
+      <td><%= i.total_price %></td>
+    </tr>
+    <% end %>
+
+<% end #if else%>
+</table>

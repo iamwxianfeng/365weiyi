@@ -1,0 +1,347 @@
+<div class="login">
+  <strong>添加身材数据</strong>
+  (** 填写完数据后请务必保存！**)
+</div>
+<span style="color:blue">
+  用户名：<%= @user.try(:profile).try(:name) %>  邮箱：<%= @user.email %>  院校：<%= @user.try(:profile).try(:institution) %>
+</span>
+<br />
+
+<div class="xian">
+
+<% form_for([:kadmin, @user, @measure]) do |f| %>
+
+<table width="770" cellspacing="2" cellpadding="1" border="0" align="center">
+<input type="hidden" value="3894" name="memid"/> 
+<input type="hidden" value="" name="modify"/> 
+  <tbody><tr> 
+    <td align="right">备注：</td>
+    <td><%= f.text_field :description, :size => 5 %></td>
+    <td align="right"> 性别：</td>
+    <td><%= f.select :gender, [['帅哥', '帅哥'], ['美女', '美女']] %></td>
+    <td align="right"> 年龄：</td>
+    <td><%= f.text_field :age, :size => 4 %></td>
+    <td align="right"> 职业：</td>
+    <td><%= f.text_field :occupation, :size => 10 %></td>
+    <td align="right"> 身高：</td>
+    <td><%= f.text_field :height, :size => 6 %>(cm)</td>
+    <td align="right"> 体重：</td>
+    <td><%= f.text_field :weight, :size => 6 %>(kg)</td>
+  </tr>
+</tbody>
+</table>
+
+<table width="780" cellspacing="0" cellpadding="2" border="1" align="center">
+  <tbody>
+    <tr>
+      <td align="center" colspan="2">上衣</td>
+      <td align="center">备注</td>
+      <td align="center" colspan="2">裤子</td>
+      <td align="center">备注</td>
+      <td align="center" colspan="2">裙子</td>
+      <td align="center">备注</td>
+    </tr>
+<tr>
+    <td>前衣长：</td>
+    <td>
+      <%= f.text_field :coat_qianyichang, :size => 8 %>
+    </td>
+    <td valign="top" rowspan="9">
+      <%= f.text_area :coat_description, :size => '8x15' %></td>
+    <td>裤长：</td>
+    <td>
+      <%= f.text_field :trousers_kuchang, :size => 8 %>
+    </td>
+    <td valign="top" rowspan="9">
+      <%= f.text_area :trousers_description, :size => '8x15' %>
+    </td>
+    <td>裙长：</td>
+    <td>
+      <%= f.text_field :skirt_qunchang, :size => 8 %>
+    </td>
+    <td valign="top" rowspan="9">
+      <%= f.text_area :skirt_description, :size => '8x15' %>
+    </td>
+  </tr>
+  <tr>
+    <td>后衣长：</td>
+    <td>
+      <%= f.text_field :coat_houyichang, :size => 8 %>
+    </td>
+    <td>腰长：</td>
+    <td>
+      <%= f.text_field :trousers_yaochang, :size => 8 %>
+    </td>
+    <td>腰围：</td>
+    <td>
+      <%= f.text_field :skirt_yaowei, :size => 8 %>
+    </td>
+  </tr>
+  <tr>
+    <td>胸围：</td>
+    <td>
+      <%= f.text_field :coat_xiongwei, :size => 8 %>
+    </td>
+    <td>臀围：</td>
+    <td>
+      <%= f.text_field :trousers_tunwei, :size => 8 %>
+    </td>
+    <td>臀围：</td>
+    <td>
+      <%= f.text_field :skirt_tunwei, :size => 8 %>
+    </td>
+  </tr>
+  <tr>
+    <td>肚围：</td>
+    <td>
+      <%= f.text_field :coat_duwei, :size => 8 %>
+    </td>
+    <td>立裆：</td>
+    <td>
+      <%= f.text_field :trousers_lidang, :size => 8 %>
+    </td>
+    <td colspan="2"/>
+</tr>
+<tr>
+    <td>中腰：</td>
+    <td>
+      <%= f.text_field :coat_zhongyao, :size => 8 %>
+    </td>
+    <td>横裆：</td>
+    <td>
+      <%= f.text_field :trousers_hengdang, :size => 8 %>
+    </td>
+    <td colspan="2"/>
+</tr>
+<tr>
+    <td>肩宽：</td>
+    <td>
+      <%= f.text_field :coat_jiankuan, :size => 8 %>
+    </td>
+    <td>中档：</td>
+    <td>
+      <%= f.text_field :trousers_zhongdang, :size => 8 %>
+    </td>
+    <td colspan="2"/>
+</tr>
+<tr>
+    <td>袖长：</td>
+    <td>
+      <%= f.text_field :coat_xiuchang, :size => 8 %>
+    </td>
+    <td>裤口：</td>
+    <td>
+      <%= f.text_field :trousers_kukou, :size => 8 %>
+    </td>
+    <td colspan="2"/>
+</tr>
+<tr>
+    <td>下摆：</td>
+    <td>
+      <%= f.text_field :coat_xiabai, :size => 8 %>
+    </td>
+    <td colspan="2"/>
+</tr>
+<tr>
+    <td>前宽：</td>
+    <td>
+      <%= f.text_field :coat_qiankuan, :size => 8 %>
+    </td>
+    <td colspan="2"/>
+</tr>
+<tr>
+    <td>后宽：</td>
+    <td>
+      <%= f.text_field :coat_houkuan, :size => 8 %>
+    </td>
+    <td>体形特征：</td>
+    <td colspan="6">
+      <%= f.text_field :tixingtezheng, :size => 8 %>
+      (标准 挺胸 鸡胸 驼背 门士 肥满 超肥满 高低肩)
+    </td>
+</tr>
+<tr>
+    <td>臂粗：</td>
+    <td>
+      <%= f.text_field :coat_bicu, :size => 8 %>
+    </td>
+    <td>穿着习惯：</td>
+    <td colspan="6">
+      <%= f.select :chuanzhuoxiguan, 
+        [['贴身', '贴身'], ['宽松', '宽松'], ['标准', '标准']] %>
+    </td>
+</tr>
+<tr>
+    <td>胸高：</td>
+    <td>
+      <%= f.text_field :coat_xionggao, :size => 8 %>
+    </td>
+    <td rowspan="3">定制参数：</td>
+    <td colspan="3">领形：
+      <%= f.select :lingxing, 
+        [["戗驳领", '戗驳领'], ["平驳领", '平驳领']] %>
+    </td>
+    <td colspan="3">里子：
+      <%= f.select :lizi, [["全里", '全里'], ["半里", '半里']] %>
+    </td>
+</tr>
+<tr>
+    <td>前腰节：</td>
+    <td>
+      <%= f.text_field :coat_qianyaojie, :size => 8 %>
+    </td>
+    <td colspan="3">扣排：
+      <%= f.select :koupai, [["单排", '单排'], ["双排", '双排']] %>
+    </td>
+    <td colspan="3">粒扣：
+      <%= f.select :likou, 
+        [["2粒", '2粒'], ["3粒", '3粒'], ["4粒", '4粒'], ["5粒", '5粒']] %>
+    </td>
+</tr>
+<tr>
+    <td>后腰节：</td>
+    <td>
+      <%= f.text_field :coat_houyaojie, :size => 8 %>
+    </td>
+    <td colspan="3">开衩：
+      <%= f.select :kaicha, 
+        [["不开衩", '不开衩'], ["双开衩", '双开衩'], ["后开衩", '后开衩']] %>
+    </td>
+    <td colspan="3">口袋：
+      <%= f.select :koudai, [["明袋", '明袋'], ["暗袋", '暗袋']] %>
+    </td>
+</tr></tbody>
+</table>
+<br />
+
+<table width="780" cellspacing="0" cellpadding="2" border="1" align="center">
+  <tbody>
+    <tr>
+      <td align="center" colspan="2">马甲</td>
+      <td align="center">备注</td>
+      <td align="center" colspan="2">衬衣</td>
+      <td align="center">备注</td>
+      <td align="center">配件选择</td>
+      <td align="center">备注</td>
+    </tr>
+<tr>
+    <td>衣长：</td>
+    <td>
+      <%= f.text_field :vest_yichang, :size => 8 %>
+    </td>
+    <td valign="top" rowspan="12">
+      <%= f.text_area :vest_description, :size => '8x15' %>
+    </td><td>领围：</td>
+    <td>
+      <%= f.text_field :shirt_lingwei, :size => 8 %>
+    </td>
+    <td valign="top" rowspan="6">
+      <%= f.text_area :shirt_description, :size => '8x15' %>
+    </td><td>领带：</td>
+    <td>
+      <%= f.text_field :lingdai, :size => 8 %>
+    </td>
+</tr>
+<tr>
+    <td>胸围：</td>
+    <td>
+      <%= f.text_field :vest_xiongwei, :size => 8 %>
+    </td>
+    <td>前衣长：</td>
+    <td>
+      <%= f.text_field :shirt_qianyichang, :size => 8 %>
+    </td>
+    <td>皮带：</td>
+    <td>
+      <%= f.text_field :pidai, :size => 8 %>
+    </td>
+</tr>
+<tr>
+    <td>中腰：</td>
+    <td>
+      <%= f.text_field :vest_zhongyao, :size => 8 %>
+    </td>
+    <td>后衣长：</td>
+    <td>
+      <%= f.text_field :shirt_houyichang, :size => 8 %>
+    </td>
+    <td>袖口扣：</td>
+    <td>
+      <%= f.text_field :xiukoukou, :size => 8 %>
+    </td>
+</tr>
+<tr>
+    <td>臀围：</td>
+    <td>
+      <%= f.text_field :vest_tunwei, :size => 8 %>
+    </td>
+    <td>胸围：</td>
+    <td>
+      <%= f.text_field :shirt_xiongwei, :size => 8 %>
+    </td>
+    <td colspan="2"></td>
+  </tr>
+  <tr>
+    <td colspan="2"/>
+    <td>中腰：</td>
+    <td>
+      <%= f.text_field :shirt_zhongyao, :size => 8 %>
+    </td>
+    <td colspan="2"/>
+</tr>
+<tr>
+    <td colspan="2"/>
+    <td>肩宽：</td>
+    <td>
+      <%= f.text_field :shirt_jiankuan, :size => 8 %>
+    </td>
+    <td colspan="2"/>
+</tr>
+<tr>
+    <td colspan="2"/>
+    <td>袖长：</td>
+    <td>
+      <%= f.text_field :shirt_xiuchang, :size => 8 %>
+    </td>
+    <td colspan="3">衬衣定制参数：</td>
+</tr>
+<tr>
+    <td colspan="2"/>
+    <td>腕围：</td>
+    <td>
+      <%= f.text_field :shirt_wanwei, :size => 8 %>
+    </td>
+    <td colspan="3">绣字：<%= f.text_field :shirt_xiuzi, :size => "39" %></td>
+</tr>
+<tr>
+    <td colspan="2"/>
+    <td>臂粗：</td>
+    <td>
+      <%= f.text_field :shirt_bicu, :size => 8 %>
+    </td>
+    <td colspan="3">
+      字体：<%= f.text_field :shirt_ziti, :size => 8 %>  
+      颜色：<%= f.text_field :shirt_yanse, :size => 8 %>
+    </td>
+</tr>
+<tr>
+    <td colspan="2"/>
+    <td>臂围：</td>
+    <td>
+      <%= f.text_field :shirt_tunwei, :size => 8 %>
+    </td>
+    <td colspan="3">位置：
+      <%= f.select :shirt_weizhi, 
+        [["胸前", '胸前'], ["袖口", '袖口'], ["腰际",'腰际'], 
+          ["门襟", '门襟'], ["下摆",'下摆']] %>
+    </td>
+</tr>
+
+</tbody>
+</table>
+<br />
+
+<%= f.submit '保存数据' %>
+
+<% end %>
+</div><!-- xian -->

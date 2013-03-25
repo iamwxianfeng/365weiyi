@@ -1,0 +1,29 @@
+  <% unless @products.empty? %>
+    <ul class="pics">
+
+    <% @products.each do |product| %>
+
+    <li>
+      <p>
+        <%= link_to '<img src="' + photo_url(product) +'" alt="' + product.name + '" />', product %>
+      </p>
+      <span><%= link_to(h(product.name), product) %>
+        <em>售价：￥<%= product.our_price %></em>
+        <strong>（节省<%= product.market_price - product.our_price %>元）</strong></span>
+    </li>
+
+    <% end %>
+
+  </ul><!-- .pics -->
+
+  <% else %>
+    <br />
+    <p>该分类下暂无商品</p>
+  <% end %>
+  </dd>
+  </dl>
+
+  <div class="black2">
+    <%= will_paginate @products, :previous_label => '< ', 
+      :next_label => '> ' %>
+  </div><!-- black2 -->

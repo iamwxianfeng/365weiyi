@@ -1,0 +1,53 @@
+<p>
+  <b>Name:</b>
+  <%=h @product.name %>
+</p>
+
+<p>
+  <b>Serial number:</b>
+  <%=h @product.serial_number %>
+</p>
+
+<p>
+  <b>Origin:</b>
+  <%=h @product.origin %>
+</p>
+
+<p>
+  <b>Component:</b>
+  <%=h @product.component %>
+</p>
+
+<p>
+  <b>Yarn:</b>
+  <%=h @product.yarn %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%=h @product.color %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @product.description %>
+</p>
+
+<p>
+  <b>Market price:</b>
+  <%=h @product.market_price %>
+</p>
+
+<p>
+  <b>Our price:</b>
+  <%=h @product.our_price %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%=h @product.category %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

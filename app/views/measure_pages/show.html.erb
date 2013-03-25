@@ -1,0 +1,74 @@
+<%=raw @measure_page.description %>
+
+<div class="xoh xb cl_tishi">
+  ~~让我们开始数据量测吧，开始全新服饰体验之旅~~<br />
+</div>
+
+
+<% if logged_in? %>
+  <% form_for(@measurement) do |f| %>
+    <input type="hidden" value="<%= @measure_page.id %>" name="measure_page_id" />
+
+    <div class="xoh xb">
+      <table width="100%" cellpadding="3" cellspacing="0" style="border-collapse:collapse;" border="1" bordercolor="#7f7f7f">
+        <tr class="lt_bt">
+          <td width="30%">示例图片</td>
+          <td width="10%">名称</td>
+          <td width="41%">量体说明</td>
+          <td width="18%">尺寸数据</td>
+        </tr>
+
+        <% if @measure_properties.blank? %>
+          <tr>
+            <td colspan="3">对不起，当前无数据</td>
+          </tr>
+        <% else %>
+
+          <% @measure_properties.each do |property| %>
+            <tr>
+              <td><img src="<%= property.photo %>" alt="<%= property.name %>"></td>
+              <td><%= property.name %></td>
+              <td><%=raw property.description %></td>
+              <td>
+                <input type="text" name="properties[<%= property.id %>]" /><%= property.unit %>
+              </td>
+            </tr>
+          <% end %>
+
+        <% end %>
+
+      </table>
+
+    </div>
+
+    <div class="lt_wx">
+      <span>下一步</span>，您平常穿着感觉最合适、舒服的其他品牌服饰的型号是：（此项非必选项）<br />
+      <input type="text" name="favorite_brand" />
+    </div><!-- lt_wx -->
+
+    <div class="lt_lianxi">
+      <span>接着</span>，请提交全身正面，侧面，背面站立照给我们，为日常生活照。请与客服联系或发邮件至<a href="mailto:andy@365weiyi.com">andy@365weiyi.com</a> 。（此项非必选项）。
+    </div><!-- lt_lianxi -->
+
+    <div class="lt_botton">
+      <span> OK，您还需要量 
+        <% @other_meausre_pages.each do |page| %>
+          <%= link_to page.name, page %> &nbsp;
+        <% end %>
+        尺寸吗？</span><%= f.submit "我已量完所有尺寸，继续选择面料" %>
+    </div><!-- lt_botton -->
+
+  <% end %>
+
+
+  </div>
+  </div><!-- left -->
+
+
+<% else %>
+
+  <p>您需要登录方可量体
+    <%= link_to('[登录]', login_path, :class => 'a1') + ' 或者 ' + link_to('[注册]', register_path(:type => 'private'), :class => 'a1') %>
+  </p>
+
+<% end %>

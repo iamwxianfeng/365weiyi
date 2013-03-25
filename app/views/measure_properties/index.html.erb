@@ -1,0 +1,20 @@
+<h1>Listing measure_properties</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+<% @measure_properties.each do |measure_property| %>
+  <tr>
+    <td><%=h measure_property.name %></td>
+    <td><%= link_to 'Show', measure_property %></td>
+    <td><%= link_to 'Edit', edit_measure_property_path(measure_property) %></td>
+    <td><%= link_to 'Destroy', measure_property, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New measure_property', new_measure_property_path %>

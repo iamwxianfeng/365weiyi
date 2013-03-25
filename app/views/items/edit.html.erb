@@ -1,0 +1,33 @@
+<div class="login">
+  <strong>修改订单商品项</strong>
+  (订单号：<%= @order.id %>)
+</div>
+
+<div class="xian">
+<%= link_to '[查看完整订单]', @order %>
+<br />
+
+<% form_for([@order, @item]) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :product_id, '商品名称：' %>
+    <%= @item.product.name %>
+  </p>
+  <p>
+    <%= f.label :product_id, '商品编号：' %>
+    <%= @item.product_id %>
+  </p>
+  <p>
+    <%= f.label :quantity, '数量：' %>
+    <%= f.text_field :quantity %>
+  </p>
+  <p>
+    <%= f.label :measure, '尺寸：' %>
+    <%= f.text_field :measure %>
+  </p>
+  <br />
+  <p>
+    <%= f.submit '确定修改' %>
+  </p>
+<% end %>
+</div><!-- xian -->

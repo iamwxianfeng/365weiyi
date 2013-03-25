@@ -1,0 +1,59 @@
+<div class="dy_body">
+
+	<div class="head" id="new-inquiry">
+          <h2>我要提问</h2>
+  </div><!-- head -->
+	<div class="sect consult-form">
+
+      <% unless logged_in? %>
+        <div class="bd">
+          <p>请先<%= link_to '[登录]', login_path, :class => 'a1' %>或者<%= link_to '[注册]', register_path, :class => 'a1' %>再提问</p>
+        </div><!-- bd -->
+
+      <% else %>
+
+	<%= form_for(@inquiry) do |f| %>
+          <%= f.text_area :description, :class => "f-textarea", :size => "60x5" %>
+          <p class="commit">
+            <%= f.submit "好了，提交", :class => "formbutton" %>
+          </p>
+        <% end %>
+
+      <% end %>
+
+  </div><!-- sect consult-form -->
+
+<h2>维衣答疑</h2>
+<div class="dy_box">
+  <ul class="list">
+
+  <% @inquiries.each do |inquiry| %>
+  <li class="<%= cycle('', 'alt') %>">
+    <div class="item">
+      <p class="user">
+      <strong><%= inquiry.user.name %> 问道：</strong>
+      <span><%= show_time(inquiry.created_at) %></span>
+      </p>
+      <div class="clear">
+      </div>
+      <p class="text"><%= truncate(inquiry.description, :length => 500) %></p>
+
+    <% if inquiry.reply %>
+      <p class="reply"><strong>回复：</strong><%=raw inquiry.reply %></p>
+    <% end %>
+
+    </div><!-- item -->
+  </li>
+  <% end %>
+
+  </ul>
+
+  <div class="black2">
+    <%= will_paginate @inquiries, :previous_label => '< ', 
+      :next_label => '> ' %>
+  </div><!-- black2 -->
+
+</div>
+
+</div><!-- dy_body -->
+

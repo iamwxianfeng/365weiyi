@@ -1,0 +1,25 @@
+<% @categories.each do |category| %>
+  <dl class="moxl">
+    <dt>
+    <%= link_to(raw("<strong>#{category.name}</strong>"), category.url) %>
+    <em><%= link_to(raw('<img src="/images/more.gif" alt="查看更多" />'), "/#{category.url}") %></em>
+    </dt>
+    <dd>
+      <ul class="picv">
+        <% products = category.products.order('popularity DESC,our_price ASC').limit(6) %>
+        <% products.each do |product| %>
+          <li>
+            <div>
+              <%= link_to(raw(photo_tag(product, 0)), product) %>
+            </div>
+            <p><%= product.name %></p>
+            <span>
+              <em>原价￥<%= product.market_price %></em>
+              <strong>售价￥<%= product.our_price %></strong>
+            </span>
+          </li>
+        <% end %>
+      </ul>
+    </dd>
+  </dl>
+<% end %>

@@ -1,0 +1,42 @@
+<h1>用户的所有身材数据</h1>
+<br />
+用户昵称：<%= @user.try(:profile).try(:name) %>  用户邮箱：<%= @user.email %>
+<%= link_to '[添加身材数据]', new_kadmin_user_measure_path(@user) %> | 
+<%= link_to '[查看本用户]', [:kadmin, @user] %>
+
+<table>
+    <tr class="tbCaption">
+      <td align="center">数据编号</td>
+      <td align="center">描述</td>
+      <td align="center">最后更新</td>
+      <td align="center">管理</td>
+    </tr>
+
+  <% if @measures.empty? %>
+    <tr><td><p>您还未量体</p></td></tr>
+  <% else %>
+
+    <% @measures.each do |measure| %>
+
+      <tr class="<%= cycle('odd', 'even') %>">
+      <td height="40" align="center"><%= measure.id %></td>
+      <td align="center"><%=h measure.description %></td>
+      <td align="center"><%= show_time measure.updated_at %></td>
+      <td align="center">
+        <%= link_to '[修改]', edit_kadmin_user_measure_path(@user, measure) %>
+        <%= link_to '[删除]', kadmin_user_measure_path(@user, measure), 
+          :confirm => '删除后数据不可恢复，您确定要删除？', :method => :delete %>
+      </td>
+    </tr>
+
+  <% end %>
+
+  <tr>
+    <td height="30" colspan="4" align="left" class="fonts">
+      <p><%= will_paginate @measures, :previous_label => '< ', 
+          :next_label => ' >' %></p>
+    </td>
+  </tr>
+
+<% end %>
+</table>

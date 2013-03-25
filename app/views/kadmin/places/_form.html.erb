@@ -1,0 +1,26 @@
+<%= error_messages_for @place %>
+<%= form_for [:kadmin,@place] do |f| %>  
+  <div class="field">
+    <%= f.label "省" %><br />
+    <%= f.text_field :provice %>
+  </div>
+  <div class="field">
+    <%= f.label "市" %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label "区" %><br />
+    <%= f.text_field :area %>
+  </div>
+  <div class="field">
+    <%= f.label '街道' %><br />
+    <%= f.text_field :street %>
+  </div>
+  <div class="field">
+    <%= f.label '量体师' %><br />
+    <%= f.select  :user_id, User.where(:role=>User::RULER).collect { |u| [u.try(:profile).try(:name),u.id] } , { :include_blank => true } %>
+  </div>
+  <div class="actions">
+    <%= f.submit "提交" %>
+  </div>
+<% end %>

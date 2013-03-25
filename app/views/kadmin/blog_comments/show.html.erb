@@ -1,0 +1,18 @@
+<p>
+  <b>文章:</b>
+  <%=link_to @blog_post.title  , blog_post_path(@blog_post), :target=>"_blank"  %>
+</p>
+
+<p>
+  <b>评论用户:</b>
+  <%=link_to @user.email , [:kadmin,@user] , :target=>"_blank" %>
+</p>
+
+<p>
+  <b>内容:</b>
+  <%= @blog_comment.content %>
+</p>
+
+
+<%= link_to '编辑', edit_kadmin_blog_comment_path(@blog_comment) %> |
+<%= link_to '返回', kadmin_blog_comments_path %>

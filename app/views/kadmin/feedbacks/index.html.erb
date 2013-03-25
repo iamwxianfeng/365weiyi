@@ -1,0 +1,28 @@
+<h1>所有留言</h1>
+<br />
+
+<table>
+  <tr class="tbCaption">
+    <th>用户名</th>
+    <th>留言正文</th>
+    <th>提交时间</th>
+    <th>管理</th>
+  </tr>
+
+<% @feedbacks.each do |feedback| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%=h feedback.name %></td>
+    <td><%=link_to(truncate(h(feedback.description)),
+      [:kadmin, feedback]) %></td>
+    <td><%= show_time feedback.created_at %></td>
+    <td>
+      <%= link_to '[修改]', edit_kadmin_feedback_path(feedback) %>
+      <%= link_to '[删除]', [:kadmin, feedback], :confirm => '确定删除?', :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+
+</table>
+
+<%= will_paginate @feedbacks, :previous_label => '< ',
+  :next_label => ' >' %>

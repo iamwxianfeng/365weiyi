@@ -1,0 +1,22 @@
+<h1>体验店列表</h1>
+
+<table>
+  <tr class="tbCaption">
+    <th>店名</th>
+    <th></th>    
+    <th></th>
+  </tr>
+
+<% @shops.each do |shop| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= shop.name %></td>    
+    <td><%= link_to '编辑', edit_kadmin_shop_path(shop) %></td>
+    <td><%= link_to '删除', [:kadmin,shop], :confirm => '确定?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @shops %>
+<br />
+
+<%= link_to '新建', new_kadmin_shop_path %>

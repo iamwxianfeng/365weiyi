@@ -1,0 +1,34 @@
+<% title "地区量体师" %>
+<h1>地区量体师 列表</h1>
+
+<table>
+  <tr class="tbCaption">
+    <th>省</th>
+    <th>市</th>
+    <th>区</th>
+    <th>街道</th>
+    <th>量体师</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @places.each do |place| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= place.provice %></td>
+    <td><%= place.city %></td>
+    <td><%= place.area %></td>
+    <td><%= place.street %></td>
+    <td><%= place.human_user %></td>
+    <td><%= link_to '显示', [:kadmin,place] %></td>
+    <td><%= link_to '编辑', edit_kadmin_place_path(place) %></td>
+    <td><%= link_to '删除', [:kadmin,place], :confirm => '确定?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @places %>
+
+<br />
+
+<%= link_to '新建地区量体师',new_kadmin_place_path %>

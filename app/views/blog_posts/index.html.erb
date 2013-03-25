@@ -1,0 +1,52 @@
+<div class="category">
+  <ul>
+    <span>文章主题</span>
+    <% @blog_categories.each do |blog_category| %>
+      <li><a href="<%= blog_posts_path(:c=>blog_category.id) %>" class="<%= 'focus' if blog_category.id.to_s == params[:c] %>"><%= blog_category.name %></a></li>
+    <% end %>
+  </ul>
+</div>
+
+<div id="posts">
+  <h1>您所在的位置: 首页>>维衣知识堂</h1>
+  <hr class="solid hr"/>
+  <div class="list">
+    <ul>
+      <% (@blog_posts || []).each do |blog_post| %>
+        <li class="post">
+          <h2><a  class="entry-title" href="<%= blog_post_path(blog_post) %>"><%= blog_post.title %></a></h2>
+          <div class="meta">
+            <div class="who_when">
+              <img width="16" height="16" alt="" src="<%= blog_post.user.avatar_icon %>">
+              <span class="author vcard fn"><%= blog_post.user.profile.try(:name) %></span>
+              <span class="published"><%= blog_post.created_at %></span>
+            </div>
+            <div class="respond">
+              <a href="<%= blog_post_path(blog_post,:anchor=>"comments") %>#comments"><%= blog_post.blog_comments_count || 0 %>条评论</a>
+            </div>
+          </div>
+          <div class="entry-content">
+            <%=raw truncate(blog_post.content,:length=>200) %>
+          </div>
+        </li>
+      <% end %>
+        <%= will_paginate @blog_posts %>
+    </ul>
+  </div>
+
+  <% if @products.present? %>
+    <div class="sidebar">
+      <h2>推荐商品</h2>
+      <ul>
+        <% (@products || []).each do |product| %>
+          <li>
+            <img src="<%= product.photos.first.url %>"/>
+            <span><%= product.name %></span>
+            <a href="<%= product_path(product) %>">>>点击进入</a>
+          </li>      
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+</div>

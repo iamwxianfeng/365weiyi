@@ -1,0 +1,70 @@
+<div class="ruler">
+  <div class="title"><span>量体师信息</span></div>
+  <div class="avatar">    
+    <%= image_tag @user.avatar_medium %>
+  </div>
+  <div><span class="gray">姓名:</span>
+    <%= @profile.name %>
+  </div>
+  <div><span class="gray">服务区域:</span>
+    <%= @user.human_places %>
+  </div>
+  <div><span class="gray">手机:</span>
+    <%= @profile.phone %>
+  </div>
+  <div><span class="gray">新浪微博:</span>
+    <%=link_to @profile.weibo,  "http://weibo.com/#{@profile.weibo}" , :target=>"_blank" %>
+  </div>
+  <div><span class="gray">QQ:</span>
+    <%= @profile.qq %>
+  </div>
+  <%= form_for(@reserve_ruler , :url=>create_ruler_user_path(@user))  do  |f| %>
+    <%= hidden_field_tag "reserve_ruler[user_id]" , @user.id %>
+    <%= hidden_field_tag "reserve_ruler[status]"  , 2 %>
+    <div class="title"><span>填写您的信息</span></div>    
+    <%= error_messages_for @reserve_ruler %>
+    <div><span class="gray">时间:</span>
+      <%= f.text_field :reserve_at %>
+      <label>时间选择</label>
+    </div>
+    <div><span class="gray">具体时间:</span>
+      <%#= f.text_field "day_when" %> <!-- <span class="gray wa">(如: 上午10:00)</span> -->
+      <%= f.select "day_when" , options_for_select(reserve_times),:include_blank=>true %>
+    </div>
+    <div><span class="gray">地点:</span>
+      <%= select_tag "province" , raw("<option>北京市</option>")  %>
+      <%= select_tag "city" , raw("<option>北京市</option>")  %>
+      <%= f.select "place_id"  , options_from_collection_for_select(Place.all,'id','area') , :include_blank=>true %>
+    </div>
+    <div><span class="gray">详细地址:</span>
+      <%= f.text_field "office" ,:size=>40 %>
+    </div>
+    <div><span class="gray">要定:</span>
+      <% ["西服","衬衫","大衣","团体定制","其他咨询"].each do |ele| %>
+        <%= check_box_tag "items[]"  , ele %> <%= ele %>
+      <% end %>
+    </div>
+    <div><span class="gray">手机:</span>
+      <%= f.text_field "phone" %>
+    </div>    
+    <div><span class="gray">联系人:</span>
+      <%= f.text_field "username" %>
+    </div>    
+    <div class="submit">      
+      <%= submit_tag "预约量体师" , :class=>"btns" %>
+    </div>
+  <% end %>
+
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    $.datepicker.regional[ "zh-CN" ]
+    $("#reserve_ruler_reserve_at").datepicker({ minDate: 0 });
+    
+    $("#reserve_ruler_reserve_at").focus(function(){
+      var $this = $(this);
+      $this.next().hide();
+    });
+  })
+</script>

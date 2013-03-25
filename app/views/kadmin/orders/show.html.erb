@@ -1,0 +1,68 @@
+<h1>查看订单</h1>
+<br />
+<%= link_to '[所有订单]', kadmin_orders_path %>
+
+<p>
+订单号：<%=h @order.id %>
+</p>
+<p>
+订单状态：<%=h @order.progress %>
+</p>
+<p>
+下单时间：<%= show_time @order.created_at %>
+</p>
+<p>
+客户地址：<%=h @order.address %>
+</p>
+<p>
+联系电话：<%=h @order.phone %>
+</p>
+<p>
+预约量体时间：<%=h @order.appointment %>
+</p>
+<p>
+备 注：<%=h @order.extra_information %>
+</p>
+<p>
+送货方式：<%=h @order.shipping %>
+</p>
+<p>
+支付手段：<%=h @order.payment %>
+</p>
+<br />
+
+<hr />
+<h1>您的购物单</h1>
+<br />
+
+<table>
+<tr>
+  <td>商品</td>
+  <td>尺码</td>
+  <td>单价</td>
+  <td>数量</td>
+  <td>总价</td>
+</tr>
+
+<% if @items.empty? %>
+  <tr>
+    <td>该订单中没有商品</td>
+  </tr>
+<% else %>
+
+    <% @items.each do |i| %>
+    <tr>
+      <td><%=h i.product.name %></td>
+      <td><%=h i.measure %></td>
+      <td><%=h i.product.our_price %></td>
+      <td><%=h i.quantity %></td>
+      <td><%= i.total_price %></td>
+    </tr>
+    <% end %>
+
+<% end #if else%>
+
+  <tr>
+    <td>订单总价：<%= @items.sum {|i| i.total_price} %></td>
+  </tr>
+</table>

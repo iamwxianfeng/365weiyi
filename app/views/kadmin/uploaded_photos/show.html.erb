@@ -1,0 +1,24 @@
+<h1>查看图片</h1>
+<br />
+<%= link_to '[修改]', edit_kadmin_uploaded_photo_path(@uploaded_photo) %> |
+<%= link_to '[图片列表]', kadmin_uploaded_photos_path %>
+<br /><br />
+
+<p>
+  <b>图片名称：</b>
+  <%=h @uploaded_photo.name %>
+</p>
+
+<p>
+  <b>图片地址：</b>
+  <%=link_to @uploaded_photo.url, @uploaded_photo.url %>
+</p>
+
+<p>
+  <b>排序：</b>
+  <%=h @uploaded_photo.popularity %>
+</p>
+<p>
+  <b>图片预览：</b><br />
+  <%= image_tag(@uploaded_photo.url) %>
+</p>

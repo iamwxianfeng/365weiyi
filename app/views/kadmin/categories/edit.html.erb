@@ -1,0 +1,35 @@
+<h1>修改分类</h1>
+<br />
+
+<%= link_to '[查看本分类]', "/#{@category.url}", :target=>'_blank' %>
+<%= link_to '[分类列表]', kadmin_categories_path %>
+<br /><br />
+
+<% form_for([:kadmin, @category]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, '分类名:' %>
+    <%= f.text_field :name %>(*)
+  </p>
+  <p>
+    <%= f.label :url, 'URL: ' %>
+    <%= f.text_field :url %> (*非常重要！用于URL的构成)
+  </p>
+  <p>
+    <%= f.label :url, '远程LOGO: ' %>
+    <%= f.text_field :logo %>
+  </p>
+  <p style="margin-left:15px">
+    <%= f.label :image, '或本地图片: ' %>
+    <%= f.file_field :image %> (jpg, gif, png)
+  </p>
+  <p>
+    <%= f.label :popularity, '排 序:' %>
+    <%= f.select :popularity, 0..9 %>(* 0-9)
+  </p>
+  <br />
+  <p>
+    <%= f.submit '确认修改' %>
+  </p>
+<% end %>

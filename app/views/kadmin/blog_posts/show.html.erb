@@ -1,0 +1,28 @@
+<p>
+  <b>标题:</b>
+  <%= @blog_post.title %>
+</p>
+
+<p>
+  <b>内容:</b>
+  <%= @blog_post.content %>
+</p>
+
+<p>
+  <b>分类:</b>
+  <%= @blog_post.category_id %>
+</p>
+
+<p>
+  <b>推荐产品1:</b>
+  <%= @blog_post.product1_id %>
+</p>
+
+<p>
+  <b>推荐产品2:</b>
+  <%= @blog_post.product2_id %>
+</p>
+
+
+<%= link_to '编辑', edit_kadmin_blog_post_path(@blog_post) %> |
+<%= link_to '返回', kadmin_blog_posts_path %>

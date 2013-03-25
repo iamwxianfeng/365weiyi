@@ -1,0 +1,21 @@
+<h1>后台浏览新闻</h1>
+<br />
+<%= link_to '[修改]', edit_kadmin_notice_path(@notice) %> |
+<%= link_to '[新闻列表]', kadmin_notices_path %>
+<br /><br />
+
+<p>
+  <b>标题：</b>
+  <%=h @notice.name %>
+</p>
+
+<p>
+  <b>链接地址：</b>
+  <%=link_to @notice.url, 'http://'+ @notice.url,
+    :target => '_blank' %>
+</p>
+
+<p>
+  <b>Popularity:</b>
+  <%=h @notice.popularity %>
+</p>

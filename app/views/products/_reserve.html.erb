@@ -1,0 +1,170 @@
+<div id="reservePopupDiv">
+
+  <div class="reserve_ruler popup">
+    <h2 class="title">预约量体
+      <span class="close" onclick="$.closePopupLayer('reservePopup')">关闭</span>
+    </h2>
+    <div class="area_left">
+      <ul>
+        <li class="focus" id="ruler_li">预约上门量体</li>
+        <li id="shop_li">预约体验店量体</li>
+      </ul>
+    </div>
+    <div class="area_right" id="reserve_ruler">
+      <%= form_for @reserve_ruler , :url=>reserve_ruler_categories_path , :html=>{ :id=>"reserve_ruler_form" }  do  |f| %>
+        <%= hidden_field_tag "reserve_ruler[status]"  , 0 %>
+        <%= hidden_field_tag "reserve_ruler[product_id]"  , @product.id %>
+        <div><span>时间:</span>
+          <%= f.text_field :reserve_at , :class=>"reserve_at" %>
+          <label>时间选择</label>
+          <span>具体时间:</span>         
+          <%= f.select "day_when" , options_for_select(reserve_times),:include_blank=>true %>
+        </div>            
+        <div><span>地点:</span>
+          <%= select_tag "province" , raw("<option>北京市</option>")  %>
+          <%= select_tag "city" , raw("<option>北京市</option>")  %>
+          <%= f.select "place_id"  , options_from_collection_for_select(Place.all,'id','area') , :include_blank=>true %>
+        </div>
+        <div><span>详细地址:</span>
+          <%= f.text_field "office" ,:size=>40 %>
+        </div>
+        <div><span>要定:</span>
+          <% ["西服","衬衫","大衣","团体定制","其他咨询"].each do |ele| %>
+            <%= check_box_tag "items[]"  , ele %> <%= ele %>
+          <% end %>
+        </div>
+        <div><span>手机:</span>
+          <%= f.text_field "phone" , :class=>"phone" %>
+          <span>联系人:</span>
+          <%= f.text_field "username" , :class=>"username" %>
+        </div>
+        <div class="submit">
+          <%= submit_tag "预约量体师" , :type=>"button" , :class=>"btns" , :id=>"reserve_ruler_button" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="area_right" id="reserve_shop" style="display: none;">
+      <%= form_tag reserve_shop_categories_path , :id=>"reserve_shop_form"  do  %>
+        <%= hidden_field_tag "reserve_shop[status]"  , 1 %>
+        <%= hidden_field_tag "reserve_shop[product_id]" , @product.id %>
+        <div><span>时间:</span>
+          <%= text_field_tag "reserve_shop[reserve_at]"  , @reserve_shop.reserve_at , :class=>"reserve_at" %>
+          <label>时间选择</label>
+          <span>具体时间:</span>  
+          <%= select_tag "reserve_shop[day_when]" , options_for_select(reserve_times),:include_blank=>true %>
+        </div>        
+        <div><span>体验店:</span>
+          <%= select_tag "reserve_shop[shop_id]" , options_from_collection_for_select(Shop.all,:id,:name), { :include_blank=>true }  %>
+        </div>
+        <div><span>要定:</span>
+          <% ["西服","衬衫","大衣","团体定制","其他咨询"].each do |ele| %>
+            <%= check_box_tag "items[]"  , ele %> <%= ele %>
+          <% end %>
+        </div>
+        <div><span>手机:</span>
+          <%= text_field_tag "reserve_shop[phone]" , @reserve_shop.phone %>
+        </div>      
+        <div><span>联系人:</span>
+          <%= text_field_tag "reserve_shop[username]" , @reserve_shop.username %>
+        </div>      
+        <div class="submit">
+          <%= submit_tag "预约" , :type=>"button" , :class=>"btns" , :id=>"reserve_shop_button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  
+  function clickShop(){
+    $("#ruler_li").removeClass("focus");
+    $("#shop_li").addClass("focus");
+    $("#reserve_ruler").hide();
+    $("#reserve_shop").show(); 
+  };
+
+<% if @errors %>
+    alert("<%=raw @errors %>");
+<% end %>
+
+<% if @reserve_shop.status == ReserveRuler::Status::Shop or params[:t] == "shop" %>
+    clickShop();
+<% end %>
+  
+  
+  $(function(){
+    
+    $("#reserve_ruler_button").click(function(){
+      var $form = $("#reserve_ruler_form");
+      var data = $form.serialize();
+      var url = $form.attr("action");
+      $.ajax({
+        url: url,
+        type: "POST",
+        data: data,
+        success: function(data){
+          if (data.status == 'ok'){
+            alert("预约成功");
+            $.closePopupLayer('reservePopup');
+          }else{
+            alert(data.errors);
+          }
+        }
+      });
+    });
+    
+    $("#reserve_shop_button").click(function(){
+      var $form = $("#reserve_shop_form");
+      var data = $form.serialize();
+      var url = $form.attr("action");
+      $.ajax({
+        url: url,
+        type: "POST",
+        data: data,
+        success: function(data){
+          if (data.status == 'ok'){
+            alert("预约成功");
+            $.closePopupLayer('reservePopup');
+          }else{
+            alert(data.errors);
+          }
+        }
+      });
+    });
+    
+    $("#ruler_li").click(function(){
+      var $this = $(this);
+      if($this.attr("class") != "focus"){
+        $("#shop_li").removeClass("focus");
+        $this.addClass("focus");
+        $("#reserve_ruler").show();
+        $("#reserve_shop").hide();
+      }       
+    });
+    $("#shop_li").click(function(){
+      var $this = $(this);
+      if($this.attr("class") != "focus"){
+        clickShop();
+      }
+    });
+    
+    $.datepicker.regional[ "zh-CN" ]
+    // $("input[name='reserve_ruler[reserve_at]'],input[name='reserve_shop[reserve_at]']").datepicker({ minDate: 0 });
+    
+    // http://gchuyun.iteye.com/blog/254352
+    // http://www.vancelucas.com/blog/jquery-ui-datepicker-with-ajax-and-livequery/
+    $("input[name='reserve_ruler[reserve_at]'],input[name='reserve_shop[reserve_at]']").live('click', function() {
+      $(this).removeClass('hasDatepicker').datepicker({ minDate: 0 });
+    });
+    
+    $("#reserve_ruler_reserve_at,#reserve_shop_reserve_at").focus(function(){
+      var $this = $(this);
+      $this.next().hide();
+    });
+    
+    
+  });
+</script>

@@ -1,0 +1,35 @@
+<h1>查看公司</h1>
+<br />
+
+<%= link_to '[修改信息]', edit_kadmin_company_path(@company) %> |
+<%= link_to '[删除]', [:kadmin, @company], :confirm => '确认删除?', :method => :delete %>
+<%= link_to '[公司列表]', kadmin_companies_path %>
+
+<p>
+  <b>名称：</b>
+  <%=h @company.name %>
+</p>
+
+<p>
+  <b>负责人：</b>
+  <% unless @company.user_id %>
+    <%=h User.find(@company.user_id).name %>
+  <% else %>
+    (暂无负责人)
+  <% end %>
+</p>
+<p>
+  <b>地址：</b>
+  <%=h @company.address %>
+</p>
+
+<p>
+  <b>电话：</b>
+  <%=h @company.phone %>
+</p>
+
+<p>
+  <b>网站：</b>
+  <a href="http://<%= @company.website %>" target="_blank"><%= @company.website %></a>
+</p>
+

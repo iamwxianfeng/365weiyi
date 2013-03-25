@@ -1,0 +1,39 @@
+<script type="text/javascript" charset="utf-8" src="/editor/kindeditor.js"></script>
+<script type="text/javascript">
+  KE.show({
+  id : 'measure_page_description',
+  height : '500'
+  })
+</script>
+
+<h1>修改量体中心页面</h1>
+<br />
+<%= link_to '[前台显示]', @measure_page %> |
+<%= link_to '[所有量体页面]', kadmin_measure_pages_path %>
+<br /><br />
+
+<% form_for([:kadmin, @measure_page]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, '*名称：' %>
+    <%= f.text_field :name %> (量体中心页面左栏)
+  </p>
+  <p>
+    <%= f.label :favorite_brand, '最喜爱的品牌：' %>
+    <%= f.text_field :favorite_brand %>
+  </p>
+  <br />
+  <p>
+    <%= f.label :popularity, '排序：' %>
+    <%= f.select :popularity, 0..9 %>
+  </p>
+  <p>
+    <%= f.label :description, '正文描述：' %><br />
+    <%= f.text_area :description %>
+  </p>
+  <br />
+  <p>
+    <%= f.submit '保存' %>
+  </p>
+<% end %>

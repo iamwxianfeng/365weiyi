@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <%= csrf_meta_tag %>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="description" content="维衣致力于提供高品质的工作服、西服定制、衬衫定制等服务。为白领、中产阶级、特体、婚礼礼服等群体提供西装定制、衬衣定制服务，也可为企事业单位提供团体工作服定制服务。在北京可上门量体。"/>
+    <meta name="keywords" content="工作服，西服定制，西装定制，衬衣定制，衬衫定制"/>
+    <link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon"/>
+    <title><%= yield(:title).present? ? "#{yield(:title)}--" : nil || @title.present? ? "#{@title}--" : nil %>维衣--工作服 西服定制 西装定制 衬衣定制 衬衫定制</title>
+    <%= javascript_include_tag :defaults %>
+    <%= stylesheet_link_tag 'global', "master" ,"application" %>
+  </head>
+  <body>
+    <%= render "layouts/header" %>
+    <div id="wrapper">
+
+      <div id="shangmian">
+        <div class="newstop">
+          <u>提醒</u>
+          <em>
+            <marquee align="left" behavior="scroll" direction="left" onmouseover="this.stop()" onmouseout="this.start()" scrollamount="4">
+              制作周期说明:衬衫定制14天左右（含休息日)。西服定制套版工艺为30天,半毛衬独立制版工艺为18天,加急需额外付费,购买时请一定提前安排好时间。
+            </marquee>
+          </em>
+          <i><a href="/why_bespoken.html">为什么采用定制而不去逛商场</a></i>
+        </div>
+      </div>
+
+      <%= render_flash_messages %>
+      <% flash.discard %>
+
+      <div id="wrap">
+
+        <div class="rightWrap row" style="float: left;">
+
+          <div class="right">
+            <h2 class="title">我要量</h2>
+            <ul class="liebs1">
+
+              <% MeasurePage.all(:order => 'popularity DESC').each do |page| %>
+                <li>
+                  <%= link_to truncate(page.name, :length => 25), measure_page_path(page) %>
+                </li>
+              <% end %>
+
+            </ul>
+          </div><!-- right -->
+
+          <div class="right">
+            <h2 class="title">穿合适衣服 秀出我精彩</h2>
+            <ul class="zp">
+              <li class="list1">对标准化成衣说不！穿真正符合自己尺寸的衣服</li>
+              <li class="list2">一流工艺制作，确保高品质</li>
+              <li class="list3">西服300多道工序精心制作</li>
+              <li class="list4">衬衫、西服均有数百种面料可选</li>
+              <li class="list5">既可到店量体，也可上门，还可自助网上量体</li>
+            </ul><!-- zp -->
+          </div><!-- right -->
+          <p>&nbsp;</p>
+          <div class="right">
+            <h2 class="title">联系我们</h2>
+            <ul class="moxtxt1">
+              <li>
+                <p class="contactInfo"><br />
+                  <%= image_tag('/images/upload/1272540383.jpg', :alt => "电话") %>：<span>010-51285099</span><br>
+                    <%= image_tag('/images/upload/1272533720.gif', :alt => 'QQ') %>: <span>617512626</span>偏胖偏廋客户专用<br />
+                    <%= image_tag('/images/upload/1272533720.gif', :alt => "QQ") %>：<span>912261637</span>普通客户专用<br />
+                    <%= image_tag('/images/upload/1272536219.gif', :alt => "旺旺") %>：<span>inonoer</span><br />
+                </p>
+              </li>
+
+            </ul>
+          </div><!-- right -->
+
+        </div><!-- rightWrap -->
+
+
+        <div class="left bku">
+          <div class="lt_body">
+            <h2>量体中心</h2>
+            <%= yield :layout %>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="clear"></div>
+    </div>
+    <%= render :partial => 'layouts/footer' %>
+  </body>
+</html>

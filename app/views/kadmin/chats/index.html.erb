@@ -1,0 +1,38 @@
+<h1>聊天室</h1>
+
+<table>
+  <tr class="tbCaption">
+    <th>连接</th>
+    <th>是否打开过</th>
+  </tr>
+
+  <% @chats.each do |chat| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= link_to "http://chat.365weiyi.com/chat/#{Tiny::tiny(chat.id)}?fr=admin" ,"http://chat.365weiyi.com/chat/#{Tiny::tiny(chat.id)}?fr=admin" , :target=>"_blank" %></td>
+      <td><%=raw chat.human_viewed %></td>
+    </tr>
+  <% end %>
+</table>
+
+<script type="text/javascript">
+
+  var show = function(){
+    $.ajax({
+      url: "/kadmin/chats/check",
+      type: "GET",
+      success: function(data){
+        if (data.status == 'ok'){
+          var items = data.items;
+          var str = "";
+          $.each(items,function(index,item){
+            str += '<a href="'+ item.href +'" target="_blank">'+ item.href +'</a><br/>';
+          })
+          $.floatingMessage("有新的在线咨询\n"+ str +"");
+        }
+      }
+    });
+  };
+
+  setInterval(show,10000);
+
+</script>

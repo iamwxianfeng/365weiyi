@@ -1,0 +1,27 @@
+<h1><%= @category.name %>: 修改二级分类</h1>
+<br />
+
+<%= link_to '[后台查看下属产品]', kadmin_products_path(:subcategory => @subcategory.id), :title => '共有 '+ @subcategory.products.count.to_s + ' 件商品', :target=> '_blank' %>
+<%= link_to '[二级分类列表]', kadmin_category_subcategories_path(@category) %>
+<br /><br />
+
+<% form_for([:kadmin, @category, @subcategory]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, '*分类名: ' %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :url, '*URL: ' %>
+    <%= f.text_field :url %>(英文和下划线，用于构成URL，很重要！)
+  </p>
+  <p>
+    <%= f.label :popularity, '排 序: ' %>
+    <%= f.select :popularity, 0..9 %>
+  </p>
+  <br />
+  <p>
+    <%= f.submit '确定修改' %>
+  </p>
+<% end %>

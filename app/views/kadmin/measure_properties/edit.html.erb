@@ -1,0 +1,44 @@
+<script type="text/javascript" charset="utf-8" src="/editor/kindeditor.js"></script>
+<script type="text/javascript">
+  KE.show({
+    id : 'measure_property_description',
+    width : '200'
+  })
+</script>
+
+<h1>量体之旅</h1>
+<br />
+<%= link_to '[后台查看]', [:kadmin, @measure_property] %> |
+<%= link_to '[量体之旅首页]', kadmin_measure_properties_path %>
+<br /><br />
+
+<% form_for([:kadmin, @measure_property]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, '名称：' %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :photo, '示例图片：' %>
+    <%= f.text_field :photo %>
+  </p>
+  <p>
+    <%= f.label :unit, '单位：' %>
+    <%= f.text_field :unit %>
+  </p>
+  <p>
+    <%= f.label :measure_page_id, '分类：' %>
+    <%= f.select :measure_page_id, @measure_pages %>
+    <%= f.label :popularity, '排序：' %>
+    <%= f.select :popularity, 0..9 %>
+  </p>
+  <br />
+  <p>
+    <%= f.label :description, '量体说明：' %>
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.submit '保存' %>
+  </p>
+<% end %>

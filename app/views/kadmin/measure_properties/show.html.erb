@@ -1,0 +1,35 @@
+<h1>量体之旅</h1>
+<br />
+<%= link_to '[修改]', edit_kadmin_measure_property_path(@measure_property) %> |
+<%= link_to '[量体之旅首页]', kadmin_measure_properties_path %>
+<br /><br />
+
+<p>
+  <b>名称：</b>
+  <%=h @measure_property.name %>
+</p>
+<p>
+  <b>量体说明：</b>
+  <%=h @measure_property.description %>
+</p>
+<p>
+  <b>计量单位：</b>
+  <%=h @measure_property.unit %>
+</p>
+<p>
+  <b>分类：</b>
+
+  <% if (measure_page = @measure_property.measure_page) %>
+    <%=h measure_page.name %>
+  <% else %>
+    [数据出错]
+  <% end %>
+</p>
+<p>
+  <b>排序：</b>
+  <%=h @measure_property.popularity %>
+</p>
+<p>
+  <b>示例图片：</b><br />
+  <%= raw("<img src='#{@measure_property.photo}' alt='#{h @measure_property.name}' />") %>
+</p>

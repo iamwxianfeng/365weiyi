@@ -1,0 +1,34 @@
+<h1>上传图片列表</h1>
+<p>本处用于上传除产品照外的任意图片。请在"图片地址"上右击选择“复制地址”</p>
+
+<%= link_to '[上传新图片]', new_kadmin_uploaded_photo_path %>
+<br /><br />
+
+<table>
+  <tr class="tbCaption">
+    <th>图片名称</th>
+    <th>排序</th>
+    <th>产品图</th>
+    <th>更新时间</th>
+    <th>管理</th>
+  </tr>
+
+<% @uploaded_photos.each do |photo| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= link_to(h(photo.name), kadmin_uploaded_photo_path(photo)) %></td>
+    <td><%= photo.popularity %></td>
+    <td>
+      <% if photo.product_id %>
+        [产品图]
+      <% end %>
+    </td>
+    <td><%= show_time photo.updated_at %></td>
+    <th><%= link_to "图片地址", photo.url %></td>
+    <td><%= link_to '修改', edit_kadmin_uploaded_photo_path(photo) %></td>
+    <td><%= link_to '删除', kadmin_uploaded_photo_path(photo), :confirm => '确定删除?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= will_paginate @uploaded_photos, :previous_label => '< ', :next_label => ' >' %>

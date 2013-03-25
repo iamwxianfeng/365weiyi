@@ -1,0 +1,32 @@
+<%= javascript_include_tag :ckeditor %>
+
+<h1>修改新闻</h1>
+<br />
+<%= link_to '[前台查看]', @notice, :target => '_blank' %> |
+<%= link_to '[新闻列表]', kadmin_notices_path %>
+<br /><br />
+
+<% form_for([:kadmin, @notice]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, '标题：' %>
+    <%= f.text_field :name %> * 3~100个字符
+  </p>
+  <p>
+    <%= f.label :url, 'URL：' %>
+    <%= f.text_field :url %> 别忘了 http://
+  </p>
+  <p>
+    <%= f.label :description, '正文：' %><br />
+    <%= ckeditor_textarea("notice", "description", :language => 'zh-cn') %>
+  </p>
+  <p>
+    <%= f.label :popularity, '排序：' %>
+    <%= f.select :popularity, 0..9 %>
+  </p>
+  <br />
+  <p>
+    <%= f.submit '提交' %>
+  </p>
+<% end %>

@@ -1,0 +1,38 @@
+<div class="login">
+  <strong>修改量体数据</strong>
+</div><!-- login -->
+
+<div class="lt_body">
+<div class="xian">
+
+<% unless (measure_property = @measurement.measure_property) %>
+  [数据出错，请联系管理员]
+<% else %>
+
+  <% form_for(@measurement) do |f| %>
+    <%= f.error_messages %>
+
+    <div class="xoh xb">
+    <table width="100%" cellpadding="3" cellspacing="0" style="border-collapse:collapse;" border="1" bordercolor="#7f7f7f">
+        <tr class="lt_bt">
+                <td width="40%">示例图片</td>
+                <td width="41%">量体说明</td>
+                <td width="18%">尺寸数据</td>
+        </tr>
+
+        <tr>
+          <td width="40%"><img src="<%=h measure_property.photo %>" alt="<%= h measure_property.name %>"></td>
+          <td width="42%"><%= measure_property.description %></td>
+          <td width="18%">
+            <%= f.text_field :measure %><%=h measure_property.unit %>
+          </td>
+        </tr>
+      </table><!-- xoh xb -->
+    </div>
+      <p><%= f.submit '保存' %></p>
+
+  <% end %>
+<% end %>
+
+</div><!-- xian -->
+</div>

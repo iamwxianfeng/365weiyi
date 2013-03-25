@@ -1,0 +1,27 @@
+ /**
+ * @description The new KKShop e-Commerce customized for www.dooxoo.cn
+ * @author Wei Xie < XieConnect@gmail.com >
+ * @version 2010.03.19
+ */
+
+# Prefered Rails version
+2.3.5
+# Required gems:
+mislav-will_paginate
+
+# Included plugins:
+restful_authentication
+
+#change log
+[03.08.2010]
+fixed the login_required bug of AuthenticatedSystem under IE
+
+[11.09.2009]
+*index page banner scroll (back-end administration support)
+*bug fixes to back-end orders view and administration
+
+[10.21.2009]
+*drop-down menu removed; index scroll banner
+
+[09.25.2009]
+*add new category bug

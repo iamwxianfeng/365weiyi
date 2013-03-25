@@ -1,0 +1,10 @@
+<%= form_for [:kadmin,@blog_category] do |f| %>
+<%= error_messages_for @blog_category %>
+  <div class="field">
+    <%= f.label "分类名字" %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit "提交" %>
+  </div>
+<% end %>

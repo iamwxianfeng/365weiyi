@@ -1,0 +1,28 @@
+<div class="search_cond">
+  <h2 class="title">商品列表</h2>
+  <ul>
+    <li><em>价格:</em>
+      <% ["全部",280,288,338,388,438,488,538,588,880].each_with_index do |price,index| %>
+        <span><a href="javascript:;" class="<%= 'current' if params[:price] == price.to_s %>" onclick="Weiyi.Product.changePrice('<%= price %>')"><%= price %></a></span>
+      <% end %>
+    </li>
+    <li><em>颜色:</em>
+      <% ["全部","白色","黑色","蓝色","粉色","黄色","紫色"].each_with_index do |color,index| %>
+        <span><a href="javascript:;" class="<%= 'current' if params[:color] == color %>" onclick="Weiyi.Product.changeColor('<%= color %>')"><%= color %></a></span>
+      <% end %>
+    </li>
+    <li><em>面料成份:</em>
+      <% ["全部","65%棉35%涤","纯棉"].each_with_index do |mianliao,index|   %>
+        <span><a href="javascript:;" class="<%= 'current' if params[:mianliao] == mianliao %>" onclick="Weiyi.Product.changeMianliao('<%= CGI.escape(mianliao) %>')"><%= mianliao %></a></span>
+      <% end %>
+    </li>
+    <li><em>面料品牌:</em>
+      <span><a href="javascript:;" class="<%= 'current' if params[:pinpai] == "全部" %>" onclick="Weiyi.Product.changePinpai('<%= '全部' %>')"><%= "全部" %></a></span>
+    </li>
+    <li class="sort"><em>排序方式:</em>
+      <% ["销量","好评","价格","最新"].each_with_index do |sort,index| %>
+        <span><a href="javascript:;" class="<%= 'red' if params[:sort] == sort %>" onclick="Weiyi.Product.changeSort('<%= sort %>')"><%= sort %></a></span>
+      <% end %>
+    </li>
+  </ul>
+</div>

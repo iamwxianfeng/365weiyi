@@ -1,0 +1,38 @@
+<h1>修改友情链接信息</h1>
+<%= link_to '[友情链接列表]', '/kadmin/links' %>
+<%= link_to '[新友情链接]', '/links/new', :title => '您将在网站前台提交新链接' %><br />
+<br />
+
+<% form_for([:kadmin, @link], :html => {:multipart => true}) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :approved, '在首页显示：' %>
+    <%= f.check_box :approved %>
+  </p>
+  <br />
+  <p>
+    <%= f.label :name, '链接名称：' %>
+    <%= f.text_field :name %> 鼠标悬念在首页LOGO上时显示的文字
+  </p>
+  <p>
+    <%= f.label :description, '申请理由：' %><br />
+    <%= f.text_area :description, :size => '45x5' %>
+  </p>
+  <p>
+    <%= f.label :url, '网站URL：' %>
+    <%= f.text_field :url %> 记得输入 http://
+  </p>
+  <p>
+    <%= f.label :logo, '网站LOGO：' %>
+    <%= f.file_field :upload_photo %> 该LOGO将显示在首页上(150x50)
+  </p>
+  <p>
+    <%= f.label :popularity, '链接排序：' %>
+    <%= f.select :popularity, 0..20 %>
+  </p>
+  <br />
+  <p>
+    <%= f.submit '确认' %>
+  </p>
+<% end %>

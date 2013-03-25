@@ -1,0 +1,146 @@
+<div class="index_ruler" id="ruler_anchor">
+  <div class="title">开始我的定制</div>
+  <div class="area_left">
+    <ul>
+      <li class="focus" id="ruler_li">预约上门量体</li>
+      <li id="shop_li">预约体验店量体</li>
+    </ul>
+  </div>
+  <div class="area_right" id="reserve_ruler">
+    <%= form_for(@reserve_ruler , :url=>reserve_ruler_categories_path)  do  |f| %>
+      <%= hidden_field_tag "reserve_ruler[status]"  , 0 %>
+      <div><span>时间:</span>
+        <%= f.text_field :reserve_at %>
+        <label>时间选择</label>
+      </div>
+      <div><span>具体时间:</span>
+  <%#= f.text_field "day_when" %> <!-- <span class="gray wa">(如: 上午10:00)</span> -->
+        <%= f.select "day_when" , options_for_select(reserve_times),:include_blank=>true %>
+      </div>
+      <div><span>地点:</span>
+        <%= select_tag "province" , raw("<option>北京市</option>")  %>
+        <%= select_tag "city" , raw("<option>北京市</option>")  %>
+        <%= f.select "place_id"  , options_from_collection_for_select(Place.all,'id','area') , :include_blank=>true %>
+      </div>
+      <div><span>详细地址:</span>
+        <%= f.text_field "office" ,:size=>40 %>
+      </div>
+      <div><span>要定:</span>
+        <% ["西服","衬衫","大衣","团体定制","其他咨询"].each do |ele| %>
+          <%= check_box_tag "items[]"  , ele %> <%= ele %>
+        <% end %>
+      </div>
+      <div><span>手机:</span>
+        <%= f.text_field "phone" %>
+      </div>
+      <div><span>联系人:</span>
+        <%= f.text_field "username" %>
+      </div>
+      <div class="submit">
+        <%= submit_tag "预约量体师" , :class=>"btns" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="area_right" id="reserve_shop" style="display: none;">
+    <%= form_tag reserve_shop_categories_path  do  %>
+      <%= hidden_field_tag "reserve_shop[status]"  , 1 %>
+      <div><span>时间:</span>
+        <%= text_field_tag "reserve_shop[reserve_at]"  , @reserve_shop.reserve_at %>
+        <label>时间选择</label>
+      </div>
+      <div><span>具体时间:</span>
+  <%#= text_field_tag "reserve_shop[day_when]" , @reserve_shop.day_when %> <!-- <span class="gray wa">(如: 上午10:00)</span> -->
+        <%= select_tag "reserve_shop[day_when]" , options_for_select(reserve_times),:include_blank=>true %>
+      </div>
+      <div><span>体验店:</span>
+        <%= select_tag "reserve_shop[shop_id]" , options_from_collection_for_select(Shop.all,:id,:name), { :include_blank=>true }  %>
+      </div>
+      <div><span>要定:</span>
+        <% ["西服","衬衫","大衣","团体定制","其他咨询"].each do |ele| %>
+          <%= check_box_tag "items[]"  , ele %> <%= ele %>
+        <% end %>
+      </div>
+      <div><span>手机:</span>
+        <%= text_field_tag "reserve_shop[phone]" , @reserve_shop.phone %>
+      </div>
+      <div><span>联系人:</span>
+        <%= text_field_tag "reserve_shop[username]" , @reserve_shop.username %>
+      </div>
+      <div class="submit">
+        <%= submit_tag "预约" , :class=>"btns" %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
+<div class="rightWrap ruler_sidebar">
+  <div class="right">
+    <h2 class="title">推荐量体师</h2>
+    <% @top_rulers.each_with_index do |top_ruler,index| %>
+      <% user = top_ruler.user %>
+      <dl class="<%= index == 0 ? '' : 'second' %>">
+        <dt>
+        <%=link_to image_tag(user.avatar_medium) , ba_user_path(user) %>
+        </dt>
+        <dd>
+          <label>姓名:</label>
+          <span><%=link_to user.profile.name  ,ba_user_path(user) %></span>
+        </dd>
+        <dd>
+          <label>服务区域:</label>
+          <span><%= "#{user.human_places.scan(/[\u4e00-\u9fa5]*/)[0]}等" if user.human_places.present? %></span>
+        </dd>
+        <dd>
+          <label>手机:</label>
+          <span><%= user.profile.phone %></span>
+        </dd>
+      </dl>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  function clickShop(){
+    $("#ruler_li").removeClass("focus");
+    $("#shop_li").addClass("focus");
+    $("#reserve_ruler").hide();
+    $("#reserve_shop").show();
+  };
+
+<% if @errors %>
+    alert("<%=raw @errors %>");
+<% end %>
+
+<% if @reserve_shop.status == ReserveRuler::Status::Shop %>
+    clickShop();
+<% end %>
+
+  $(function(){
+    $("#ruler_li").click(function(){
+      var $this = $(this);
+      if($this.attr("class") != "focus"){
+        $("#shop_li").removeClass("focus");
+        $this.addClass("focus");
+        $("#reserve_ruler").show();
+        $("#reserve_shop").hide();
+      }
+    });
+    $("#shop_li").click(function(){
+      var $this = $(this);
+      if($this.attr("class") != "focus"){
+        clickShop();
+      }
+    });
+
+    $.datepicker.regional[ "zh-CN" ]
+    $("input[name='reserve_ruler[reserve_at]'],input[name='reserve_shop[reserve_at]']").datepicker({ minDate: 0 });
+
+    $("#reserve_ruler_reserve_at,#reserve_shop_reserve_at").focus(function(){
+      var $this = $(this);
+      $this.next().hide();
+    });
+  });
+</script>

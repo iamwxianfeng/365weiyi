@@ -1,0 +1,42 @@
+<h1>新建首页广告</h1><br />
+<%= link_to '[广告列表]', kadmin_banners_path %> &nbsp;* 当"图片URL"和"上传图片"同时设值时，优先采用"上传图片"中的值
+<br /><br />
+
+<%= form_for([:kadmin, @banner], :html => {:multipart => true}) do |f| %>
+  <% if @banner.errors.any? %>
+    <div id="error_explanation">
+      <h2>出现如下错误：</h2>
+      <ul>
+        <% @banner.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :popularity, '排序：' %>
+    <%= f.select :popularity, (0..9).to_a + [Banner::TOP_BANNER,Banner::LIST_BANNER_SUIT,Banner::LIST_BANNER_SHIRT,Banner::LIST_BANNER_TEAM] %> *0~9代表显示排序，越大越靠前。若设为<%= Banner::TOP_BANNER %>则为顶部banner<br/>
+    <%= Banner::LIST_BANNER_SUIT %>为西服列表页banner,<%= Banner::LIST_BANNER_SHIRT %>为衬衫列表页banner,<%= Banner::LIST_BANNER_TEAM %>为工作服列表页banner
+  </p>
+  <p>
+    <%= f.label :can_scroll, '轮换广告：' %>
+    <%= f.check_box :can_scroll %>   (轮换广告=动态变换图片，非轮换图片=首页右侧优惠推广广告)
+  </p>
+  <p>
+    <%= f.label :name, '简介：' %>
+    <%= f.text_field :name %> 鼠标悬停在banner上时的显示文字
+  </p>
+  <p>
+    <%= f.label :photo_url, '*图片URL：' %>
+    <%= f.text_field :photo_url %>
+  </p>
+  <p>
+    <%= label_tag :photo, '&nbsp;&nbsp;&nbsp;或上传图片：' %>
+    <%= file_field_tag :photo %>
+  </p>
+  <br />
+  <p>
+    <%= f.submit '确定' %>
+  </p>
+<% end %>

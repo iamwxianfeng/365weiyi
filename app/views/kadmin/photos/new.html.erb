@@ -1,0 +1,35 @@
+<h1><%= link_to h(@product.name), @product, :target => '_blank' %>: 上传新图片</h1>
+<br />
+<%= link_to '[本产品的所有图片]',[:kadmin, @product, :photos] %>
+<br />
+排序说明：<%= Photo::COVER %>=商品封面(首页170x250像素),
+<%= Photo::MAIN %>=商品详情左侧图(310x420像素)
+<br />
+<br />
+
+<% form_for([:kadmin, @product, @photo], :html => {:multipart => true}) do |f| %>
+  <%=error_messages_for @photo %>
+
+  <p>
+    <%= f.label :url, '*远程图片URL: ' %>
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :image, '或上传本地图片: ' %>
+    <%= f.file_field :image %> (jpg, gif, png, jpeg)
+  </p>
+  <br />
+  <p>
+    <%= f.label :name, '图片名称: ' %>
+    <%= f.text_field :name %>(会显示在图片下方)
+  </p>
+  <br />
+  <p>
+    <%= f.label :popularity, '排序: ' %>
+    <%= f.select :popularity, 0..11 %> * 越大越靠前，11=商品封面,10=商品详情图
+  </p>
+  <br />
+  <p>
+    <%= f.submit '确定' %>
+  </p>
+<% end %>

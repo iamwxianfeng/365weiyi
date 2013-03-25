@@ -1,0 +1,45 @@
+<div class="yangshi_h2 xoh ">
+  <%=h @customization_category %>
+</div>
+
+<div class="yangshi_h3 xoh ">
+  <%=h @customization_category %>
+</div>
+
+<% if @customizations.empty? %>
+
+    <br />
+    <p>该分类暂无内容</p>
+
+<% else %>
+
+  <% form_tag :controller => "customization_wrap", :action => "new" do %>
+  <%= hidden_field_tag "customization_category", @customization_category %>
+  <%= hidden_field_tag "product_id", @product_id %>
+
+    <% @customizations.each do |customization| %>
+      <div class="xoh xl l_meige">
+        <div class="xoh l_img_ding xb">
+          <img src="<%= customization.photo %>" />
+        </div>
+        <div class="xoh l_img_an">
+          <!--<input name="" type="radio" value="" />-->
+          <%= radio_button_tag :customization, customization.id %>
+          <span><%=h customization.name %></span>
+        </div>
+        <div class="xoh l_img_wz"><%=h customization.description %>
+        </div>
+      </div><!-- l_meige -->
+    <% end %>
+
+    <div style="clear:both"></div>
+    <div class="xoh t_center">
+      <%= submit_tag "提交" %>
+      <a href="/customizations?category=袖口&product_id=<%= @product_id %>" class="bg_btns">下一步，选择袖口</a>
+    </div>
+    <div style="clear:both"></div>
+  <% end %>
+
+  <%= link_to "添加到购物车", "/customization_wrap/create", :class => "bg_btns" %>
+
+<% end %>

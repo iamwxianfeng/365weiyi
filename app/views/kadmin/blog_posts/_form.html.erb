@@ -1,0 +1,46 @@
+<% @blog_post.blog_tags.build %>
+<%= form_for([:kadmin,@blog_post]) do |f| %>
+  <%= error_messages_for @blog_post %>
+  <div class="field">
+    <%= f.label "标题" %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label "内容" %><br />    
+    <%= ckeditor_textarea("blog_post", "content", :language => 'zh-cn') %>
+  </div>
+  <div class="field">
+    <%= f.label "主题" %><br />
+    <%= f.select :category_id , BlogCategory.all.collect { |bc| [bc.name,bc.id]},:include_blank=>true  %>
+  </div>
+  <div class="field" id="tag_field">
+    <%= f.label "标签" %>(<%= link_to "添加tag" , "javascript:;" , :id=>"add_tag" %>)<br/>
+    <%= render :partial=>"kadmin/blog_tags/form" , :locals=>{ :form=>f }  %>
+  </div>
+  <div class="field">
+    <%= f.label "推荐产品1" %><br />
+    <%= f.text_field :product1_id  %> (输入商品的ID号)
+  </div>
+  <div class="field">
+    <%= f.label "推荐产品2" %><br />
+    <%= f.text_field :product2_id %> (输入商品的ID号)
+  </div>
+  <div class="field">
+    <%= f.label "是否发布" %><br />
+    <%= f.check_box :published %> 
+  </div>
+  <div class="actions">
+    <%= f.submit "提交" %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+$(function(){
+  $("#add_tag").live("click",function(){
+    var attr_id = $("#tag_field>.field:last input").attr("name").match(/\d+/)[0];
+    var new_id = parseInt(attr_id) + 1;
+    var html = "<div class=\"field\"><label>tag:</label><input name=\"blog_post[blog_tags_attributes]["+new_id+"][name]\"</input></div>"
+    $("#tag_field>.field:last").after(html);
+  });
+});
+</script>

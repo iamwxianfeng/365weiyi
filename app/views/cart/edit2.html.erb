@@ -1,0 +1,100 @@
+<div class="login">
+    <strong>我的购物车</strong>
+    </div>
+    <div class="xian">
+      <table width="100%" border="0" cellspacing="0" cellpadding="3">
+        <tr>
+          <td align="center" bgcolor="#7A7F89" class="fonts">商品编号</td>
+          <td align="center" bgcolor="#7A7F89" class="fonts">商品名称</td>
+          <td align="center" bgcolor="#7A7F89" class="fonts">尺码</td>
+          <td align="center" bgcolor="#7A7F89" class="fonts">单价</td>
+          <td align="center" bgcolor="#7A7F89" class="fonts">数量</td>
+          <td align="center" bgcolor="#7A7F89" class="fonts">小计</td>
+          <td align="center" bgcolor="#7A7F89" class="fonts">删除产品</td>
+        </tr>
+
+    <% if @items.empty? %>
+        <tr><p>您的购物车暂时为空</p></tr>
+    <% else %>
+      <% form_tag({:action => :update}) do %>
+        <% @items.each do |i| %>
+        <tr>
+          <td height="40" align="center"><%= i.product.id %></td>
+          <td align="center"><%=h i.name %></td>
+          <td align="center"><%=h i.product.measure %></td>
+          <td align="center"><%= i.product.our_price %></td>
+          <td align="center"><%= i.quantity %></td>
+          <td align="center"><%= i.quantity * i.product.our_price %></td>
+          <td align="center"><%= link_to '删除', :action => :delete, :id => i %></td>
+        </tr>
+        <% end %>
+      <% end %>
+
+    <% end %>
+
+        <tr>
+          <td width="82%" height="60" colspan="8" align="right"><table align="center" cellpadding="0" cellspacing="0">
+            <tr>
+              <td valign="top" width="200">商品数量总计：<span class="font_cou" id="Product_CT"><%= @cart.quantity %></span><span class="font_cou">件</span></td>
+              <td valign="top" width="100"></td>
+              <td align="right">商品金额总计：<span class="font_cou">￥<span id="NewMoney_JS"><%= @cart.price %></span></span></td>
+            </tr>
+          </table></td>
+        </tr>
+        <tr>
+          <td colspan="8" align="right"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="center"><img src="images/pic_gwc__r10_c3.jpg" width="95" height="25" /></td>
+              <td align="center"><img src="images/pic_gwc__r10_c8.jpg" width="95" height="25" /></td>
+              <td align="center"><img src="images/pic_gwc__r2_c10.jpg" width="126" height="32" /></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+
+
+<h1>购物车</h1>
+<br />
+
+<table>
+<tr>
+  <td>商品</td>
+  <td>单价</td>
+  <td>数量</td>
+  <td>总价</td>
+</tr>
+
+<% if @items.empty? %>
+  <tr><p>您的购物车暂时为空</p></tr>
+<% else %>
+
+  <% form_tag({:action => :update}) do %>
+
+    <% @items.each do |i| %>
+    <tr>
+      <td><%=h i.name %></td>
+      <td><%=h i.product.our_price %></td>
+      <td>
+        <input type="text" name="product[<%= i.name %>]" 
+          value="<%= i.quantity %>" size="4" /></td>
+      <td><%= i.price %></td>
+    </tr>
+    <% end %>
+
+    <tr>
+      <td><%= submit_tag '确认修改' %></td>
+      <td>&nbsp;</td>
+      <td><%= link_to '提交订单', new_order_path() %></td>
+    </tr>
+  <% end #form%>
+
+<% end #if else%>
+
+  <tr>
+    <td>订单总价：<%= @cart.price %></td>
+  </tr>
+</table>

@@ -1,0 +1,24 @@
+<h1>公司列表</h1>
+<br />
+
+<%= link_to '[新公司]', new_user_path %>
+<br /><br />
+
+<table>
+  <tr class="tbCaption">
+    <th>公司名</th>
+    <th>地址</th>
+    <th>网站</th>
+    <th>管理</th>
+  </tr>
+
+<% @companies.each do |company| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%=link_to(h(company.name), [:kadmin, company]) %></td>
+    <td><%=truncate(h(company.address)) %></td>
+    <td><%= company.website %></td>
+    <td><%= link_to '[修改]', edit_kadmin_company_path(company) %></td>
+    <td><%= link_to '[删除]', [:kadmin, company], :confirm => '确认删除?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

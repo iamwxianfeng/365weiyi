@@ -1,0 +1,44 @@
+<% title "用户注册" %>
+<div class="login">
+  <strong>个人用户注册</strong>
+</div>
+<% form_for(@user) do |f| %>
+  <div class="xian">
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <td colspan="3"><strong>用户信息</strong></td>
+      </tr>
+      <%= error_messages_for @user %>
+      <tr>
+        <td width="16%" align="right">
+          <span class="font_cou">*</span>电子邮件：
+        </td>
+        <td width="32%">
+          <label>
+            <%= f.text_field :email, :class => "bks" %>
+          </label>
+        </td>
+        <td width="52%" class="font_s">这也会是您的登录帐号</td>
+      </tr>
+      <tr>
+        <td align="right"><span class="font_cou">*</span>密码：</td>
+        <td><%= f.password_field :password, :class => 'bks' %></td>
+        <td class="font_s">不少于三位 </td>
+      </tr>
+      <tr>
+        <td align="right"><span class="font_cou">*</span>确认密码：</td>
+        <td><%= f.password_field :password_confirmation, :class => 'bks' %></td>
+        <td class="font_s">与上面保持一致</td>
+      </tr>
+      <%= show_simple_captcha(:object=>"user") %>
+      <tr>
+        <td></td>
+        <td>
+          <%= f.submit "注 册", :class => 'btns' %>
+        </td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+<% end %>
+

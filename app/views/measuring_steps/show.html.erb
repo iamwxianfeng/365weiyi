@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @measuring_step.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @measuring_step.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_measuring_step_path(@measuring_step) %> |
+<%= link_to 'Back', measuring_steps_path %>

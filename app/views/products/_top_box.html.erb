@@ -1,0 +1,86 @@
+<div id="top_box">
+  <div class="position"><a href="/">首页</a> &gt; <%= @product.name %></div>
+  <div class="goods_picbox fl">
+    <ul class="goods_piclist">
+      <li class="list_arrow"><img src="/images/icons/arrow_up.png"/></li>
+      <li class="list_cont">
+        <ul id="goods_img_list">
+          <% @photos.each do |photo| %>
+            <li><a href="javascript:;" class="icon_product_img"><img width="68" height="68" src="<%= photo.url %>"/></a></li>
+          <% end %>
+        </ul>
+      </li>
+      <li class="list_arrow"><img src="/images/icons/arrow_down.png"/></li>
+    </ul>
+    <div class="goods_show">
+      <div id="wrap">        
+        <img src="<%= @photos.first.url %>" class="product_img"/>        
+      </div>
+    </div>
+  </div>
+
+  <!--购买区-->
+  <div class="goods_buybox">
+    <ul id="goods_info">
+      <li class="goods_tit">
+        <h2><%= @product.name %></h2>
+      </li>
+      <li class="goods_prce">
+		    商品编号：<span><%= @product.serial_number %></span>
+      </li>
+      <!--
+      <li class="goods_prce">
+		    面料产地：<span><%#= @product.origin %></span>
+      </li>
+      -->
+      <li class="goods_prce">
+		    面料成分：<span><%= @product.component %></span>
+      </li>
+      <!--
+      <li class="goods_prce">
+			纱支：<span><%#= @product.yarn %></span>
+      </li>
+      -->
+      <li class="goods_prce">
+			颜色：<span><%= @product.color %></span>
+      </li>
+      <!--
+      <li class="goods_prce">
+			款式说明：<span><%#= @product.description %></span>
+      </li>
+      -->
+      <li class="goods_prce">
+			原价：<span><del><%= @product.market_price %></del></span>
+      </li>
+      <li class="goods_prce">
+			售价：<span class="a1"><em>￥<%= @product.our_price %></em></span>
+      </li>
+    </ul>
+    <ul class="reserve">
+      <li><a href="javascript:;" onclick="openReservePopup(<%= @product.id %>,'noshop');">预约上门量体</a></li>
+      <li><a href="javascript:;" onclick="openReservePopup(<%= @product.id %>,'shop')">预约体验店量体</a></li>
+    </ul>
+    <%= form_tag :controller => :cart, :action => :new do %>
+      <%= hidden_field_tag "id",@product.id %>
+      <div class="ordering">
+        <span>数量:</span><%= text_field_tag :quantity, 1 %>
+        <a href="javascript:;" class="cart">
+          <%= image_submit_tag '/images/btn_cart.gif' %>
+        </a>
+        <a href="<%= new_order_path %>" class="go">去结算</a>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    
+    $(".icon_product_img").click(function(){
+      var $this = $(this);
+      var $iconImg = $this.find("img");
+      $(".product_img").attr("src",$iconImg.attr("src"));
+    });
+    
+  });
+</script>

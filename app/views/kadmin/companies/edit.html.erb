@@ -1,0 +1,36 @@
+<h1>修改公司</h1>
+<br />
+
+<%= link_to '[查看公司]', [:kadmin, @company] %> |
+<%= link_to '[删除]', [:kadmin, @company], :confirm => '确认删除?', :method => :delete %>
+<%= link_to '[公司列表]', kadmin_companies_path %>
+<br /><br />
+
+<% form_tag kadmin_company_path(@company) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, '名字：' %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :role, '权限：' %>
+    <%= f.select :role, @role %>
+  </p>
+  <p>
+    <%= f.label :address, '地址：' %>
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :zipcode, '邮编：' %>
+    <%= f.text_field :zipcode %>
+  </p>
+  <p>
+    <%= f.label :website, '网站：' %>
+    <%= f.text_field :website %>
+  </p>
+  <br />
+  <p>
+    <%= f.submit '确认修改' %>
+  </p>
+<% end %>

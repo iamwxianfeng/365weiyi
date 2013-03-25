@@ -1,0 +1,109 @@
+<h1>修改产品信息</h1>
+<br />
+
+<%= link_to '[查看]', @product, :target => '_blank' %> |
+<%= link_to '[产品列表]', kadmin_products_path %>
+<br />
+<br />
+
+<% form_for([:kadmin, @product]) do |f| %>
+  <%= error_messages_for @product %>
+
+  <p>
+    <%= f.label :customizable, '可定制：' %>
+    <%= f.check_box :customizable %>
+  </p>
+
+  <p>
+    <%= f.label :category_id, '*所属分类: ' %>
+    <%= f.select :category_id, @categories, {},
+      {'onchange' => remote_function(
+        :with => "'category='+value",
+        :update => 'next_select',
+        :url => { :controller=>:products , :action => :select_with_ajax }
+      )} %>
+
+    *二级分类: <span id="next_select"><%= f.select :subcategory_id, @subcategories %></span>
+  </p>
+  <p>
+    <%= f.label :name, '*品 名: ' %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :serial_number, '*编 号: ' %>
+    <%= f.text_field :serial_number %>
+  </p>
+  <p>
+    <%= f.label :market_price, '*原价: ' %>
+    <%= f.text_field :market_price %>(价格必须为数字，请注意切换到英文输入法输入)
+  </p>
+  <p>
+    <%= f.label :our_price, '*售价: ' %>
+    <%= f.text_field :our_price %>
+  </p>
+  <br />
+  <p>
+    <%= f.label :popularity, '排 序: ' %>
+    <%= f.select :popularity, 0..9 %>(* 影响在首页上的排序，越大越靠前)
+  </p>
+  <p>
+    <%= f.label :origin, '产 地: ' %>
+    <%= f.text_field :origin %>
+  </p>
+  <p>
+    <%= f.label :component, '面 料: ' %>
+    <%= f.text_field :component %>
+  </p>
+  <p>
+    <%= f.label :yarn, '纱 支: ' %>
+    <%= f.text_field :yarn %>
+  </p>
+  <p>
+    <%= f.label :color, '颜 色: ' %>
+    <%= f.text_field :color %>
+  </p>
+  <p>
+    <%= f.label :measure, '尺 码: ' %>
+    <%= f.text_field :measure %> (以":"分隔各尺码)
+  </p>
+  <!--
+  <p>
+  <%#= f.label :description, '款式说明: ' %>
+    <br />
+  <%#= f.text_area :description, :size => '25x2' %>
+  </p>
+  -->
+  <p>
+    <%= f.label "咨询方式"  %>
+    <%= f.text_area :contact , :rows=>5 ,:cols=>40 %>
+  </p>
+  <p>
+    <%= f.label "适用人群"  %>
+    <%= f.text_field :for_who %>
+  </p>
+  <p>
+    <%= f.label "适用场合"  %>
+    <%= f.text_field :for_where %>
+  </p>
+  <p>
+    <%= f.label "克重"  %>
+    <%= f.text_field :weight %>
+  </p>
+  <p>
+    <%= f.label "面料图案" %>
+    <%= f.text_field :material_picture %>
+  </p>
+  <br />
+  <p>
+    <%= f.label :details, '产品描述: ' %><br />
+    <%= ckeditor_textarea("product", "details", :language => 'zh-cn') %>
+  </p>
+  <br />
+  <p>
+    <%= f.label :details, '图片展示： ' %><br />
+    <%= ckeditor_textarea("product", "pictures_show", :language => 'zh-cn') %>
+  </p>
+  <p>
+    <%= f.submit '确定修改' %>
+  </p>
+<% end %>

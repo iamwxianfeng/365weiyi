@@ -1,0 +1,46 @@
+<h1>所有用户</h1>
+
+<%= link_to '[新用户]', new_user_path %>
+
+<% form_tag '/kadmin/users', :method => 'get' do %>
+ Email: <%= text_field_tag :email %>
+  <%= submit_tag '查询' %>
+<% end %>
+
+<table>
+  <tr class="tbCaption">
+    <th>Email</th>
+    <th>昵称</th>
+    <th>积分</th>
+    <th>折扣</th>
+    <th>权限</th>
+    <th>订单数</th>
+    <th>企业用户</th>
+    <th>注册时间</th>
+    <th>管理</td>
+  </tr>
+
+<% @users.each do |user| %>
+  <% profile = user.profile %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%=link_to(h(user.email), [:kadmin, user]) %></td>
+    <td><%= (profile.blank?)? '' : h(profile.name) %></td>
+    <td><%= user.credit %></td>
+    <td><%= user.discount %></td>
+    <td><%= user.human_role %></td>
+    <td><%= link_to(h(user.orders.count.to_s + '单'),
+                    kadmin_orders_path(:user_id => user)) %></td>
+    <td>
+      <% if user.is_company %>
+        <%= image_tag('admin/true_small.png') %>
+      <% end %>
+    </td>
+    <td><%= show_time user.created_at %></td>
+    <td><%= link_to '[修改]', edit_kadmin_user_path(user) %></td>
+    <td><%= link_to '[删除]', [:kadmin, user], :confirm => '确定删除?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+
+<%= will_paginate @users, :previous_label => '< ', :next_label => ' >' %>

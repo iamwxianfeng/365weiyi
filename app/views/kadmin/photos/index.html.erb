@@ -1,0 +1,33 @@
+<h1><%= link_to h(@product.name), @product, :target => '_blank' %>: 图片列表</h1>
+<br />
+
+<%= link_to '[新图片]', new_kadmin_product_photo_path(@product) %>
+<br />
+排序说明：<%= Photo::COVER %>=商品封面(首页170x250像素),
+<%= Photo::MAIN %>=商品详情左侧图(310x420像素)
+
+<table>
+  <tr class="tbCaption">
+    <th>图片名称</th>
+    <th>排序</th>
+    <th>URL</th>
+    <th>所属产品</th>
+    <th>更新时间</th>
+    <th>管理</th>
+  </tr>
+
+<% @photos.each do |photo| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= link_to(h(photo.name), [:kadmin, @product, photo]) %></td>
+    <td><%= photo.popularity %></td>
+    <td><%=h photo.url %></td>
+    <td><%=h photo.product.name %></td>
+    <td><%= show_time photo.updated_at %></td>
+    <td><%= link_to '修改', [:edit, :kadmin, @product, photo] %></td>
+    <td><%= link_to '删除', [:kadmin, @product, photo], :confirm => '确定删除?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= will_paginate @photos, :previous_label => '< ', :next_label => ' >' %>

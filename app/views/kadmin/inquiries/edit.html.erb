@@ -1,0 +1,43 @@
+<script type="text/javascript" charset="utf-8" src="/editor/kindeditor.js"></script>
+<script type="text/javascript">
+  KE.show({
+    id : 'inquiry_reply'    
+  })
+</script>
+
+<h1>回复提问</h1>
+<br />
+<%= link_to '[查看本提问]', [:kadmin, @inquiry] %> |
+<%= link_to '[答疑列表]', kadmin_inquiries_path %><br /><br />
+
+
+<%= form_for([:kadmin, @inquiry]) do |f| %>
+  <% if @inquiry.errors.any? %>
+    <div id="error_explanation">
+      <h2>出现如下错误：</h2>
+      <ul>
+        <% @inquiry.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :description, '提问正文：(请尽量不要修改用户提问)' %><br />
+    <%= f.text_area :description, :size => '60x5' %>
+  </p>
+  <br />
+  <p>
+    <%= f.label :reply, '管理回复：' %><br />
+    <%= f.text_area :reply %>
+  </p>
+  <p>
+    <%= f.label :popularity, '排序：' %>
+    <%= f.select :popularity, 0..9 %>
+  </p>
+  <br />
+  <p>
+    <%= f.submit '提交' %>
+  </p>
+<% end %>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<head>
+  <%= csrf_meta_tag %>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= yield(:title) %>--后台管理--维衣</title>
+  <%= stylesheet_link_tag 'admin','jquery_ui/ui-darkness/jquery-ui-1.7.2.custom' %>
+  <%= javascript_include_tag 'jquery','rails',:ckeditor,'jquery_ui/jquery-ui-1.8.10.custom.min','jquery.floatingmessage' %>
+</head>
+<body>
+  <div class="bodyWrap">
+    <div class="banner">
+      <span class="caption"><a href="/kadmin">后台管理</a></span>
+      <span class="caption administration" style="float:right; border-right:none; border-left:1px solid #DFE4EB;">
+        <a href="/" target="_blank" title="在新窗口中查看前台首页">[网站首页]</a>
+        <a href="/users/1/edit">[修改密码]</a>
+        <a href="/logout" class="attention">[退出系统]</a>
+      </span>
+    </div>
+
+    <div class="contentWrap">
+
+      <div class="panelWrap">
+        <div class="ry_1"></div>
+        <div class="ry_2"></div>
+        <div class="ry_3"></div>
+
+        <div class="panel">
+          <div class="t1">
+            <h2>管理选项</h2>
+          </div>
+          <div class="panelContent">
+            <ul>
+              <% if current_user.email != "hejun@365weiyi.com" %>
+                <% if current_user.email != "wangchao@365weiyi.com" %>
+                  <li><%= link_to '订 单', kadmin_orders_path %></li>
+                  <li class="top_border"><%= link_to '网站用户', kadmin_users_path %></li>
+                  <li class="top_border"><%= link_to '量体中心', kadmin_measure_pages_path %></li>
+                  <li><%= link_to '量体之旅', kadmin_measure_properties_path %></li>
+                  <li class="top_border"><%= link_to '地区量体师' , kadmin_places_path %></li>
+                  <li><%= link_to '体验店管理' , kadmin_shops_path %></li>
+                  <li><%= link_to '预约量体师' , kadmin_reserve_rulers_path %></li>
+                  <li><%= link_to '推荐量体师' , kadmin_top_rulers_path %></li>
+                  <li class="top_border"><%= link_to '商品分类', kadmin_categories_path %></li>
+                <% end %>
+                <li><%= link_to '商 品',  kadmin_products_path %></li>
+                <% if current_user.email != "wangchao@365weiyi.com" %>
+                  <li><%= link_to '商品评论', kadmin_comments_path %></li>
+                  <li class="top_border"><%= link_to '竞猜活动', kadmin_events_path %></li>
+                  <li><%= link_to '活动留言', kadmin_feedbacks_path %></li>
+                  <li class="top_border"><%= link_to '轮换广告', kadmin_banners_path %></li>
+                  <li><%= link_to '答 疑', kadmin_inquiries_path %></li>
+                  <li><%= link_to '图 片', kadmin_uploaded_photos_path %></li>
+                  <li><%= link_to '底部信息', kadmin_helps_path %></li>
+                  <li><%= link_to '本站资讯', kadmin_notices_path %></li>
+                  <li><%= link_to '定制', kadmin_customizations_path %></li>
+                  <li><%= link_to '在线咨询', kadmin_chats_path %></li>
+                <% end %>
+              <% end %>
+              <% if ["wangchao@365weiyi.com","yonglu@365weiyi.com","hejun@365weiyi.com "].include?(current_user.email) or current_user.admin? %>
+                <li class="top_border"><%= link_to "blog分类管理" , kadmin_blog_categories_path %></li>
+                <!-- <li><%#= link_to 'blog标签管理' , kadmin_blog_tags_path %></li> -->
+                <li><%= link_to 'blog文章管理' , kadmin_blog_posts_path %></li>
+                <li><%= link_to 'blog评论管理',kadmin_blog_comments_path %></li>
+                <li class="top_border"><%= link_to '友情链接', kadmin_links_path %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <div class="ry_4"></div>
+        <div class="ry_5"></div>
+        <div class="ry_1"></div>
+      </div>
+
+      <div class="mainContentWrap">
+        <div class="rc1 rgg_1"></div>
+        <div class="rc2 rgg_2"></div>
+        <div class="rc3 rgg_3"></div>
+
+        <div class="rc rgg">
+          <div class="t1 ">完成管理工作后请及时退出登录</div>
+          <div class="bc0">
+            <div class="mainContent">
+              <%= render_flash_messages %>
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+        <div class="rc4 rgg_4"></div>
+        <div class="rc5 rgg_5"></div>
+        <div class="rc1 rgg_1"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      &copy; 2009 -- 2011 <a href="/kadmin" title="Admin">365weiyi</a>. All rights reserved.
+    </div>
+
+  </div>
+</body>
+</html>
