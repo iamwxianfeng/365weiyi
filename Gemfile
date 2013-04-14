@@ -17,3 +17,7 @@ group :development , :test do
   gem "capistrano" , '2.5.19'
   gem "unicorn" , '3.3.1'
 end
+
+group :production do
+  gem 'passenger', '3.0.19'
+end
