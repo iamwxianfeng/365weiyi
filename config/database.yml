@@ -24,8 +24,8 @@ production:
   encoding: utf8
   reconnect: false
   host: localhost
-  username: root
-  password: root
+  username: dooxoo
+  password: 1zhiduxoo
   database: dooxoo_www_production
   pool: 5
   timeout: 5000
