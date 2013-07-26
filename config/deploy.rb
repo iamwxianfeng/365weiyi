@@ -1,17 +1,18 @@
 #coding:utf-8
-set :application, "inono"
-set :deploy_to, "/var/www/zsites/dooxoo_www/dooxoowww"
+set :application, "365weiyi"
+set :deploy_to, "/data/projects/365weiyi"
 
 set :scm, "git"
-set :repository,  "git@inono.unfuddle.com:inono/inono.git"
+set :repository,  "git@github.com:iamwxianfeng/365weiyi.git"
 set :branch, "master"
 # set :deploy_via, "remote_cache"
 set :use_sudo, false
+set :copy_strategy, :export
+set :copy_via, :scp
 
-set :user, "wangxf"
-# ssh_options[:forward_agent] = true 添加上可能会出现 fatal: The remote end hung up unexpectedly 错误
+set :user, "wxianfeng"
 
-server "www.365weiyi.com", :web, :app, :db, :primary => true
+server "220.194.47.219", :web, :app, :db, :primary => true
 
 namespace :deploy do
   task :start do ; end
