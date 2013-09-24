@@ -1,6 +1,7 @@
 #coding:utf-8
 Inono::Application.routes.draw do
   root :to => 'categories#index'
+  match '/home/index', :to => "home#index"
   match '/simple_captcha/:id', :to => 'simple_captcha#show', :as => :simple_captcha
   resources :customizations, :only => [:index, :show]
   resources :inquiries, :only => [:index, :create]

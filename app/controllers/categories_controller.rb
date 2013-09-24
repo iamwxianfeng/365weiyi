@@ -4,8 +4,6 @@ class CategoriesController < ApplicationController
   before_filter :set_current_user
   skip_before_filter :verify_authenticity_token , :only=>[:reserve_ruler,:reserve_shop]
 
-  # caches_page :index
-
   def index
     @reserve_ruler = ReserveRuler.new
     @reserve_shop = ReserveRuler.new

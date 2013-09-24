@@ -1,6 +1,9 @@
 #coding:utf-8
 class SessionsController < ApplicationController
   
+  def index
+  end
+
   def new
   end
 
@@ -24,4 +27,5 @@ class SessionsController < ApplicationController
     reset_session
     redirect_back_or_default('/')
   end
+
 end
