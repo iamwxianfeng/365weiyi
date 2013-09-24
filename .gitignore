@@ -5,3 +5,4 @@ public/ckeditor_assets
 tmp
 log
 log/development.log
+.DS_Store
