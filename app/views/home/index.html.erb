@@ -21,13 +21,21 @@
 
     <div class="sub_a">
       <ul class="clearfix suub_nav">
-        <li>欢迎huiyan.com <a href="">[退出]</a></li>
+        <% if logged_in? %>
+        <li>欢迎 <%= current_user.email %> <%= link_to '[退出]', logout_path %></li>
+        <% if current_user.role == User::ROOT %>
+        <li> <%= link_to '[后台]', '/kadmin' %> </li>
+        <% end %>
         <li>|</li>
-        <li><a href="">我的维衣</a></li>
+        <li><%= link_to '我的维衣', current_user  %></li>
         <li>|</li>
-        <li class="suub_nav_a"><a href="">去购物</a></li>
+        <li class="suub_nav_a"><%= link_to '购物车', {:controller => :cart, :action => :edit}  %></li>
         <li>|</li>
-        <li><a href="">[还没注册？]</a></li>
+        <% else %>
+        <li>欢迎来到维衣</li>
+        <li><%= link_to "[登录]" , login_path %></li>
+        <li><%= link_to "[还没注册?]" , register_path %></li>
+        <% end %>
       </ul>
       <div class="suub_nav_b fr"><img src="/images/TEL_01.gif" width="160" height="24"></div>
     </div>
@@ -37,16 +45,16 @@
 
   <div class="nav mt20">
     <ul class="m nav_a clearfix">
-      <li class="nav_b"><a href="">首页</a></li>
-      <li><a href="">西装</a></li>
-      <li><a href="">衬衫</a></li>
-      <li><a href="">结婚西装</a></li>
-      <li><a href="">进口西装</a></li>
-      <li><a href="">团体定制</a></li>
-      <li><a href="">西服工艺</a></li>
-      <li><a href="">定制流程</a></li>
-      <li><a href="">配饰</a></li>
-      <li><a href="">知识堂</a></li>
+
+      <li><%= link_to raw('首页'), root_path, :title => '首页' %></li>
+      <% @categories.each do |category| %>
+      <li>
+        <%=link_to(raw("#{category.name}"), "/#{category.url}", :title => h(category.name)) %>
+      </li>
+      <% end %>
+      <li><a href="/measure_pages" title="量体中心">量体中心</a></li>
+      <li><a href="/zhishitang" title="量体中心">知识堂</a></li>
+
     </ul>
   </div>
 
