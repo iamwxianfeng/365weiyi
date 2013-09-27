@@ -120,10 +120,9 @@
   <div class="m">
     <ul class="clearfix circuit_d">
       <li class="circuit_e"><a href=""><img src="/images/Sf_01.gif" width="180" height="60"></a></li>
-      <li class="circuit_e"><a href=""><img src="/images/Sf_02.gif" width="180" height="60"></a></li>
-      <li class="circuit_e"><a href=""><img src="/images/Sf_03.gif" width="180" height="60"></a></li>
-      <li class="circuit_e"><a href=""><img src="/images/Sf_04.gif" width="180" height="60"></a></li>
-      <li class="circuit_e"><a href=""><img src="/images/Sf_05.gif" width="180" height="60"></a></li>
+      <% @brand_suits.each do |bs| %>
+      <li class="circuit_e"><a href="<%= bs.link_to %>"><img src="<%= bs.photo_url %>" width="180" height="60"></a></li>
+      <% end %>
     </ul>
   </div>
 

@@ -16,7 +16,7 @@
 
   <p>
     <%= f.label :popularity, '排序：' %>
-    <%= f.select :popularity, (0..9).to_a + [Banner::TOP_BANNER,Banner::LIST_BANNER_SUIT,Banner::LIST_BANNER_SHIRT,Banner::LIST_BANNER_TEAM, Banner::HOME_SUIT, Banner::HOME_SHIRT] %> *0~9代表显示排序，越大越靠前。若设为<%= Banner::TOP_BANNER %>则为顶部banner<br/>
+    <%= f.select :popularity, (0..9).to_a + [Banner::TOP_BANNER,Banner::LIST_BANNER_SUIT,Banner::LIST_BANNER_SHIRT,Banner::LIST_BANNER_TEAM, Banner::HOME_SUIT, Banner::HOME_SHIRT,Banner::BRAND_SUIT,Banner::BRAND_SHIRT] %> *0~9代表显示排序，越大越靠前。若设为<%= Banner::TOP_BANNER %>则为顶部banner<br/>
     <%= Banner::LIST_BANNER_SUIT %>为西服列表页banner,<%= Banner::LIST_BANNER_SHIRT %>为衬衫列表页banner,<%= Banner::LIST_BANNER_TEAM %>为工作服列表页banner
   </p>
   <p>

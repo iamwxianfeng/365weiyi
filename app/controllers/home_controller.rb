@@ -13,6 +13,7 @@ class HomeController < ApplicationController
     @posts = BlogPost.limit(7).order("created_at DESC")
     suit_category = Category.find_by_name("西服定制")
     @suit_products = suit_category.products.order('popularity DESC,our_price ASC').limit(5)
+    @brand_suits = Banner.where(:popularity=>Banner::BRAND_SUIT).order("created_at DESC").limit(4)
   end
 
 end
