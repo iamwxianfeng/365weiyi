@@ -1,8 +1,8 @@
-<!--
-    >cd /data/projects/365weiyi
-    >ant deploy -f prototype/build.xml
--->
 <?xml version="1.0"?>
+<!-- 
+  cd /data/projects/365weiyi
+  ant deploy -f prototype/build.xml
+-->
 <project name="prototype" basedir="." default="distrib">
     <property environment="env" />
     <property file="build.properties"/>
@@ -15,15 +15,15 @@
         <echo message="Deploy css,images,javascripts"/>
         <mkdir dir="${cssdir}" />
         <copy todir="${cssdir}">
-           <!-- <filelist dir="${src_path}/css" files="style.css"/> -->
-            <fileset dir="${src_path}/stylesheets" includes="**/*" />
-        </copy>
+         <!-- <filelist dir="${src_path}/css" files="style.css"/> -->
+         <fileset dir="${src_path}/stylesheets" includes="**/*" />
+     </copy>
 
-        <mkdir dir="${imgdir}" />
-        <copy todir="${imgdir}">
-            <!-- <filelist dir="${src_path}/images" files="*"/> -->
-            <fileset dir="${src_path}/images" includes="**/*" />
-        </copy>
+     <mkdir dir="${imgdir}" />
+     <copy todir="${imgdir}">
+        <!-- <filelist dir="${src_path}/images" files="*"/> -->
+        <fileset dir="${src_path}/images" includes="**/*" />
+    </copy>
 
        <!--
        <mkdir dir="${jsdir}" />
@@ -31,7 +31,7 @@
              <filelist dir="${src_path}/images" files="*"/>
              <fileset dir="${src_path}/javascripts" includes="**/*" />
         </copy>
-        -->
-    </target>
+    -->
+</target>
 
 </project>
