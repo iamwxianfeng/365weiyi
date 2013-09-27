@@ -1,4 +1,4 @@
-html,body,div,span,h1,h2,h3,h4,h5,h6,p,em,img,strong,b,i,dl,dt,dd,ol,ul,li,form,label,legend,table,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;font-size:100%;}
+﻿html,body,div,span,h1,h2,h3,h4,h5,h6,p,em,img,strong,b,i,dl,dt,dd,ol,ul,li,form,label,legend,table,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;font-size:100%;}
 body{background:#fff;position:relative;}
 body{font:normal 12px/1.5 "微软雅黑" 'Tahoma','simsun';}
 a{color:#666;text-decoration:none;}a:hover{color:#666;text-decoration:underline;background:none}
@@ -17,7 +17,7 @@ ul, ol, li {list-style: none;}
 
 .lg{position:absolute;top:0;left:0;}
 .sub{height:60px;}
-.sub_a{position:absolute;top:0;right:0;width:410px;}
+.sub_a{position:absolute;top:0;right:0;}
 .suub_nav li{float:left;margin-left:15px;display:inline;color:#000;}
 .suub_nav a{color:#000;}
 .suub_nav_a a{color:#c00;}
