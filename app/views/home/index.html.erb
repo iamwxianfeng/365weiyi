@@ -102,43 +102,17 @@
   <div class="m"><div class="circuit_c"><a href="javascript:;"><img src="/images/suit_02.gif" width="379" height="366"></a>
    <a href="<%= @suit_banner.link_to %>"><img src="<%= @suit_banner.photo_url %>" width="581" height="366"></a></div></div>
 
-  <div class="m">
+   <div class="m">
     <ul class="clearfix circuit_d">
+      <% @suit_products.each do |product| %>
       <li class="circuit_e">
         <ul>
-          <li><a href=""><img src="/images/suit_04.gif" width="180" height="220"></a></li>
-          <li class="circuit_f">70%毛藏蓝竖纹 </li>
-          <li class="circuit_f circuit_g">￥1980</li>
+          <li><a href="/products/<%= product.id %>"><img src="<%= product.photos.last.url %>" width="180" height="220"></a></li>
+          <li class="circuit_f"><%=  product.name %></li>
+          <li class="circuit_f circuit_g">￥<%= product.our_price %></li>
         </ul>
       </li>
-      <li class="circuit_e">
-        <ul>
-          <li><a href=""><img src="/images/suit_05.gif" width="180" height="220"></a></li>
-          <li class="circuit_f">70%毛藏蓝竖纹 </li>
-          <li class="circuit_f circuit_g">￥1980</li>
-        </ul>
-      </li>
-      <li class="circuit_e">
-        <ul>
-          <li><a href=""><img src="/images/suit_06.gif" width="180" height="220"></a></li>
-          <li class="circuit_f">70%毛藏蓝竖纹 </li>
-          <li class="circuit_f circuit_g">￥1980</li>
-        </ul>
-      </li>
-      <li class="circuit_e">
-        <ul>
-          <li><a href=""><img src="/images/suit_07.gif" width="180" height="220"></a></li>
-          <li class="circuit_f">70%毛藏蓝竖纹 </li>
-          <li class="circuit_f circuit_g">￥1980</li>
-        </ul>
-      </li>
-      <li class="circuit_e">
-        <ul>
-          <li><a href=""><img src="/images/suit_08.gif" width="180" height="220"></a></li>
-          <li class="circuit_f">70%毛藏蓝竖纹 </li>
-          <li class="circuit_f circuit_g">￥1980</li>
-        </ul>
-      </li>
+      <% end %>
     </ul>
   </div>
 
