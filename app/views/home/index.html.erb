@@ -131,203 +131,179 @@
   <div class="m circuit_b">自有工厂，进口辅料，每位客户单独留版，全网独一无二体验</div>
 
   <div class="m">
-    <div class="circuit_c"><a href=""><img src="/images/shirt_02.gif" width="379" height="366"></a> <a href=""><img src="/images/shirt_03.gif" width="581" height="366"></a></div></div>
+    <% if @shirt_banner %>
+    <div class="circuit_c"><a href="javascript:;"><img src="/images/shirt_02.gif" width="379" height="366"></a> 
+      <a href="<%= @shirt_banner.link_to %>"><img src="<%= @shirt_banner.photo_url %>" width="581" height="366"></a></div></div>
+    <% end %>
 
-    <div class="m">
-      <ul class="clearfix circuit_d">
-        <li class="circuit_e">
-          <ul>
-            <li><a href=""><img src="/images/shirt_04.gif" width="180" height="220"></a></li>
-            <li class="circuit_f">70%毛藏蓝竖纹 </li>
-            <li class="circuit_f circuit_g">￥1980</li>
-          </ul>
-        </li>
-        <li class="circuit_e">
-          <ul>
-            <li><a href=""><img src="/images/shirt_05.gif" width="180" height="220"></a></li>
-            <li class="circuit_f">70%毛藏蓝竖纹 </li>
-            <li class="circuit_f circuit_g">￥1980</li>
-          </ul>
-        </li>
-        <li class="circuit_e">
-          <ul>
-            <li><a href=""><img src="/images/shirt_06.gif" width="180" height="220"></a></li>
-            <li class="circuit_f">70%毛藏蓝竖纹 </li>
-            <li class="circuit_f circuit_g">￥1980</li>
-          </ul>
-        </li>
-        <li class="circuit_e">
-          <ul>
-            <li><a href=""><img src="/images/shirt_07.gif" width="180" height="220"></a></li>
-            <li class="circuit_f">70%毛藏蓝竖纹 </li>
-            <li class="circuit_f circuit_g">￥1980</li>
-          </ul>
-        </li>
-        <li class="circuit_e">
-          <ul>
-            <li><a href=""><img src="/images/shirt_08.gif" width="180" height="220"></a></li>
-            <li class="circuit_f">70%毛藏蓝竖纹 </li>
-            <li class="circuit_f circuit_g">￥1980</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+      <div class="m">
+        <ul class="clearfix circuit_d">
+          <% @shirt_products.each do |product| %>
+          <li class="circuit_e">
+            <ul>
+              <li><a href="/products/<%= product.id %>"><img src="<%= product.photos.last.url %>" width="180" height="220"></a></li>
+              <li class="circuit_f"> <%= product.name %> </li>
+              <li class="circuit_f circuit_g">￥<%= product.our_price %></li>
+            </ul>
+          </li>
+          <% end %>
+        </ul>
+      </div>
 
 
-    <div class="m">
-      <ul class="clearfix circuit_d">
-        <li class="circuit_e"><a href=""><img src="/images/Sf_06.gif" width="180" height="60"></a></li>
-        <li class="circuit_e"><a href=""><img src="/images/Sf_07.gif" width="180" height="60"></a></li>
-        <li class="circuit_e"><a href=""><img src="/images/Sf_08.gif" width="180" height="60"></a></li>
-        <li class="circuit_e"><a href=""><img src="/images/Sf_09.gif" width="180" height="60"></a></li>
-        <li class="circuit_e"><a href=""><img src="/images/Sf_10.gif" width="180" height="60"></a></li>
-      </ul>
-    </div>
+      <div class="m">
+        <ul class="clearfix circuit_d">
+          <li class="circuit_e"><a href=""><img src="/images/Sf_06.gif" width="180" height="60"></a></li>
+          <% @brand_shirts.each do |bs| %>
+          <li class="circuit_e"><a href="<%= bs.link_to %>"><img src="<%= bs.photo_url %>" width="180" height="60"></a></li>
+          <% end %>
+        </ul>
+      </div>
 
 
-    <div class="m circuit_a"><img src="/images/evaluate_01.gif" width="980" height="36"></div>
-    <div class="m circuit_b circuit_bb">客户真实评价</div>
-    <div class="m">
-      <ul class="clearfix circuit_h">
-        <li><img src="/images/evaluate_02.gif" width="296" height="436"></li>
-        <li><img src="/images/evaluate_03.gif" width="297" height="437"></li>
-        <li><img src="/images/evaluate_04.gif" width="296" height="437"></li>
-      </ul>
-    </div>
+      <div class="m circuit_a"><img src="/images/evaluate_01.gif" width="980" height="36"></div>
+      <div class="m circuit_b circuit_bb">客户真实评价</div>
+      <div class="m">
+        <ul class="clearfix circuit_h">
+          <li><img src="/images/evaluate_02.gif" width="296" height="436"></li>
+          <li><img src="/images/evaluate_03.gif" width="297" height="437"></li>
+          <li><img src="/images/evaluate_04.gif" width="296" height="437"></li>
+        </ul>
+      </div>
 
-    <div class="m circuit_a"><img src="/images/customize.gif" width="980" height="36"></div>
-    <div class="m circuit_b">您可以选择实体店定制，预约上门量体、在线自助定制</div>
+      <div class="m circuit_a"><img src="/images/customize.gif" width="980" height="36"></div>
+      <div class="m circuit_b">您可以选择实体店定制，预约上门量体、在线自助定制</div>
 
 
-    <div class="m clearfix customize">
-      <div class="fl cust_fl">
+      <div class="m clearfix customize">
+        <div class="fl cust_fl">
 
-        <div class="slideTxtBox">
-         <div class="hd">
-          <ul>
-            <li>预约体验店量体</li>
-            <li>预约上门量体</li>
-          </ul>
-        </div>
-        
-        <div class="bd">
-          <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="cust_fl_a">
-              <tr>
-                <td class="cust_fl_b">时间：</td>
-                <td><input type="text" class="cust_input" /></td>
-              </tr>
-              
-              <tr>
-                <td class="cust_fl_b">具体时间：</td>
-                <td>
-                  <select>
-                    <option>2013年9月23日</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td class="cust_fl_b">地点：</td>
-                <td> <select>
-                  <option>江苏省</option>
-                </select>
-                <select>
-                  <option>常州市</option>
-                </select>
-                <select>
-                  <option>新北区</option>
-                </select></td>
-              </tr>
-              <tr>
-                <td class="cust_fl_b">详细信息：</td>
-                <td><input type="text" class="cust_input" /></td>
-              </tr>
-              <tr>
-                <td class="cust_fl_b">要定：</td>
-                <td><input name="" type="checkbox" value="" class="cust_fl_d">西服 <input name="" type="checkbox" value="" class="cust_fl_d">衬衫 <input name="" type="checkbox" value="" class="cust_fl_d">大衣 <input name="" type="checkbox" value="" class="cust_fl_d">团体定制 <input name="" type="checkbox" value="" class="cust_fl_d">其他咨询</td>
-              </tr>
-              <tr>
-                <td class="cust_fl_b">手机：</td>
-                <td><input type="text" class="cust_input" /></td>
-              </tr>
-              <tr>
-                <td class="cust_fl_b">联系人：</td>
-                <td><input type="text" class="cust_input" /></td>
-              </tr>
-              <tr>
-                <td class="cust_fl_b"></td>
-                <td class="cust_fl_c"><a href=""><img src="/images/button_01.gif" width="117" height="32"></a><a href=""><img src="/images/button_02.gif" width="117" height="32"></a></td>
-              </tr>
-            </table>  
-
+          <div class="slideTxtBox">
+           <div class="hd">
+            <ul>
+              <li>预约体验店量体</li>
+              <li>预约上门量体</li>
+            </ul>
           </div>
-          
-          <div></div>
+
+          <div class="bd">
+            <div>
+              <table cellpadding="0" cellspacing="0" border="0" class="cust_fl_a">
+                <tr>
+                  <td class="cust_fl_b">时间：</td>
+                  <td><input type="text" class="cust_input" /></td>
+                </tr>
+
+                <tr>
+                  <td class="cust_fl_b">具体时间：</td>
+                  <td>
+                    <select>
+                      <option>2013年9月23日</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b">地点：</td>
+                  <td> <select>
+                    <option>江苏省</option>
+                  </select>
+                  <select>
+                    <option>常州市</option>
+                  </select>
+                  <select>
+                    <option>新北区</option>
+                  </select></td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b">详细信息：</td>
+                  <td><input type="text" class="cust_input" /></td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b">要定：</td>
+                  <td><input name="" type="checkbox" value="" class="cust_fl_d">西服 <input name="" type="checkbox" value="" class="cust_fl_d">衬衫 <input name="" type="checkbox" value="" class="cust_fl_d">大衣 <input name="" type="checkbox" value="" class="cust_fl_d">团体定制 <input name="" type="checkbox" value="" class="cust_fl_d">其他咨询</td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b">手机：</td>
+                  <td><input type="text" class="cust_input" /></td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b">联系人：</td>
+                  <td><input type="text" class="cust_input" /></td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b"></td>
+                  <td class="cust_fl_c"><a href=""><img src="/images/button_01.gif" width="117" height="32"></a><a href=""><img src="/images/button_02.gif" width="117" height="32"></a></td>
+                </tr>
+              </table>  
+
+            </div>
+
+            <div></div>
+          </div>
         </div>
+
       </div>
-      
-    </div>
-    <div class="fl cust_fr">
-      <div class="cust_fr_a">推荐量体师</div>
-      <div class="cust_fr_b">
-        <ul class="cust_fr_c clearfix">
-          <li class="cust_fr_d"><img src="/images/zhouhuibo.gif" width="109" height="145"></li>
-          <li class="cust_fr_e">姓名：</li>
-          <li class="cust_fr_e cust_fr_f">周洪波</li>
-          <li class="cust_fr_e">服务区域：</li>
-          <li class="cust_fr_e cust_fr_f">海淀等</li>
-          <li class="cust_fr_e"> 手机：</li>
-          <li class="cust_fr_e cust_fr_f">15901221099</li>
-        </ul>
-        <ul class="cust_fr_c cust_fr_cc clearfix">
-          <li class="cust_fr_d"><img src="/images/ouyang.gif" width="109" height="145"></li>
-          <li class="cust_fr_e">姓名：</li>
-          <li class="cust_fr_e cust_fr_f">欧阳金美</li>
-          <li class="cust_fr_e">服务区域：</li>
-          <li class="cust_fr_e cust_fr_f">朝阳等</li>
-          <li class="cust_fr_e"> 手机：</li>
-          <li class="cust_fr_e cust_fr_f">13945687524</li>
-        </ul>
+      <div class="fl cust_fr">
+        <div class="cust_fr_a">推荐量体师</div>
+        <div class="cust_fr_b">
+          <ul class="cust_fr_c clearfix">
+            <li class="cust_fr_d"><img src="/images/zhouhuibo.gif" width="109" height="145"></li>
+            <li class="cust_fr_e">姓名：</li>
+            <li class="cust_fr_e cust_fr_f">周洪波</li>
+            <li class="cust_fr_e">服务区域：</li>
+            <li class="cust_fr_e cust_fr_f">海淀等</li>
+            <li class="cust_fr_e"> 手机：</li>
+            <li class="cust_fr_e cust_fr_f">15901221099</li>
+          </ul>
+          <ul class="cust_fr_c cust_fr_cc clearfix">
+            <li class="cust_fr_d"><img src="/images/ouyang.gif" width="109" height="145"></li>
+            <li class="cust_fr_e">姓名：</li>
+            <li class="cust_fr_e cust_fr_f">欧阳金美</li>
+            <li class="cust_fr_e">服务区域：</li>
+            <li class="cust_fr_e cust_fr_f">朝阳等</li>
+            <li class="cust_fr_e"> 手机：</li>
+            <li class="cust_fr_e cust_fr_f">13945687524</li>
+          </ul>
+        </div>
+
+
       </div>
-
-
     </div>
-  </div>
 
 
 
 
 
 
-  <div class="footer">
-    <div class="m">
-      <ul class="footer_a clearfix">
-        <li><a href="">关于维衣</a></li>
-        <li>|</li>
-        <li><a href="">购买指南</a></li>
-        <li>|</li>
-        <li><a href="">团体定制流程</a></li>
-        <li>|</li>
-        <li><a href="">个人定制流程</a></li>
-        <li>|</li>
-        <li><a href="">工期说明</a></li>
-        <li>|</li>
-        <li><a href="">售后服务</a></li>
-        <li>|</li>
-        <li><a href="">工作机会</a></li>
-        <li>|</li>
-        <li><a href="">联系我们</a></li>
-      </ul>
+    <div class="footer">
+      <div class="m">
+        <ul class="footer_a clearfix">
+          <li><a href="">关于维衣</a></li>
+          <li>|</li>
+          <li><a href="">购买指南</a></li>
+          <li>|</li>
+          <li><a href="">团体定制流程</a></li>
+          <li>|</li>
+          <li><a href="">个人定制流程</a></li>
+          <li>|</li>
+          <li><a href="">工期说明</a></li>
+          <li>|</li>
+          <li><a href="">售后服务</a></li>
+          <li>|</li>
+          <li><a href="">工作机会</a></li>
+          <li>|</li>
+          <li><a href="">联系我们</a></li>
+        </ul>
 
-      <div class="footer_b">营业时间：周一到周日 10:00-19:00 节假日无休    联系电话：400-010-0013</div>
+        <div class="footer_b">营业时间：周一到周日 10:00-19:00 节假日无休    联系电话：400-010-0013</div>
+      </div>
     </div>
-  </div>
-  <div class="footer_c">
-    <div class="m "><div class="footer_d"><a href="">www.365weiyi.com</a> 版权所有 [v2.11.0709] [粤ICP备11023687号-1]</div></div>
-  </div>
+    <div class="footer_c">
+      <div class="m "><div class="footer_d"><a href="">www.365weiyi.com</a> 版权所有 [v2.11.0709] [粤ICP备11023687号-1]</div></div>
+    </div>
 
 
 
-</body>
-</html>
-<script type="text/javascript">jQuery(".slideTxtBox").slide();</script>
+  </body>
+  </html>
+  <script type="text/javascript">jQuery(".slideTxtBox").slide();</script>
