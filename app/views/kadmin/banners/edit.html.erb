@@ -17,7 +17,7 @@
 
   <p>
     <%= f.label :popularity, '排序：' %>
-		<%= f.select :popularity, (0..9).to_a + [Banner::TOP_BANNER,Banner::LIST_BANNER] %> *0~9代表显示排序，越大越靠前。若设为<%= Banner::TOP_BANNER %>则为顶部banner,<%= Banner::LIST_BANNER %>为列表页banner
+		<%= f.select :popularity, (0..9).to_a + [Banner::TOP_BANNER,Banner::LIST_BANNER_SUIT] %> *0~9代表显示排序，越大越靠前。若设为<%= Banner::TOP_BANNER %>则为顶部banner,<%= Banner::LIST_BANNER_SUIT %>为西服列表页banner
   </p>
   <p>
     <%= f.label :can_scroll, '轮换广告：' %>
