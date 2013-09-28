@@ -236,7 +236,6 @@
                   <td class="cust_fl_b"></td>
                   <td>
                     <%= submit_tag "预约" , :class=>"btns" %>
-                    
                   </td>
                 </tr>
               </table>  
@@ -246,53 +245,64 @@
 
             <div>
 
+              <%= form_for(@reserve_ruler , :url=>reserve_ruler_categories_path)  do  |f| %>
+              <%= hidden_field_tag "reserve_ruler[status]"  , 0 %>
               <table cellpadding="0" cellspacing="0" border="0" class="cust_fl_a">
                 <tr>
                   <td class="cust_fl_b">时间：</td>
-                  <td><input type="text" class="cust_input" /></td>
+                  <td>
+                    <%= f.text_field :reserve_at, :class => "cust_input" %>
+                  </td>
                 </tr>
 
                 <tr>
                   <td class="cust_fl_b">具体时间：</td>
                   <td>
-                    <select>
-                      <option>2013年9月23日</option>
-                    </select>
+                    <%= f.select "day_when" , options_for_select(reserve_times),:include_blank=>true %>
                   </td>
                 </tr>
                 <tr>
                   <td class="cust_fl_b">地点：</td>
-                  <td> <select>
-                    <option>江苏省</option>
-                  </select>
-                  <select>
-                    <option>常州市</option>
-                  </select>
-                  <select>
-                    <option>新北区</option>
-                  </select></td>
+                  <td> 
+                    <%= select_tag "province" , raw("<option>北京市</option>")  %>
+                    <%= select_tag "city" , raw("<option>北京市</option>")  %>
+                    <%= f.select "place_id"  , options_from_collection_for_select(Place.all,'id','area') , :include_blank=>true %>
+                  </td>
                 </tr>
                 <tr>
                   <td class="cust_fl_b">详细信息：</td>
-                  <td><input type="text" class="cust_input" /></td>
+                  <td>
+                    <%= f.text_field "office" ,:size=>40, :class=>"cust_input" %>
+                  </td>
                 </tr>
                 <tr>
                   <td class="cust_fl_b">要定：</td>
-                  <td><input name="" type="checkbox" value="" class="cust_fl_d">西服 <input name="" type="checkbox" value="" class="cust_fl_d">衬衫 <input name="" type="checkbox" value="" class="cust_fl_d">大衣 <input name="" type="checkbox" value="" class="cust_fl_d">团体定制 <input name="" type="checkbox" value="" class="cust_fl_d">其他咨询</td>
+                  <td>
+                    <% ["西服","衬衫","大衣","团体定制","其他咨询"].each do |ele| %>
+                    <%= check_box_tag "items[]"  , ele %> <%= ele %>
+                    <% end %>
+                  </td>
                 </tr>
                 <tr>
                   <td class="cust_fl_b">手机：</td>
-                  <td><input type="text" class="cust_input" /></td>
+                  <td>
+                    <%= f.text_field "phone", :class=>"cust_input" %>
+                  </td>
                 </tr>
                 <tr>
                   <td class="cust_fl_b">联系人：</td>
-                  <td><input type="text" class="cust_input" /></td>
+                  <td>
+                    <%= f.text_field "username", :class=>"cust_input" %>
+                  </td>
                 </tr>
                 <tr>
                   <td class="cust_fl_b"></td>
-                  <td class="cust_fl_c"><a href=""><img src="images/button_01.gif" width="117" height="32"></a></td>
+                  <td class="cust_fl_c">
+                    <%= submit_tag "预约量体师" , :class=>"btns" %>
+                  </td>
                 </tr>
               </table> 
+              <% end %>
             </div>
           </div>
         </div>
