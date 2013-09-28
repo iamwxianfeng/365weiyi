@@ -53,16 +53,16 @@ ul, ol, li {list-style: none;}
 .customize{margin-top:56px;}
 .cust_fl{width:726px;}
 .slideTxtBox{ width:726px;   }
-.slideTxtBox .hd{ height:40px; line-height:40px; border-left:1px solid #999;  position:relative;top:2px;left:0; z-index:100; }
+.slideTxtBox .hd{ height:40px; line-height:40px; border-left:1px solid #999;  position:relative;top:1px;left:0; z-index:100; }
 .slideTxtBox .hd ul{position:relative; z-index:1000;}
 .slideTxtBox .hd ul li{ position:relative; z-index:1000; float:left;width:238px;height:40px; line-height:40px;border-right:1px solid #999; border-top:1px solid #999; cursor:pointer;text-align:center;font-weight:bold;font-size:14px;color:#999;  }
 .slideTxtBox .hd ul li.on{color:#000;background:#fff;height:40px; }
-.bd{width:724px;background:#fff;border:1px solid #999;padding:0;height:408px;height:400px\0;+height:406px; overflow:hidden; position:absolute;top:42px;left:0; z-index:-1}
+.bd{width:724px;background:#fff;border:1px solid #999;padding:0;height:408px;height:400px\0;+height:406px; overflow:hidden;}
 .cust_input{background:url(../images/zc_01.jpg) no-repeat;width:312px;height:30px;line-height:30px;color:#999;text-indent:10px;border:none;}
 .cust_fl_a{margin:36px 0 50px 60px;}
 .cust_fl_a td{padding-top:15px;}
 .cust_fl_b{width:60px;text-align:right;padding-right:6px;}
-.cust_fl_c a{display:inline-block;margin-right:50px;margin-top:10px;}
+.cust_fl_c{ cursor:pointer;display:block;width:117px;height:32px;margin-top:10px;}
 .cust_fl_d{margin:5px;_margin:0px;}
 
 .cust_fr{width:243px;margin:41px 0 0 10px;}
