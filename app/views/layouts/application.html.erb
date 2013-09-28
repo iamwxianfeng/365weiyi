@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon"/>
     <title><%= yield(:title).present? ? "#{yield(:title)}--" : nil || @title.present? ? "#{@title}--" : nil %>维衣--工作服 西服定制 西装定制 衬衣定制 衬衫定制</title>
     <%= javascript_include_tag "jquery","rails" %>
-    <%= stylesheet_link_tag "application","global","master" %>
+    <%= stylesheet_link_tag "application","global","master","index" %>
     <%= stylesheet_link_tag "jquery_ui/blitzer/jquery.ui.all" %>
     <%= javascript_include_tag 'menu', 'flashs'  %>
     <%= javascript_include_tag "jquery_ui/jquery.ui.core","jquery_ui/jquery.ui.widget","jquery_ui/jquery.ui.datepicker","jquery_ui/jquery.ui.datepicker-zh-CN" %>
@@ -31,11 +31,13 @@
       </div>
     -->
 
+      <!--
       <ul class="to_customer">
         <li><a href="#ruler_anchor" class="reserve_people"></a></li>
         <li><a href="#ruler_anchor" class="reserve_shop"></a></li>
         <li><a href="/measure_pages/1" class="measure"></a></li>
       </ul>
+    -->
 
       <% if @top_banners %>
         <% @top_banners.each do |top_banner| %>
