@@ -9,9 +9,11 @@
   <link href="/stylesheets/master.css" type="text/css" rel="stylesheet">
   <link href="/stylesheets/scaffold.css" type="text/css" rel="stylesheet">
   <link href="/stylesheets/index.css" type="text/css" rel="stylesheet">
+  <%= stylesheet_link_tag "jquery_ui/blitzer/jquery.ui.all" %>
 
-  <script type="text/javascript"  src="javascripts/jquery1.42.min.js"></script>
-  <script type="text/javascript" src="javascripts/jquery.SuperSlide.2.1.js"></script>
+  <script type="text/javascript"  src="/javascripts/jquery1.42.min.js"></script>
+  <script type="text/javascript" src="/javascripts/jquery.SuperSlide.2.1.js"></script>
+  <%= javascript_include_tag "jquery_ui/jquery.ui.core","jquery_ui/jquery.ui.widget","jquery_ui/jquery.ui.datepicker","jquery_ui/jquery.ui.datepicker-zh-CN" %>
 
 </head>
 
@@ -175,116 +177,128 @@
       <div class="m circuit_b">您可以选择实体店定制，预约上门量体、在线自助定制</div>
 
 
-    <div class="m clearfix customize">
-      <div class="fl cust_fl">
+      <div class="m clearfix customize">
+        <div class="fl cust_fl">
 
-        <div class="slideTxtBox">
-         <div class="hd">
-          <ul>
-            <li>预约体验店量体</li>
-            <li>预约上门量体</li>
-          </ul>
-        </div>
-        
-        <div class="bd">
-          <div>
-            <table cellpadding="0" cellspacing="0" border="0" class="cust_fl_a">
-              <tr>
-                <td class="cust_fl_b">时间：</td>
-                <td><input type="text" class="cust_input" /></td>
-              </tr>
-              
-              <tr>
-                <td class="cust_fl_b">具体时间：</td>
-                <td>
-                  <select>
-                    <option>2013年9月23日</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td class="cust_fl_b">体验店：</td>
-                <td> <select>
-                  <option>江苏省</option>
-                </select>
-                </td>
-              </tr>
-              
-              <tr>
-                <td class="cust_fl_b">要定：</td>
-                <td><input name="" type="checkbox" value="" class="cust_fl_d">西服 <input name="" type="checkbox" value="" class="cust_fl_d">衬衫 <input name="" type="checkbox" value="" class="cust_fl_d">大衣 <input name="" type="checkbox" value="" class="cust_fl_d">团体定制 <input name="" type="checkbox" value="" class="cust_fl_d">其他咨询</td>
-              </tr>
-              <tr>
-                <td class="cust_fl_b">手机：</td>
-                <td><input type="text" class="cust_input" /></td>
-              </tr>
-              <tr>
-                <td class="cust_fl_b">联系人：</td>
-                <td><input type="text" class="cust_input" /></td>
-              </tr>
-              <tr>
-                <td class="cust_fl_b"></td>
-                <td><a href="" class="cust_fl_c"><img src="images/button_02.gif" width="117" height="32"></a></td>
-              </tr>
-            </table>  
+          <div class="slideTxtBox">
+           <div class="hd">
+            <ul>
+              <li>预约体验店量体</li>
+              <li>预约上门量体</li>
+            </ul>
+          </div>
 
-          </div>
-          
-          <div>
-          
-          <table cellpadding="0" cellspacing="0" border="0" class="cust_fl_a">
-              <tr>
-                <td class="cust_fl_b">时间：</td>
-                <td><input type="text" class="cust_input" /></td>
-              </tr>
-              
-              <tr>
-                <td class="cust_fl_b">具体时间：</td>
-                <td>
-                  <select>
-                    <option>2013年9月23日</option>
+          <div class="bd">
+            <%= form_tag reserve_shop_categories_path  do  %>
+            <%= hidden_field_tag "reserve_shop[status]"  , 1 %>
+            <div>
+              <table cellpadding="0" cellspacing="0" border="0" class="cust_fl_a">
+                <tr>
+                  <td class="cust_fl_b">时间：</td>
+                  <td>
+                    <%= text_field_tag "reserve_shop[reserve_at]", @reserve_shop.reserve_at, :class=>"cust_input" %>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="cust_fl_b">具体时间：</td>
+                  <td>
+                    <%= select_tag "reserve_shop[day_when]" , options_for_select(reserve_times),:include_blank=>true %>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b">体验店：</td>
+                  <td> 
+                    <%= select_tag "reserve_shop[shop_id]" , options_from_collection_for_select(Shop.all,:id,:name), { :include_blank=>true }  %>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="cust_fl_b">要定：</td>
+                  <td>
+                    <% ["西服","衬衫","大衣","团体定制","其他咨询"].each do |ele| %>
+                    <%= check_box_tag "items[]", ele %> <%= ele %>
+                    <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b">手机：</td>
+                  <td><%= text_field_tag "reserve_shop[phone]" , @reserve_shop.phone, :class=>"cust_input" %>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b">联系人：</td>
+                  <td>
+                    <%= text_field_tag "reserve_shop[username]" , @reserve_shop.username, :class => "cust_input" %>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b"></td>
+                  <td>
+                    <%= submit_tag "预约" , :class=>"btns" %>
+                    
+                  </td>
+                </tr>
+              </table>  
+
+            </div>
+            <% end %>
+
+            <div>
+
+              <table cellpadding="0" cellspacing="0" border="0" class="cust_fl_a">
+                <tr>
+                  <td class="cust_fl_b">时间：</td>
+                  <td><input type="text" class="cust_input" /></td>
+                </tr>
+
+                <tr>
+                  <td class="cust_fl_b">具体时间：</td>
+                  <td>
+                    <select>
+                      <option>2013年9月23日</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b">地点：</td>
+                  <td> <select>
+                    <option>江苏省</option>
                   </select>
-                </td>
-              </tr>
-              <tr>
-                <td class="cust_fl_b">地点：</td>
-                <td> <select>
-                  <option>江苏省</option>
-                </select>
-                <select>
-                  <option>常州市</option>
-                </select>
-                <select>
-                  <option>新北区</option>
-                </select></td>
-              </tr>
-              <tr>
-                <td class="cust_fl_b">详细信息：</td>
-                <td><input type="text" class="cust_input" /></td>
-              </tr>
-              <tr>
-                <td class="cust_fl_b">要定：</td>
-                <td><input name="" type="checkbox" value="" class="cust_fl_d">西服 <input name="" type="checkbox" value="" class="cust_fl_d">衬衫 <input name="" type="checkbox" value="" class="cust_fl_d">大衣 <input name="" type="checkbox" value="" class="cust_fl_d">团体定制 <input name="" type="checkbox" value="" class="cust_fl_d">其他咨询</td>
-              </tr>
-              <tr>
-                <td class="cust_fl_b">手机：</td>
-                <td><input type="text" class="cust_input" /></td>
-              </tr>
-              <tr>
-                <td class="cust_fl_b">联系人：</td>
-                <td><input type="text" class="cust_input" /></td>
-              </tr>
-              <tr>
-                <td class="cust_fl_b"></td>
-                <td class="cust_fl_c"><a href=""><img src="images/button_01.gif" width="117" height="32"></a></td>
-              </tr>
-            </table> 
+                  <select>
+                    <option>常州市</option>
+                  </select>
+                  <select>
+                    <option>新北区</option>
+                  </select></td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b">详细信息：</td>
+                  <td><input type="text" class="cust_input" /></td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b">要定：</td>
+                  <td><input name="" type="checkbox" value="" class="cust_fl_d">西服 <input name="" type="checkbox" value="" class="cust_fl_d">衬衫 <input name="" type="checkbox" value="" class="cust_fl_d">大衣 <input name="" type="checkbox" value="" class="cust_fl_d">团体定制 <input name="" type="checkbox" value="" class="cust_fl_d">其他咨询</td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b">手机：</td>
+                  <td><input type="text" class="cust_input" /></td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b">联系人：</td>
+                  <td><input type="text" class="cust_input" /></td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b"></td>
+                  <td class="cust_fl_c"><a href=""><img src="images/button_01.gif" width="117" height="32"></a></td>
+                </tr>
+              </table> 
+            </div>
           </div>
         </div>
+
       </div>
-      
-    </div>
-    
+
       <div class="fl cust_fr">
         <div class="cust_fr_a">推荐量体师</div>
         <div class="cust_fr_b">
@@ -343,3 +357,50 @@
   </body>
   </html>
   <script type="text/javascript">jQuery(".slideTxtBox").slide();</script>
+
+  <script type="text/javascript">
+
+  function clickShop(){
+    $("#ruler_li").removeClass("focus");
+    $("#shop_li").addClass("focus");
+    $("#reserve_ruler").hide();
+    $("#reserve_shop").show();
+  };
+
+  <% if @errors %>
+  alert("<%=raw @errors %>");
+  <% end %>
+
+  <% if @reserve_shop.status == ReserveRuler::Status::Shop %>
+  clickShop();
+  <% end %>
+
+  $(function(){
+    $("#ruler_li").click(function(){
+      var $this = $(this);
+      if($this.attr("class") != "focus"){
+        $("#shop_li").removeClass("focus");
+        $this.addClass("focus");
+        $("#reserve_ruler").show();
+        $("#reserve_shop").hide();
+      }
+    });
+    $("#shop_li").click(function(){
+      var $this = $(this);
+      if($this.attr("class") != "focus"){
+        clickShop();
+      }
+    });
+
+    $.datepicker.regional[ "zh-CN" ]
+    $("input[name='reserve_ruler[reserve_at]'],input[name='reserve_shop[reserve_at]']").datepicker({ minDate: 0 });
+
+    $("#reserve_ruler_reserve_at,#reserve_shop_reserve_at").focus(function(){
+      var $this = $(this);
+      $this.next().hide();
+    });
+  });
+  </script>
+
+
+

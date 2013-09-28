@@ -18,6 +18,8 @@ class HomeController < ApplicationController
     @shirt_products  = shirt_category.products.order('popularity DESC,our_price ASC').limit(5)
     @brand_suits = Banner.where(:popularity=>Banner::BRAND_SUIT).order("created_at DESC").limit(4)
     @brand_shirts = Banner.where(:popularity=>Banner::BRAND_SHIRT).order("created_at DESC").limit(4)
+    @reserve_ruler = ReserveRuler.new
+    @reserve_shop = ReserveRuler.new
   end
 
 end
