@@ -134,7 +134,7 @@
     <% if @shirt_banner %>
     <div class="circuit_c"><a href="javascript:;"><img src="/images/shirt_02.gif" width="379" height="366"></a> 
       <a href="<%= @shirt_banner.link_to %>"><img src="<%= @shirt_banner.photo_url %>" width="581" height="366"></a></div></div>
-    <% end %>
+      <% end %>
 
       <div class="m">
         <ul class="clearfix circuit_d">
@@ -246,24 +246,18 @@
       <div class="fl cust_fr">
         <div class="cust_fr_a">推荐量体师</div>
         <div class="cust_fr_b">
+          <% @top_rulers.each do |tr| %>
+          <% user = tr.user %>
           <ul class="cust_fr_c clearfix">
-            <li class="cust_fr_d"><img src="/images/zhouhuibo.gif" width="109" height="145"></li>
+            <li class="cust_fr_d"><a href="<%= ba_user_path(user) %>" ><img src="<%= user.avatar_medium %>" width="109" height="145"></a></li>
             <li class="cust_fr_e">姓名：</li>
-            <li class="cust_fr_e cust_fr_f">周洪波</li>
+            <li class="cust_fr_e cust_fr_f"><a href="<%= ba_user_path(user) %>"> <%= user.profile.name %></a> </li>
             <li class="cust_fr_e">服务区域：</li>
-            <li class="cust_fr_e cust_fr_f">海淀等</li>
+            <li class="cust_fr_e cust_fr_f"><%= "#{user.human_places.scan(/[\u4e00-\u9fa5]*/)[0]}等" if user.human_places.present? %></li>
             <li class="cust_fr_e"> 手机：</li>
-            <li class="cust_fr_e cust_fr_f">15901221099</li>
+            <li class="cust_fr_e cust_fr_f"><%= user.profile.phone %></li>
           </ul>
-          <ul class="cust_fr_c cust_fr_cc clearfix">
-            <li class="cust_fr_d"><img src="/images/ouyang.gif" width="109" height="145"></li>
-            <li class="cust_fr_e">姓名：</li>
-            <li class="cust_fr_e cust_fr_f">欧阳金美</li>
-            <li class="cust_fr_e">服务区域：</li>
-            <li class="cust_fr_e cust_fr_f">朝阳等</li>
-            <li class="cust_fr_e"> 手机：</li>
-            <li class="cust_fr_e cust_fr_f">13945687524</li>
-          </ul>
+          <% end %>
         </div>
 
 
