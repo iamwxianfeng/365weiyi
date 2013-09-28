@@ -1,40 +1,42 @@
-<div id="header">
-  <div class="register">
-    <div class="top">
-      <% unless logged_in? %>
-        <span>欢迎来到维衣 | <%= link_to "登录" , login_path , :class=>"a1" %> <%= link_to "注册" , register_path , :class=>"a1" %> </span>
+<div class="m mt20 sub">
+  <div class="lg"><a href=""><img src="/images/logo_01.gif" width="280" height="60"></a></div>
+
+  <div class="sub_a">
+    <ul class="clearfix suub_nav">
+      <% if logged_in? %>
+      <li>欢迎 <%= current_user.email %> <%= link_to '[退出]', logout_path %></li>
+      <% if current_user.role == User::ROOT %>
+      <li> <%= link_to '[后台]', '/kadmin' %> </li>
+      <% end %>
+      <li>|</li>
+      <li><%= link_to '我的维衣', current_user  %></li>
+      <li>|</li>
+      <li class="suub_nav_a"><%= link_to '购物车', {:controller => :cart, :action => :edit}  %></li>
+      <li>|</li>
       <% else %>
-        <span>
-          <%= link_to '我的维衣', current_user , :class=>"a1" %> |
-          <%= link_to '购物车', {:controller => :cart, :action => :edit}  , :class=>"a1" %>
-          <%= current_user.email %>　您已登录
-          <% if current_user.role == User::ROOT %>
-            <%= link_to '[后台]', '/kadmin' %>
-          <% end %>
-          <%= link_to '[退出]', logout_path %>
-        </span>
+      <li>欢迎来到维衣</li>
+      <li><%= link_to "[登录]" , login_path %></li>
+      <li><%= link_to "[还没注册?]" , register_path %></li>
       <% end %>
-    </div>
-  </div>
-
-  <div class="logo">
-    <a href="/"><img src="/images/logo.png" title="365weiyi.com 维衣 每个人都是唯一的" alt="365weiyi.com 维衣 每个人都是唯一的" /></a>
-    <span><img src="/images/telephone.png" alt="咨询热线"></span>
-    <span class="center"><img src="/images/head_notice.png" alt="免费量体"></span>
-  </div>
-</div>
-
-<div id="nav">
-  <div class="menu">
-    <ul>
-      <li><%= link_to raw('首页'), root_path, :title => '首页' %></li>
-      <% @categories.each do |category| %>
-        <li>
-          <%=link_to(raw("#{category.name}"), "/#{category.url}", :title => h(category.name)) %>
-        </li>
-      <% end %>
-      <li><a href="/measure_pages" title="量体中心">量体中心</a></li>
-      <li><a href="/zhishitang" title="量体中心">知识堂</a></li>
     </ul>
+    <div class="suub_nav_b fr"><img src="/images/TEL_01.gif" width="160" height="24"></div>
   </div>
 </div>
+
+<div class="nav mt20">
+  <ul class="m nav_a clearfix">
+
+    <li><%= link_to raw('首页'), root_path, :title => '首页' %></li>
+    <% @categories.each do |category| %>
+    <li>
+      <%=link_to(raw("#{category.name}"), "/#{category.url}", :title => h(category.name)) %>
+    </li>
+    <% end %>
+    <li><a href="/measure_pages" title="量体中心">量体中心</a></li>
+    <li><a href="/zhishitang" title="量体中心">知识堂</a></li>
+
+  </ul>
+</div>
+
+<div class="nav_c"><div class="m nav_d">最新消息:  制作周期说明:衬衫定制14天左右（含休息日)。</div></div>
+

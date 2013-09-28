@@ -1,20 +1,21 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
-  <head>
-    <%= csrf_meta_tag %>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <meta name="description" content="维衣致力于提供高品质的工作服、西服定制、衬衫定制等服务。为白领、中产阶级、特体、婚礼礼服等群体提供西装定制、衬衣定制服务，也可为企事业单位提供团体工作服定制服务。在北京可上门量体。"/>
-    <meta name="keywords" content="工作服，西服定制，西装定制，衬衣定制，衬衫定制"/>
-    <link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon"/>
-    <title><%= yield(:title).present? ? "#{yield(:title)}--" : nil || @title.present? ? "#{@title}--" : nil %>维衣--工作服 西服定制 西装定制 衬衣定制 衬衫定制</title>
-    <%= javascript_include_tag "jquery","rails" %>
-    <%= stylesheet_link_tag 'global', "master" ,"application" %>
-    <%= javascript_include_tag "w",'menu', 'flashs',"product"  %>
-  </head>
-  <body>
-    <%= render "layouts/header" %>
-    <div id="wrapper">
+<head>
+  <%= csrf_meta_tag %>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <meta name="description" content="维衣致力于提供高品质的工作服、西服定制、衬衫定制等服务。为白领、中产阶级、特体、婚礼礼服等群体提供西装定制、衬衣定制服务，也可为企事业单位提供团体工作服定制服务。在北京可上门量体。"/>
+  <meta name="keywords" content="工作服，西服定制，西装定制，衬衣定制，衬衫定制"/>
+  <link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon"/>
+  <title><%= yield(:title).present? ? "#{yield(:title)}--" : nil || @title.present? ? "#{@title}--" : nil %>维衣--工作服 西服定制 西装定制 衬衣定制 衬衫定制</title>
+  <%= javascript_include_tag "jquery","rails" %>
+  <%= stylesheet_link_tag 'global', "master" ,"application", "index" %>
+  <%= javascript_include_tag "w",'menu', 'flashs',"product"  %>
+</head>
+<body>
+  <%= render "layouts/header" %>
+  <div id="wrapper">
 
+    <!--
       <div id="shangmian">
         <div class="newstop">
           <u>提醒</u>
@@ -26,76 +27,77 @@
           <i><a href="/why_bespoken.html">为什么采用定制而不去逛商场</a></i>
         </div>
       </div>
+    -->
 
 
 
-      <% if @top_banners %>
-        <% @top_banners.each do |top_banner| %>
-          <div class="top_banner">
-            <%= link_to raw("<img src='#{top_banner.photo_url}' alt='#{top_banner.name}' />"), top_banner.link_to, :title => top_banner.name %>
-          </div>
+    <% if @top_banners %>
+    <% @top_banners.each do |top_banner| %>
+    <div class="top_banner">
+      <%= link_to raw("<img src='#{top_banner.photo_url}' alt='#{top_banner.name}' />"), top_banner.link_to, :title => top_banner.name %>
+    </div>
+    <% end %>
+    <% end %>
+
+    <%= render_flash_messages %>
+    <% flash.discard %>
+
+
+    <div id="wrap">
+      <div class="rightWrap row" style="float:left">
+        <% unless @category.blank? %>
+        <div class="right">
+          <h2 class="title">维衣产品</h2>
+          <ul class="liebs">
+            <li><strong><%= @category.name %></strong></li>
+
+            <% @category.subcategories.each do |subcategory| %>
+            <li>
+              <%= link_to subcategory.name,
+              "/#{@category.url}/#{subcategory.url}" %>
+            </li>
+            <% end %>
+
+          </ul>
+        </div>
         <% end %>
-      <% end %>
 
-      <%= render_flash_messages %>
-      <% flash.discard %>
-
-
-      <div id="wrap">
-        <div class="rightWrap row" style="float:left">
-          <% unless @category.blank? %>
-            <div class="right">
-              <h2 class="title">维衣产品</h2>
-              <ul class="liebs">
-                <li><strong><%= @category.name %></strong></li>
-
-                <% @category.subcategories.each do |subcategory| %>
-                  <li>
-                    <%= link_to subcategory.name,
-                      "/#{@category.url}/#{subcategory.url}" %>
-                  </li>
-                <% end %>
-
-              </ul>
-            </div>
-          <% end %>
-
-          <div class="right">
-            <h2 class="title">穿合适衣服 秀出我精彩</h2>
-            <ul class="zp">
-              <li class="list1">对标准化成衣说不！穿真正符合自己尺寸的衣服</li>
-              <li class="list2">一流工艺制作，确保高品质</li>
-              <li class="list3">西服300多道工序精心制作</li>
-              <li class="list4">衬衣、西服均有数百种面料可选</li>
-              <li class="list5">既可到店量体，也可上门，还可自助网上量体</li>
-            </ul>
-          </div>
-          <p>&nbsp;</p>
-          <div class="right">
-            <h2 class="title">量体中心</h2>
-            <ul class="moxtxt1">
-              <li>您可在线完成自助量体<br /><br /><img src="/images/go_right.gif" style=" margin-left:20px;margin-right:10px; margin-bottom:-7px;">
-                  <a href="/measure_pages">点击进入</a>
-              </li>
-            </ul>
-          </div>
-          <p>&nbsp;</p>
-          <%= render :partial => 'layouts/billing_info' %>
+        <div class="right">
+          <h2 class="title">穿合适衣服 秀出我精彩</h2>
+          <ul class="zp">
+            <li class="list1">对标准化成衣说不！穿真正符合自己尺寸的衣服</li>
+            <li class="list2">一流工艺制作，确保高品质</li>
+            <li class="list3">西服300多道工序精心制作</li>
+            <li class="list4">衬衣、西服均有数百种面料可选</li>
+            <li class="list5">既可到店量体，也可上门，还可自助网上量体</li>
+          </ul>
         </div>
-        <div class="left bku">
-          <%= yield :layout %>
+        <p>&nbsp;</p>
+        <div class="right">
+          <h2 class="title">量体中心</h2>
+          <ul class="moxtxt1">
+            <li>您可在线完成自助量体<br /><br /><img src="/images/go_right.gif" style=" margin-left:20px;margin-right:10px; margin-bottom:-7px;">
+              <a href="/measure_pages">点击进入</a>
+            </li>
+          </ul>
         </div>
-
+        <p>&nbsp;</p>
+        <%= render :partial => 'layouts/billing_info' %>
+      </div>
+      <div class="left bku">
+        <%= yield :layout %>
       </div>
 
-      <div class="clear"></div>
     </div>
-    <%= render :partial => 'layouts/footer' %>
+
+    <div class="clear"></div>
+  </div>
+  <%= render :partial => 'layouts/footer' %>
 
     <!--
      <div id="chatbox">
        <a href="http://chat.365weiyi.com/new" target="_blank"><img src="/images/chat.gif" width="100px" height="100px"/></a>
      </div>
-    -->
-  </body>
-</html>
+   -->
+ </body>
+ </html>

@@ -1,0 +1,26 @@
+<div id="footer">
+  <% if params[:controller] == "categories" and params[:action] == 'index' %>
+  <div class="recommendedLinks">
+    <a href="/links/new" title="点击添加新的友情链接"><h2>友情链接</h2></a>
+    <hr class="dotted"></hr>
+    <% @links.each do |link| %>
+      <a target="_blank" href="<%= link.url %>" title="<%= link.name %>"><%= link.name %></a>
+    <% end %>
+    <hr class="dotted"></hr>
+  </div>
+  <% end %>
+  <ul class="tags">
+    <li>本站标签:</li>
+    <li><a href="/">工作服</a></li>
+    <li><a href="/">西服定制</a></li>
+    <li><a href="/">西装定制</a></li>
+    <li><a href="/">衬衣定制</a></li>
+    <li><a href="/">衬衫定制</a></li>
+    <div class="clear"></div>
+  </ul>
+  <div class="menus"><%= link_to '关于维衣', help_path('about') %> | <%= link_to '购买指南', help_path('how') %> | <%= link_to '团体定制流程', help_path('company-process') %> | <%= link_to '个人定制流程', help_path('individual-process') %> | <%= link_to '工期说明', help_path('timeline') %> | <%= link_to '售后服务', help_path('service') %> | <%= link_to '工作机会', help_path('career') %> | <%= link_to '联系我们', help_path('contact') %></div>
+  <div class="copyright">联系电话：400-010-0013  E-Mail: andy@365weiyi.com<br />
+    www.365weiyi.com  版权所有 [v2.11.0709] [粤ICP备11023687号-1]
+    <script src="http://s19.cnzz.com/stat.php?id=3191549&web_id=3191549" language="JavaScript"></script>
+  </div>
+</div>

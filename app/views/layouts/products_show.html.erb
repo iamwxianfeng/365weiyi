@@ -6,7 +6,7 @@
     <meta name="keywords" content="工作服，西服定制，西装定制，衬衣定制，衬衫定制"/>
     <link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon"/>
     <title><%= yield(:title).present? ? "#{yield(:title)}--" : nil || @title.present? ? "#{@title}--" : nil %>维衣--工作服 西服定制 西装定制 衬衣定制 衬衫定制</title>
-    <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag "application","index" %>
     <%= stylesheet_link_tag "jquery_ui/blitzer/jquery.ui.all" %>
     <%= javascript_include_tag "jquery","rails","jquery.jmpopups-0.5.1","application" %>
     <%= javascript_include_tag "jquery_ui/jquery.ui.core","jquery_ui/jquery.ui.widget","jquery_ui/jquery.ui.datepicker","jquery_ui/jquery.ui.datepicker-zh-CN" %>

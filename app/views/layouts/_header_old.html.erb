@@ -1,0 +1,40 @@
+<div id="header">
+  <div class="register">
+    <div class="top">
+      <% unless logged_in? %>
+        <span>欢迎来到维衣 | <%= link_to "登录" , login_path , :class=>"a1" %> <%= link_to "注册" , register_path , :class=>"a1" %> </span>
+      <% else %>
+        <span>
+          <%= link_to '我的维衣', current_user , :class=>"a1" %> |
+          <%= link_to '购物车', {:controller => :cart, :action => :edit}  , :class=>"a1" %>
+          <%= current_user.email %>　您已登录
+          <% if current_user.role == User::ROOT %>
+            <%= link_to '[后台]', '/kadmin' %>
+          <% end %>
+          <%= link_to '[退出]', logout_path %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="logo">
+    <a href="/"><img src="/images/logo.png" title="365weiyi.com 维衣 每个人都是唯一的" alt="365weiyi.com 维衣 每个人都是唯一的" /></a>
+    <span><img src="/images/telephone.png" alt="咨询热线"></span>
+    <span class="center"><img src="/images/head_notice.png" alt="免费量体"></span>
+  </div>
+</div>
+
+<div id="nav">
+  <div class="menu">
+    <ul>
+      <li><%= link_to raw('首页'), root_path, :title => '首页' %></li>
+      <% @categories.each do |category| %>
+        <li>
+          <%=link_to(raw("#{category.name}"), "/#{category.url}", :title => h(category.name)) %>
+        </li>
+      <% end %>
+      <li><a href="/measure_pages" title="量体中心">量体中心</a></li>
+      <li><a href="/zhishitang" title="量体中心">知识堂</a></li>
+    </ul>
+  </div>
+</div>

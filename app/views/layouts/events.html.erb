@@ -1,78 +1,78 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="description" content="<%= @metas %>维衣 inono 官网 衬衫定制 西服定制 衬衫定做 衬衣 西服定做 团体工作服定制">
-<meta name="keywords" content="<%= @metas %>维衣 inono 官网 衬衫定制 西服定制 衬衫定做 衬衣 西服定做 团体工作服定制">
-<link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon">
-<title><%= @title %>维衣 inono 官网 衬衫定制 西服定制 衬衫定做 衬衣 西服定做 团体工作服定制</title>
-<%= javascript_include_tag 'menu', 'flashs' %>
-<%= stylesheet_link_tag  'global','master' %>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="description" content="<%= @metas %>维衣 inono 官网 衬衫定制 西服定制 衬衫定做 衬衣 西服定做 团体工作服定制">
+  <meta name="keywords" content="<%= @metas %>维衣 inono 官网 衬衫定制 西服定制 衬衫定做 衬衣 西服定做 团体工作服定制">
+  <link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon">
+  <title><%= @title %>维衣 inono 官网 衬衫定制 西服定制 衬衫定做 衬衣 西服定做 团体工作服定制</title>
+  <%= javascript_include_tag 'menu', 'flashs' %>
+  <%= stylesheet_link_tag  'global','master', "index" %>
 </head>
 <body>
-<div class="all">
+  <div class="all">
 
-<div id="header">
-  <div class="logo">
-    <a href="/"><h1><img src="/images/logo.jpg" title="inono.net 维衣 每个人都是唯一的" alt="维衣 inono 官网 衬衫定制 西服定制 衬衫定做 衬衣 西服定做 团体工作服定制"></h1></a>
-  </div><!-- logo -->
-  <div class="register">
-    <span>
-      <%= link_to '我的维衣', current_user, :class => :a1 %> | 
-      <%= link_to '购物车', {:controller => :cart, :action => :edit}, :class => :a1 %>
-    </span>
+    <div id="header">
+      <div class="logo">
+        <a href="/"><h1><img src="/images/logo.jpg" title="inono.net 维衣 每个人都是唯一的" alt="维衣 inono 官网 衬衫定制 西服定制 衬衫定做 衬衣 西服定做 团体工作服定制"></h1></a>
+      </div><!-- logo -->
+      <div class="register">
+        <span>
+          <%= link_to '我的维衣', current_user, :class => :a1 %> | 
+          <%= link_to '购物车', {:controller => :cart, :action => :edit}, :class => :a1 %>
+        </span>
 
-    <em>
-    <% unless logged_in? %>
-      你好！请<%= link_to '注册', register_path(:type => 'private'), :class => :a1 %>或<%= link_to '登录', login_path, :class => :a1 %>
-    <% else %>
-      <%= current_user.email %>　您已登录 
+        <em>
+          <% unless logged_in? %>
+          你好！请<%= link_to '注册', register_path(:type => 'private'), :class => :a1 %>或<%= link_to '登录', login_path, :class => :a1 %>
+          <% else %>
+          <%= current_user.email %>　您已登录 
 
-        <% if current_user.role == User::ROOT %>
-        <%= link_to '[后台]', '/kadmin' %>
-      <% end %>
+          <% if current_user.role == User::ROOT %>
+          <%= link_to '[后台]', '/kadmin' %>
+          <% end %>
 
-      <%= link_to '[退出]', logout_path %>
+          <%= link_to '[退出]', logout_path %>
+          <% end %>
+        </em>
+
+        <p>
+          <img src="/images/telephone.gif" alt="咨询热线" />
+          <!--<img width="232" height="30" src="/images/telephone.gif" alt="咨询热线" />-->
+        </p>
+
+      </div><!-- register -->
+    </div><!-- header -->
+
+    <!-- begins index menu -->
+    <div id="nav">
+      <div class="menu">
+        <ul>
+          <li><%= link_to '<span>首　页</span>', root_path, :title => '首页' %></li>
+
+          <% @categories.each do |category| %>
+          <li>
+            <%= link_to "<span>#{category.name}</span>", "/#{category.url}", :title => h(category.name) %>
+          </li>
+          <% end %>
+
+          <li><a href="/measure_pages" title="量体中心"><span>量体中心</span></a></li>
+
+        </ul>
+        <div style="clear:both">
+        </div>
+      </div><!-- menu -->
+    </div><!-- nav -->
+
+    <% if flash[:notice] %>
+    <div id="flashMessage">
+      <%= flash[:notice] %>
+    </div><!-- flashMessage -->
     <% end %>
-    </em>
-
-    <p>
-      <img src="/images/telephone.gif" alt="咨询热线" />
-      <!--<img width="232" height="30" src="/images/telephone.gif" alt="咨询热线" />-->
-    </p>
-
-  </div><!-- register -->
-</div><!-- header -->
-
-<!-- begins index menu -->
-<div id="nav">
-  <div class="menu">
-  <ul>
-      <li><%= link_to '<span>首　页</span>', root_path, :title => '首页' %></li>
-
-    <% @categories.each do |category| %>
-    <li>
-      <%= link_to "<span>#{category.name}</span>", "/#{category.url}", :title => h(category.name) %>
-    </li>
-    <% end %>
-
-    <li><a href="/measure_pages" title="量体中心"><span>量体中心</span></a></li>
-
-  </ul>
-  <div style="clear:both">
-  </div>
-  </div><!-- menu -->
-</div><!-- nav -->
-
-<% if flash[:notice] %>
-  <div id="flashMessage">
-    <%= flash[:notice] %>
-  </div><!-- flashMessage -->
-<% end %>
 
 
-<div id="wrap">
+    <div id="wrap">
 
-<%= yield %>
+      <%= yield %>
 
-<%= render :partial => 'layouts/footer' %>
+      <%= render :partial => 'layouts/footer' %>
