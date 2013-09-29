@@ -12,16 +12,17 @@ ul, ol, li {list-style: none;}
 .vm{vertical-align:middle;}
 .pr{position:relative;}.pa{position:absolute;}
 .fn{font-weight:normal;}.fb{font-weight:bold;}
-.m{width:980px;margin:0 auto; position:relative;}
+.m{width:980px;margin:0 auto; position:relative; overflow:hidden;}
 .ml{margin-left:15px;}.ml10{margin-left:10px;}.mt{margin-top:10px;}.mt5{margin-top:5px;}.mt20{margin-top:20px;}
 
 .lg{position:absolute;top:0;left:0;}
 .sub{height:60px;}
-.sub_a{position:absolute;top:0;right:0;}
+.sub_a{}
+.suub_nav{position:absolute;top:0;right:0;height:57px;}
 .suub_nav li{float:left;margin-left:15px;display:inline;color:#000;}
 .suub_nav a{color:#000;}
 .suub_nav_a a{color:#c00;}
-.suub_nav_b{margin-top:15px;}
+.suub_nav_b{position:absolute;top:35px;right:0;}
 .nav{background:#171717;height:31px;}
 .nav_a li{float:left;height:31px; line-height:31px;font-size:14px;}
 .nav_a a{padding:0 18px;display:block;color:#fff;}
@@ -29,6 +30,7 @@ ul, ol, li {list-style: none;}
 .nav_c{height:24px;line-height:24px;background:#ccc;}
 .nav_d{padding-left:20px;color:#333;}
 .ber{width:1280px;margin:0 auto;}
+.ber_a{ background:url(../images/banner_01.jpg) no-repeat center top; height:429px;}
 .address{line-height:22px;width:290px;padding:16px 0 20px 36px;margin-top:34px;border-right:1px solid #999;}
 .address_a{border-right:none;}
 .address_b{margin-top:42px;}
