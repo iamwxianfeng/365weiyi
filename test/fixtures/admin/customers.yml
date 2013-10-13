@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  height: MyString
+  weight: MyString
+  job: MyString
+  like: MyString
+  style: 1
+  other_style: 1
+  desp: MyText
+
+two:
+  name: MyString
+  height: MyString
+  weight: MyString
+  job: MyString
+  like: MyString
+  style: 1
+  other_style: 1
+  desp: MyText

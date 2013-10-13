@@ -86,6 +86,7 @@ Inono::Application.routes.draw do
         get :check
       }
     end
+    resources :customers
   end
 
   match ':category' => 'categories#show'

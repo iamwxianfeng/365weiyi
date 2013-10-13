@@ -34,6 +34,7 @@
                 <% if current_user.email != "wangchao@365weiyi.com" %>
                   <li><%= link_to '订 单', kadmin_orders_path %></li>
                   <li class="top_border"><%= link_to '网站用户', kadmin_users_path %></li>
+                  <li class="top_border"><%= link_to '客户', kadmin_customers_path %></li>
                   <li class="top_border"><%= link_to '量体中心', kadmin_measure_pages_path %></li>
                   <li><%= link_to '量体之旅', kadmin_measure_properties_path %></li>
                   <li class="top_border"><%= link_to '地区量体师' , kadmin_places_path %></li>

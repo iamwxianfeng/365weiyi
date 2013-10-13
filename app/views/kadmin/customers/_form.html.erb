@@ -1,0 +1,49 @@
+<%= form_for([:kadmin,@customer]) do |f| %>
+  <% if @customer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+      <% @customer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "姓名" %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label "身高" %><br />
+    <%= f.text_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label '体重' %><br />
+    <%= f.text_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label '职业' %><br />
+    <%= f.text_field :job %>
+  </div>
+  <div class="field">
+    <%= f.label "偏好" %><br />
+    <%= f.text_field :like %>
+  </div>
+  <div class="field">
+    <%= f.label "体型" %><br />
+    <%= f.select :style, Customer.style_select_value %>
+  </div>
+  <div class="field">
+    <%= f.label "特殊体型" %><br />
+    <%= f.select :other_style, Customer.other_style_value %>
+  </div>
+  <div class="field">
+    <%= f.label "其它说明" %><br />
+    <%= f.text_area :desp %>
+  </div>
+  <div class="actions">
+    <%= f.submit '提交' %>
+  </div>
+<% end %>
