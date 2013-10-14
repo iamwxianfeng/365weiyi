@@ -6,6 +6,7 @@
 
 <table>
   <tr class="tbCaption">
+    <th>图片ID</th>
     <th>图片名称</th>
     <th>排序</th>
     <th>产品图</th>
@@ -15,6 +16,7 @@
 
 <% @uploaded_photos.each do |photo| %>
   <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= photo.id %></td>
     <td><%= link_to(h(photo.name), kadmin_uploaded_photo_path(photo)) %></td>
     <td><%= photo.popularity %></td>
     <td>

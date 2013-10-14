@@ -9,6 +9,7 @@
     <th>偏好</th>
     <th>体型</th>
     <th>特殊体型</th>
+    <th>客户图片</th>
     <th>其它说明</th>
     <th></th>
     <th></th>
@@ -24,6 +25,10 @@
     <td><%= customer.like %></td>
     <td><%= customer.human_style %></td>
     <td><%= customer.human_other_style %></td>
+    <td>
+      <img src="<%= customer.pic1 %>" width="40px" height="40px"/>
+      <img src="<%= customer.pic2 %>" width="40px" height="40px" />
+    </td>
     <td><%= customer.desp %></td>
     <td><%= link_to '查看', [:kadmin,customer] %></td>
     <td><%= link_to '编辑', edit_kadmin_customer_path(customer) %></td>

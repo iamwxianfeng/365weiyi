@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131013090501) do
+ActiveRecord::Schema.define(:version => 20131014154245) do
 
   create_table "banners", :force => true do |t|
     t.string   "name",       :default => ""
@@ -138,6 +138,8 @@ ActiveRecord::Schema.define(:version => 20131013090501) do
     t.text     "desp"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "pic1"
+    t.string   "pic2"
   end
 
   create_table "customization_wraps", :force => true do |t|
