@@ -1,121 +1,74 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>无标题文档</title>
-  <link href="stylesheets/admin.css" type="text/css" rel="stylesheet">
-  <link href="stylesheets/application.css" type="text/css" rel="stylesheet">
-  <link href="stylesheets/global.css" type="text/css" rel="stylesheet">
-  <link href="stylesheets/master.css" type="text/css" rel="stylesheet">
-  <link href="stylesheets/scaffold.css" type="text/css" rel="stylesheet">
-  <link href="stylesheets/index.css" type="text/css" rel="stylesheet">
-</head>
+<div class="m clearfix mt20">
+  <div class="show_fl fl">
+    <div class="show_fl_a">
+     <div class="show_fl_b"><span>按身高体重</span></div>
 
-<body>
-  <div class="m mt20 sub">
-    <div class="lg"><a href=""><img src="images/logo_01.gif" width="280" height="60"></a></div>
-
-    <ul class="clearfix suub_nav">
-      <li>欢迎huiyan.com <a href="">[退出]</a></li>
-      <li>|</li>
-      <li><a href="">我的维衣</a></li>
-      <li>|</li>
-      <li class="suub_nav_a"><a href="">去购物</a></li>
-      <li>|</li>
-      <li><a href="">[还没注册？]</a></li>
+     <%= form_tag "/customers" do %>
+     <ul class="show_fl_c">
+      <li>选择您的身高和体重</li>
+      <li>
+        <%= select_tag :height, options_for_select(Customer.height_select_value) %>
+        <%= select_tag :weight, options_for_select(Customer.weight_select_value) %>
+      </li>
+      <li><a href="">确定</a></li>
     </ul>
-    <div class="suub_nav_b fr"><img src="images/TEL_01.gif" width="160" height="24"></div>
-    
+    <% end %>
 
-  </div>
+    <div class="show_fl_b"><span>不同体型</span></div>
 
 
-  <div class="nav mt20">
-    <ul class="m nav_a clearfix">
-      <li class="nav_b"><a href="">首页</a></li>
-      <li><a href="">西装</a></li>
-      <li><a href="">衬衫</a></li>
-      <li><a href="">结婚西装</a></li>
-      <li><a href="">进口西装</a></li>
-      <li><a href="">团体定制</a></li>
-      <li><a href="">西服工艺</a></li>
-      <li><a href="">定制流程</a></li>
-      <li><a href="">配饰</a></li>
-      <li><a href="">知识堂</a></li>
-    </ul>
-  </div>
-  
-  <div class="m clearfix mt20">
-    <div class="show_fl fl">
-      <div class="show_fl_a">
-       <div class="show_fl_b"><span>按身高体重</span></div>
-       
-       <ul class="show_fl_c">
-        <li>选择您的身高和体重</li>
-        <li><select>
-          <option>170cm</option>
-        </select>
-        <select>
-          <option>70kg</option>
-        </select></li>
-        <li><a href="">确定</a></li>
+    <ul class="show_fl_d clearfix">
+     <li>瘦  型<input name="" type="checkbox" class="show_fl_d1" value="" checked></li><li>偏  瘦<input name="" type="checkbox" class="show_fl_d1" value="" ></li>
+     <li>标  准<input name="" type="checkbox" class="show_fl_d1" value="" ></li><li>强  壮<input name="" type="checkbox" class="show_fl_d1" value="" ></li>   
+     <li>偏  胖<input name="" type="checkbox" class="show_fl_d1" value="" ></li><li>肥  胖<input name="" type="checkbox" class="show_fl_d1" value="" ></li>
+   </ul>
+
+
+   <div class="show_fl_b"><span>特殊体型</span></div>
+
+   <ul class="show_fl_e clearfix">
+    <li class="show_fl_f">
+      <ul>
+        <li class="show_fl_f1"><img src="images/show_05.jpg" width="78" height="78"></li>
+        <li class="show_fl_f2">溜  肩<input name="" type="checkbox" class="show_fl_d1" value="" checked></li>
       </ul>
-      
-      <div class="show_fl_b"><span>不同体型</span></div>
-      
-      
-      <ul class="show_fl_d clearfix">
-       <li>瘦  型<input name="" type="checkbox" class="show_fl_d1" value="" checked></li><li>偏  瘦<input name="" type="checkbox" class="show_fl_d1" value="" ></li>
-       <li>标  准<input name="" type="checkbox" class="show_fl_d1" value="" ></li><li>强  壮<input name="" type="checkbox" class="show_fl_d1" value="" ></li>   
-       <li>偏  胖<input name="" type="checkbox" class="show_fl_d1" value="" ></li><li>肥  胖<input name="" type="checkbox" class="show_fl_d1" value="" ></li>
-     </ul>
-     
-     
-     <div class="show_fl_b"><span>特殊体型</span></div>
-     
-     <ul class="show_fl_e clearfix">
-      <li class="show_fl_f">
-        <ul>
-          <li class="show_fl_f1"><img src="images/show_05.jpg" width="78" height="78"></li>
-          <li class="show_fl_f2">溜  肩<input name="" type="checkbox" class="show_fl_d1" value="" checked></li>
-        </ul>
-      </li>
-      <li class="show_fl_f">
-        <ul>
-          <li class="show_fl_f1"><img src="images/show_06.jpg" width="78" height="78"></li>
-          <li class="show_fl_f2"> 端  肩<input name="" type="checkbox" class="show_fl_d1" value="" ></li>
-        </ul>
-      </li>
-      <li class="show_fl_f">
-        <ul>
-          <li class="show_fl_f1"><img src="images/show_07.jpg" width="78" height="78"></li>
-          <li class="show_fl_f2">高低肩<input name="" type="checkbox" class="show_fl_d1" value="" > </li>
-        </ul>
-      </li>
-      <li class="show_fl_f">
-        <ul>
-          <li class="show_fl_f1"><img src="images/show_08.jpg" width="78" height="78"></li>
-          <li class="show_fl_f2"> 翘  臀<input name="" type="checkbox" class="show_fl_d1" value="" ></li>
-        </ul>
-      </li>
-      <li class="show_fl_f">
-        <ul>
-          <li class="show_fl_f1"><img src="images/show_09.jpg" width="78" height="78"></li>
-          <li class="show_fl_f2">驼  背<input name="" type="checkbox" class="show_fl_d1" value="" ></li>
-        </ul>
-      </li>
-      
-    </ul>          
-  </div>  
-  <div class="mt"><img src="images/show_02.jpg" width="260" height="314"></div>
-  
-  
-  
-  
-  
+    </li>
+    <li class="show_fl_f">
+      <ul>
+        <li class="show_fl_f1"><img src="images/show_06.jpg" width="78" height="78"></li>
+        <li class="show_fl_f2"> 端  肩<input name="" type="checkbox" class="show_fl_d1" value="" ></li>
+      </ul>
+    </li>
+    <li class="show_fl_f">
+      <ul>
+        <li class="show_fl_f1"><img src="images/show_07.jpg" width="78" height="78"></li>
+        <li class="show_fl_f2">高低肩<input name="" type="checkbox" class="show_fl_d1" value="" > </li>
+      </ul>
+    </li>
+    <li class="show_fl_f">
+      <ul>
+        <li class="show_fl_f1"><img src="images/show_08.jpg" width="78" height="78"></li>
+        <li class="show_fl_f2"> 翘  臀<input name="" type="checkbox" class="show_fl_d1" value="" ></li>
+      </ul>
+    </li>
+    <li class="show_fl_f">
+      <ul>
+        <li class="show_fl_f1"><img src="images/show_09.jpg" width="78" height="78"></li>
+        <li class="show_fl_f2">驼  背<input name="" type="checkbox" class="show_fl_d1" value="" ></li>
+      </ul>
+    </li>
+
+  </ul>          
+</div>  
+<div class="mt"><img src="images/show_02.jpg" width="260" height="314"></div>
+
+
+
+
+
 </div>
 <div class="show_fr fl">
-  
+
   <div class="show_fr_a">真实客户案例</div>
   
   
@@ -260,49 +213,10 @@
 
   </div>
 
-
-
-
-
-
-
+</div>
 
 </div>
 
+<script>
 
-
-</div>
-
-
-
-<div class="footer">
-  <div class="m">
-    <ul class="footer_a clearfix">
-      <li><a href="">关于维衣</a></li>
-      <li>|</li>
-      <li><a href="">购买指南</a></li>
-      <li>|</li>
-      <li><a href="">团体定制流程</a></li>
-      <li>|</li>
-      <li><a href="">个人定制流程</a></li>
-      <li>|</li>
-      <li><a href="">工期说明</a></li>
-      <li>|</li>
-      <li><a href="">售后服务</a></li>
-      <li>|</li>
-      <li><a href="">工作机会</a></li>
-      <li>|</li>
-      <li><a href="">联系我们</a></li>
-    </ul>
-
-    <div class="footer_b">营业时间：周一到周日 10:00-19:00 节假日无休    联系电话：400-010-0013</div>
-  </div>
-</div>
-<div class="footer_c">
-  <div class="m "><div class="footer_d"><a href="">www.365weiyi.com</a> 版权所有 [v2.11.0709] [粤ICP备11023687号-1]</div></div>
-</div>
-
-
-
-</body>
-</html>
+</script>

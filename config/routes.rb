@@ -35,8 +35,10 @@ Inono::Application.routes.draw do
     }
   end
   resource :session
-  resources :blog_posts , :path=>"zhishitang" , :only=>[:index,:show]
-  resources :blog_comments , :only=>[:create]
+  resources :blog_posts, :path=>"zhishitang", :only=>[:index,:show]
+  resources :blog_comments, :only=>[:create]
+  resources :customers
+
   match '/cart/:action' => 'cart#index'
   match '/customization_wrap/:action' => 'customization_wrap#index'
   match '/change_password' => 'users#change_password', :as => :change_password

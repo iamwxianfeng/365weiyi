@@ -39,6 +39,22 @@ class Customer < ActiveRecord::Base
     ]
   end
 
+  def self.height_select_value
+    arr = []
+    150.step(190,1) do |i|
+      arr << ["#{i}cm",i]
+    end
+    arr
+  end
+
+  def self.weight_select_value
+    arr = []
+    40.step(80,1) do |i|
+      arr << ["#{i}kg",i]
+    end
+    arr
+  end
+
   def human_style
     self.class.style_select_value.select { |_,v| v == self.style }.flatten[0]
   end
