@@ -38,6 +38,8 @@ Inono::Application.routes.draw do
   resources :blog_posts, :path=>"zhishitang", :only=>[:index,:show]
   resources :blog_comments, :only=>[:create]
   resources :customers
+  
+  match '/customers/:action', :controller => "customers"
 
   match '/cart/:action' => 'cart#index'
   match '/customization_wrap/:action' => 'customization_wrap#index'
@@ -91,6 +93,7 @@ Inono::Application.routes.draw do
     resources :customers
   end
 
+  # SHIT!!! 谁TMD设计的这个路由.
   match ':category' => 'categories#show'
   match ':category/:subcategory' => 'subcategories#show'
 

@@ -3,14 +3,17 @@
     <div class="show_fl_a">
      <div class="show_fl_b"><span>按身高体重</span></div>
 
-     <%= form_tag "/customers" do %>
+     <%= form_tag "/customers", :method=>:get do %>
      <ul class="show_fl_c">
       <li>选择您的身高和体重</li>
       <li>
-        <%= select_tag :height, options_for_select(Customer.height_select_value) %>
-        <%= select_tag :weight, options_for_select(Customer.weight_select_value) %>
+        <%= select_tag :height, options_for_select(Customer.height_select_value,170) %>
+        <%= select_tag :weight, options_for_select(Customer.weight_select_value,60) %>
       </li>
-      <li><a href="">确定</a></li>
+      <li>
+        <a href="">确定</a>
+        <%= submit_tag '确定' %>
+      </li>
     </ul>
     <% end %>
 
@@ -18,7 +21,7 @@
 
 
     <ul class="show_fl_d clearfix">
-     <li>瘦  型<input name="" type="checkbox" class="show_fl_d1" value="" checked></li><li>偏  瘦<input name="" type="checkbox" class="show_fl_d1" value="" ></li>
+     <li>瘦  型<input name="" type="checkbox" class="show_fl_d1" value=""></li><li>偏  瘦<input name="" type="checkbox" class="show_fl_d1" value="" ></li>
      <li>标  准<input name="" type="checkbox" class="show_fl_d1" value="" ></li><li>强  壮<input name="" type="checkbox" class="show_fl_d1" value="" ></li>   
      <li>偏  胖<input name="" type="checkbox" class="show_fl_d1" value="" ></li><li>肥  胖<input name="" type="checkbox" class="show_fl_d1" value="" ></li>
    </ul>
@@ -30,7 +33,7 @@
     <li class="show_fl_f">
       <ul>
         <li class="show_fl_f1"><img src="images/show_05.jpg" width="78" height="78"></li>
-        <li class="show_fl_f2">溜  肩<input name="" type="checkbox" class="show_fl_d1" value="" checked></li>
+        <li class="show_fl_f2">溜  肩<input name="" type="checkbox" class="show_fl_d1" value=""></li>
       </ul>
     </li>
     <li class="show_fl_f">
