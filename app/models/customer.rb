@@ -55,12 +55,16 @@ class Customer < ActiveRecord::Base
     arr
   end
 
+  def self.num_to_upper_case(num)
+    { 1 => '一', 2 => '二', 3 => '三', 4 => '四', 5=> '五', 6 => '六', 7 => '七', 8 => '八', 9 => '九' }[num]
+  end
+
   def human_style
     self.class.style_select_value.select { |_,v| v == self.style }.flatten[0]
   end
 
   def human_other_style
     self.class.other_style_value.select { |_,v| v == self.other_style }.flatten[0]
-  end
+  end  
 
 end
