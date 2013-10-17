@@ -4,7 +4,7 @@ class Customer < ActiveRecord::Base
   module Style
     Thin = 1 # 瘦
     LittleThin =2 # 偏瘦
-    Normail = 3 #　标准
+    Normal = 3 #　标准
     Strong = 4 # 强壮
     LittleFat = 5 # 偏胖
     Fat = 6 # 肥胖
@@ -22,7 +22,7 @@ class Customer < ActiveRecord::Base
     [
       ['瘦', Style::Thin],
       ['偏瘦', Style::LittleThin],
-      ['标准', Style::Normail],
+      ['标准', Style::Normal],
       ['强壮', Style::Strong],
       ['偏胖', Style::LittleFat],
       ['肥胖', Style::Fat]
