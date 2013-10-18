@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110926175212) do
+ActiveRecord::Schema.define(:version => 20131014160145) do
 
   create_table "banners", :force => true do |t|
     t.string   "name",       :default => ""
@@ -125,6 +125,30 @@ ActiveRecord::Schema.define(:version => 20110926175212) do
     t.integer  "popularity", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "customers", :force => true do |t|
+    t.string   "name"
+    t.string   "height"
+    t.string   "weight"
+    t.string   "job"
+    t.string   "like"
+    t.integer  "style",          :default => 0
+    t.integer  "other_style",    :default => 0
+    t.text     "desp"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "pic1"
+    t.string   "pic2"
+    t.integer  "suit_product1"
+    t.integer  "suit_product2"
+    t.integer  "suit_product3"
+    t.integer  "shirt_product1"
+    t.integer  "shirt_product2"
+    t.integer  "shirt_product3"
+    t.integer  "other_product1"
+    t.integer  "other_product2"
+    t.integer  "other_product3"
   end
 
   create_table "customization_wraps", :force => true do |t|

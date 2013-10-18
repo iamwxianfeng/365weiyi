@@ -14,7 +14,7 @@
     </ul>
     <div class="goods_show">
       <div id="wrap">        
-        <img src="<%= @photos.first.url %>" class="product_img"/>        
+        <img src="<%= @photos.first.url if @photos.first %>" class="product_img"/> 
       </div>
     </div>
   </div>

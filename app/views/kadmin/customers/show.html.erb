@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @customer.name %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @customer.height %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%= @customer.weight %>
+</p>
+
+<p>
+  <b>Job:</b>
+  <%= @customer.job %>
+</p>
+
+<p>
+  <b>Like:</b>
+  <%= @customer.like %>
+</p>
+
+<p>
+  <b>Style:</b>
+  <%= @customer.style %>
+</p>
+
+<p>
+  <b>Other style:</b>
+  <%= @customer.other_style %>
+</p>
+
+<p>
+  <b>Desp:</b>
+  <%= @customer.desp %>
+</p>
+
+
+<%= link_to 'Edit', edit_kadmin_customer_path(@customer) %> |
+<%= link_to 'Back', kadmin_customers_path %>

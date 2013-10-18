@@ -1,0 +1,42 @@
+<h1>客户列表</h1>
+
+<table>
+  <tr>
+    <th>姓名</th>
+    <th>身高</th>
+    <th>体重</th>
+    <th>职业</th>
+    <th>偏好</th>
+    <th>体型</th>
+    <th>特殊体型</th>
+    <th>客户图片</th>
+    <th>其它说明</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @customers.each do |customer| %>
+  <tr>
+    <td><%= customer.name %></td>
+    <td><%= customer.height %></td>
+    <td><%= customer.weight %></td>
+    <td><%= customer.job %></td>
+    <td><%= customer.like %></td>
+    <td><%= customer.human_style %></td>
+    <td><%= customer.human_other_style %></td>
+    <td>
+      <img src="<%= customer.pic1 %>" width="40px" height="40px"/>
+      <img src="<%= customer.pic2 %>" width="40px" height="40px" />
+    </td>
+    <td><%= customer.desp %></td>
+    <td><%= link_to '查看', [:kadmin,customer] %></td>
+    <td><%= link_to '编辑', edit_kadmin_customer_path(customer) %></td>
+    <td><%= link_to '删除', [:kadmin,customer], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to '新建客户', new_kadmin_customer_path %>
