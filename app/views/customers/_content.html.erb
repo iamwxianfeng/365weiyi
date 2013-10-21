@@ -1,0 +1,151 @@
+<div class="show_fr fl">
+
+  <div class="show_fr_a">真实客户案例</div>
+  
+  
+  <div class="show_fr_b">根据选择，有N名客户资料符合要求</div>
+  
+  <ul class="clearfix show_fr_c">
+    <% @customers.each_with_index do |c,i| %>
+    <li class="<%= (params[:id].to_i == c.id or i == 0 && params[:id].blank?)? 'show_fr_cc' : '' %>"><a href="/customers?id=<%= c.id %>">客户<%= Customer.num_to_upper_case(i+1) %></a></li>
+    <% end %>
+  </ul>
+  
+  
+  <table cellpadding="0" cellspacing="0" border="0" class="show_fr_d">
+    <tr>
+      <td class="show_fr_e">客户：</td>
+      <td colspan="7"><%= @item.name %> </td>
+    </tr>
+    <tr>
+      <td class="show_fr_e">身高：</td>
+      <td class="show_fr_f"><%= @item.height %>cm </td>
+      <td class="show_fr_e">体重：</td>
+      <td class="show_fr_f"><%= @item.weight %>kg </td>
+      <td class="show_fr_e">职业：</td>
+      <td class="show_fr_f"><%= @item.job %></td>
+      <td class="show_fr_e">偏好：</td>
+      <td class="show_fr_f"><%= @item.like %></td>
+    </tr>
+    <tr>
+      <td class="show_fr_e" >其他说明：</td>
+      <td colspan="7"><%= @item.desp %></td>
+    </tr>
+
+  </table>
+  <ul class="clearfix show_fr_g">
+    <li class="show_fr_g1">
+      <img src="<%= @item.pic1 %>" width="328" height="361">
+    </li>
+    <li>
+      <img src="<%= @item.pic2 %>" width="328" height="360">
+    </li>
+  </ul>
+  
+  <div class="show_fr_h">适合此体型的衬衫面料</div>
+
+  <div class="show_fr_jj">
+    <ul class="clearfix show_fr_k">
+      <li class="show_fr_j">
+        <ul>
+          <li><a href="/products/<%= @shirt_product1.id %>">
+            <img src="<%= @shirt_product1.photos[0].url %>" width="160" height="190"></a></li>
+            <li class="show_fr_j1"> <%= @shirt_product1.name %> </li>
+            <li class="show_fr_j2">￥<%= @shirt_product1.our_price %></li>
+            <li class="show_fr_j3"><%= @shirt_product1.description %></li>
+          </ul>
+        </li>
+        <li class="show_fr_j">
+          <ul>
+            <li><a href="/products/<%= @shirt_product2.id %>">
+              <img src="<%= @shirt_product2.photos[0].url %>" width="160" height="190"></a></li>
+              <li class="show_fr_j1"> <%= @shirt_product2.name %> </li>
+              <li class="show_fr_j2">￥<%= @shirt_product2.our_price %></li>
+              <li class="show_fr_j3"><%= @shirt_product2.description %></li>
+            </ul>
+          </li>
+          <li class="show_fr_j">
+            <ul>
+              <li><a href="/products/<%= @shirt_product3.id %>"><img src="<%= @shirt_product3.photos[0].url %>" width="160" height="190"></a></li>
+              <li class="show_fr_j1"> <%= @shirt_product3.name %> </li>
+              <li class="show_fr_j2">￥<%= @shirt_product3.our_price %></li>
+              <li class="show_fr_j3"><%= @shirt_product3.description %></li>
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+
+      <div class="show_fr_h">适合此体型的西服面料</div>
+
+      <div class="show_fr_jj">
+        <ul class="clearfix show_fr_k">
+          <li class="show_fr_j">
+            <ul>
+              <li><a href="/products/<%= @suit_product1.id %>"><img src="<%= @suit_product1.photos[0].url %>" width="160" height="190"></a></li>
+              <li class="show_fr_j1"> <%= @suit_product1.name %> </li>
+              <li class="show_fr_j2">￥<%= @suit_product1.our_price %></li>
+              <li class="show_fr_j3"><%= @suit_product1.description %></li>
+            </ul>
+          </li>
+          <li class="show_fr_j">
+            <ul>
+              <li><a href="/products/<%= @suit_product2.id %>"><img src="<%= @suit_product2.photos[0].url %>" width="160" height="190"></a></li>
+              <li class="show_fr_j1"> <%= @suit_product2.name %> </li>
+              <li class="show_fr_j2">￥<%= @suit_product2.our_price %></li>
+              <li class="show_fr_j3"><%= @suit_product2.description %></li>
+            </ul>
+          </li>
+          <li class="show_fr_j">
+            <ul>
+              <li><a href="/products/<%= @suit_product3.id %>"><img src="<%= @suit_product3.photos[0].url %>" width="160" height="190"></a></li>
+              <li class="show_fr_j1"> <%= @suit_product3.name %> </li>
+              <li class="show_fr_j2">￥<%= @suit_product3.our_price %></li>
+              <li class="show_fr_j3"><%= @suit_product3.description %></li>
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <div class="show_fr_h">适合此体型的款式</div>
+
+      <div class="show_fr_jj show_fr_l">
+        <ul class="clearfix show_fr_k">
+          <li class="show_fr_j">
+            <ul>
+              <li><a href="/products/<%= @other_product1.id %>"><img src="<%= @other_product1.photos[0].url %>" width="160" height="190"></a></li>
+              <li class="show_fr_j1"> <%= @other_product1.name %> </li>
+              <li class="show_fr_j2">￥<%= @other_product1.our_price %></li>
+              <li class="show_fr_j3"><%= @other_product1.description %></li>
+            </ul>
+          </li>
+          <li class="show_fr_j">
+            <ul>
+              <li><a href="/products/<%= @other_product2.id %>"><img src="<%= @other_product2.photos[0].url %>" width="160" height="190"></a></li>
+              <li class="show_fr_j1"> <%= @other_product2.name %> </li>
+              <li class="show_fr_j2">￥<%= @other_product2.our_price %></li>
+              <li class="show_fr_j3"><%= @other_product2.description %></li>
+            </ul>
+          </li>
+          <li class="show_fr_j">
+            <ul>
+              <li><a href="/products/<%= @other_product3.id %>"><img src="<%= @other_product3.photos[0].url %>" width="160" height="190"></a></li>
+              <li class="show_fr_j1"> <%= @other_product3.name %> </li>
+              <li class="show_fr_j2">￥<%= @other_product3.our_price %></li>
+              <li class="show_fr_j3"><%= @other_product3.description %></li>
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
