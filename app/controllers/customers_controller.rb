@@ -3,10 +3,28 @@ class CustomersController < ApplicationController
   layout 'customer'
 
   def index
-    @customers = if params[:height] and params[:weight]
-      Customer.where(:height=>params[:height],:weight=>params[:weight])
+    sql = ""
+    if params[:height]
+      sql << " height = '#{params[:height]}' "
+    end
+    if params[:weight]
+      sql << "AND weight = '#{params[:weight]}' "
+    end
+    if params[:style]
+      sql << "AND style IN (#{params[:style].join(',')}) "
+    end
+    if params[:other_style]
+      sql << "AND other_style IN (#{params[:other_style].join(',')}) "
+    end
+    if request.xhr?
+      sql = sql.sub(/^AND/, '')
+      @customers = Customer.where(sql)
     else
-      Customer.where(:height=>170,:weight=>60)
+      @customers = if params[:height] and params[:weight]
+        Customer.where(:height=>params[:height],:weight=>params[:weight])
+      else
+        Customer.where(:height=>170,:weight=>60)
+      end
     end
     if @customers.present?
       @item = if params[:id]
@@ -25,6 +43,9 @@ class CustomersController < ApplicationController
       @other_product1 = Product.find @item.other_product1
       @other_product2 = Product.find @item.other_product2
       @other_product3 = Product.find @item.other_product3
+    end
+    if request.xhr?
+      render :partial => "content"
     end
   end
 

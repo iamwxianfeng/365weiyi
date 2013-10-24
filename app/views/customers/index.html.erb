@@ -11,8 +11,7 @@
         <%= select_tag :weight, options_for_select(Customer.weight_select_value,params[:weight] || 60) %>
       </li>
       <li>
-        <a href="">确定</a>
-        <%= submit_tag '确定' %>
+        <button type="submit">确定</button>
       </li>
     </ul>
 
@@ -74,13 +73,9 @@
 <div class="mt"><img src="images/show_02.jpg" width="260" height="314"></div>
 </div>
 
-<% if @customers.present? %>
-<%= render :partial => "content" %>
-<% else %>
-<div class="show_fr fl">
-  啊哦, 没搜索到符合条件的客户.
+<div id="customer_content">
+  <%= render :partial => "content" %>
 </div>
-<% end %>
 
 <script type="application/javascript">
 
@@ -110,10 +105,12 @@ $(function(){
       type: 'GET',
       data: {
         "style": getStyleData(),
-        "other_style": getOtherStyleData()
+        "other_style": getOtherStyleData(),
+        "height": $("#height").val(),
+        "weight": $("#weight").val()
       },
       success: function(ret){
-
+        $("#customer_content").html(ret);
       }
     });
   });

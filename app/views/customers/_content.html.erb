@@ -1,3 +1,5 @@
+<% if @customers.present? %>
+
 <div class="show_fr fl">
 
   <div class="show_fr_a">真实客户案例</div>
@@ -149,3 +151,9 @@
     </div>
 
   </div>
+
+  <% else %>
+  <div class="show_fr fl">
+    啊哦, 没搜索到符合条件的客户.
+  </div>
+  <% end %>
