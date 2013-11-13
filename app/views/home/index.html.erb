@@ -67,6 +67,10 @@
 
   <div class="nav_c"><div class="m nav_d">定制工期:衬衫定制7天左右（含休息日)，西服定制为18~25天（视工艺不同），可加急，请咨询客服。</div></div>
 
+  
+  <%= render_flash_messages %>
+  <% flash.discard %>
+
   <div class="ber">
     <% banner = @scrolling_banners.first %>
     <%= link_to(raw("<img src='#{banner.photo_url}' alt='#{h banner.name}' />"), banner.link_to, :title => h(banner.name)) %>
