@@ -65,7 +65,7 @@
     </ul>
   </div>
 
-  <div class="nav_c"><div class="m nav_d">"改为衬衫定制3~7天，西服定制18~22天，可加急，详情咨询客服"</div></div>
+  <div class="nav_c"><div class="m nav_d">定制工期：衬衫3~5天，西服18~22天，请安排好时间。可加急，详情咨询客服</div></div>
 
 
   <%= render_flash_messages %>
@@ -309,17 +309,19 @@
                 <tr>
                   <td class="cust_fl_b">身高：</td>
                   <td>
-                    <%= f.text_field "height", :class=>"cust_input", :style=>"width:150px"  %> cm
+                    <%= f.text_field "height", :class=>"cust_input" %> cm
                   </td>
+                </tr>
+                <tr>
                   <td class="cust_fl_b">体重：</td>
                   <td>
-                    <%= f.text_field "weight", :class=>"cust_input", :style=>"width:150px"  %> cm
+                    <%= f.text_field "weight", :class=>"cust_input" %> cm
                   </td>
                 </tr>
                 <tr>
                   <td class="cust_fl_b">预算：</td>
                   <td>
-                    <%= f.text_field "fee", :class=>"cust_input", :style=>"width:150px" %> 元
+                    <%= f.text_field "fee", :class=>"cust_input" %> 元
                   </td>
                 </tr>
                 <tr>
