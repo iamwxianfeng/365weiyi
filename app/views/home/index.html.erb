@@ -67,7 +67,7 @@
 
   <div class="nav_c"><div class="m nav_d">定制工期:衬衫定制7天左右（含休息日)，西服定制为18~25天（视工艺不同），可加急，请咨询客服。</div></div>
 
-  
+
   <%= render_flash_messages %>
   <% flash.discard %>
 
@@ -304,6 +304,24 @@
                   <td class="cust_fl_b">联系人：</td>
                   <td>
                     <%= f.text_field "username", :class=>"cust_input" %>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b">身高：</td>
+                  <td>
+                    <%= f.text_field "height", :class=>"cust_input" %> cm
+                  </td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b">体重：</td>
+                  <td>
+                    <%= f.text_field "weight", :class=>"cust_input" %> kg
+                  </td>
+                </tr>
+                <tr>
+                  <td class="cust_fl_b">预算：</td>
+                  <td>
+                    <%= f.text_field "fee", :class=>"cust_input" %> 元
                   </td>
                 </tr>
                 <tr>

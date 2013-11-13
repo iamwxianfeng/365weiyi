@@ -59,7 +59,7 @@ ul, ol, li {list-style: none;}
 .slideTxtBox .hd ul{position:relative; z-index:1000;}
 .slideTxtBox .hd ul li{ position:relative; z-index:1000; float:left;width:238px;height:40px; line-height:40px;border-right:1px solid #999; border-top:1px solid #999; cursor:pointer;text-align:center;font-weight:bold;font-size:14px;color:#999;  }
 .slideTxtBox .hd ul li.on{color:#000;background:#fff;height:40px; }
-.bd{width:724px;background:#fff;border:1px solid #999;padding:0;height:408px;height:400px\0;+height:406px; overflow:hidden;}
+.bd{width:724px;background:#fff;border:1px solid #999;padding:0;height:522px;height:522px\0;+height:406px; overflow:hidden;}
 .cust_input{background:url(../images/zc_01.jpg) no-repeat;width:312px;height:30px;line-height:30px;color:#999;text-indent:10px;border:none;}
 .cust_fl_a{margin:36px 0 50px 60px;}
 .cust_fl_a td{padding-top:15px;}

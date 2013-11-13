@@ -10,6 +10,9 @@
     <th>预约地点</th>
     <th>手机</th>
     <th>联系人</th>
+    <th>身高(cm)</th>
+    <th>体重(kg)</th>
+    <th>预算(元)</th>
     <th>会员</th>
     <th>预约类型</th>
     <th>创建时间</th>
@@ -26,6 +29,9 @@
     <td><%= reserve_ruler.where %></td>
     <td><%= reserve_ruler.phone %></td>
     <td><%= reserve_ruler.username %></td>
+    <td><%= reserve_ruler.height %></td>
+    <td><%= reserve_ruler.weight %></td>
+    <td><%= reserve_ruler.fee %></td>
     <td><%= link_to  reserve_ruler.reserve.try(:profile).try(:name) , [:kadmin,reserve_ruler.try(:reserve)] if reserve_ruler.try(:reserve).present? %></td>
     <td><%= reserve_ruler.human_status %></td>
     <td><%= reserve_ruler.created_at %></td>

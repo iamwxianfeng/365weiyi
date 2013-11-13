@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131014160145) do
+ActiveRecord::Schema.define(:version => 20131113153756) do
 
   create_table "banners", :force => true do |t|
     t.string   "name",       :default => ""
@@ -468,6 +468,9 @@ ActiveRecord::Schema.define(:version => 20131014160145) do
     t.integer  "status"
     t.integer  "reserve_id"
     t.integer  "product_id"
+    t.string   "height"
+    t.string   "weight"
+    t.string   "fee"
   end
 
   add_index "reserve_rulers", ["place_id"], :name => "index_reserve_rulers_on_place_id"
