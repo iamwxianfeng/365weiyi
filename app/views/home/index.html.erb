@@ -65,7 +65,7 @@
     </ul>
   </div>
 
-  <div class="nav_c"><div class="m nav_d">定制工期：衬衫3~7天，西服18~22天，请安排好时间。可加急，详情咨询客服</div></div>
+  <div class="nav_c"><div class="m nav_d">定制工期：衬衫3~5天，西服18~22天，请安排好时间。可加急，详情咨询客服</div></div>
 
 
   <%= render_flash_messages %>
@@ -79,367 +79,370 @@
 
   <div class="m clearfix">
     <ul class="address fl">
-      <li><img src="/images/chaoyang.gif" width="91" height="24"></li>
+      <li><a href="http://www.365weiyi.com/helps/contact#chaoyang"><img src="/images/chaoyang.gif" width="91" height="24"></a></li>
       <li>地址：大望路万达广场3号楼301</li>
       <li>电话：58206725</li>
       <li class="mt5"><img src="/images/jt.gif" width="11" height="11"></li>
     </ul>
 
     <ul class="address fl">
-      <li><img src="/images/wudaokou.gif" width="91" height="24"></li>
+      <li><a href="http://www.365weiyi.com/helps/contact#haidian"><img src="/images/wudaokou.gif" width="91" height="24"></a></li>
       <li>地址：海淀区五道口华清商务会馆703A</li>
       <li>电话：82864498</li>
       <li class="mt5"><img src="/images/jt.gif" width="11" height="11"></li>
     </ul>
 
     <ul class="address address_a fl">
+      <!--
       <li class="address_c"><img src="/images/weibo_weixin.gif" width="91" height="24"></li>
       <li class="address_b address_c">
         <iframe width="100%" height="110" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?width=0&height=110&fansRow=2&ptype=1&speed=0&skin=-1&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2034391672&verifier=b8c5e1f7&colors=ffffff,ffffff,666666,0082cb"></iframe>
       </li>
       <li class="address_d"><img src="/images/code.gif" width="114" height="114"></li>
-    </ul>
+    -->
+    <img src="/images/kuai.jpg"/>
+  </ul>
 
-  </div>
-
-
-  <div class="ber ber1"><div class="m"><img src="/images/eighteen.jpg" width="980" height="70"></div></div>
-
-  <div class="m"><div class="circuit"><img src="/images/procedures_0.gif" width="29" height="170"><img src="/images/procedures_1.gif" width="170" height="170"><img src="/images/procedures_2.gif" width="170" height="170"><img src="/images/procedures_3.gif" width="170" height="170"><img src="/images/procedures_4.gif" width="170" height="170"><a href=""><img src="/images/help.jpg" width="254" height="170"></a></div></div>
-
-  <div class="m circuit_a"><img src="/images/suit_01.gif" width="980" height="36"></div>
-  <div class="m circuit_b">维衣提供数千种面料，半毛衬等多种工艺，可半成品试衣</div>
-
-  <% if @suit_banner %>
-  <div class="m"><div class="circuit_c"><a href="javascript:;"><img src="/images/suit_02.gif" width="379" height="366"></a>
-   <a href="<%= @suit_banner.link_to %>"><img src="<%= @suit_banner.photo_url %>" width="581" height="366"></a></div></div>
-   <% end %>
-
-   <div class="m">
-    <ul class="clearfix circuit_d">
-      <% @suit_products.each do |product| %>
-      <li class="circuit_e">
-        <ul>
-          <li><a href="/products/<%= product.id %>"><img src="<%= product.photos.last.url %>" width="180" height="220"></a></li>
-          <li class="circuit_f"><%=  product.name %></li>
-          <li class="circuit_f circuit_g">￥<%= product.our_price %></li>
-        </ul>
-      </li>
-      <% end %>
-    </ul>
-  </div>
+</div>
 
 
-  <div class="m">
-    <ul class="clearfix circuit_d">
-      <li class="circuit_e"><a href=""><img src="/images/Sf_01.gif" width="180" height="60"></a></li>
-      <% @brand_suits.each do |bs| %>
-      <li class="circuit_e"><a href="<%= bs.link_to %>"><img src="<%= bs.photo_url %>" width="180" height="60"></a></li>
-      <% end %>
-    </ul>
-  </div>
+<div class="ber ber1"><div class="m"><img src="/images/eighteen.jpg" width="980" height="70"></div></div>
+
+<div class="m"><div class="circuit"><img src="/images/procedures_0.gif" width="29" height="170"><img src="/images/procedures_1.gif" width="170" height="170"><img src="/images/procedures_2.gif" width="170" height="170"><img src="/images/procedures_3.gif" width="170" height="170"><img src="/images/procedures_4.gif" width="170" height="170"><a href=""><img src="/images/help.jpg" width="254" height="170"></a></div></div>
+
+<div class="m circuit_a"><img src="/images/suit_01.gif" width="980" height="36"></div>
+<div class="m circuit_b">维衣提供数千种面料，半毛衬等多种工艺，可半成品试衣</div>
+
+<% if @suit_banner %>
+<div class="m"><div class="circuit_c"><a href="javascript:;"><img src="/images/suit_02.gif" width="379" height="366"></a>
+ <a href="<%= @suit_banner.link_to %>"><img src="<%= @suit_banner.photo_url %>" width="581" height="366"></a></div></div>
+ <% end %>
+
+ <div class="m">
+  <ul class="clearfix circuit_d">
+    <% @suit_products.each do |product| %>
+    <li class="circuit_e">
+      <ul>
+        <li><a href="/products/<%= product.id %>"><img src="<%= product.photos.last.url %>" width="180" height="220"></a></li>
+        <li class="circuit_f"><%=  product.name %></li>
+        <li class="circuit_f circuit_g">￥<%= product.our_price %></li>
+      </ul>
+    </li>
+    <% end %>
+  </ul>
+</div>
 
 
-  <div class="m circuit_a"><img src="/images/shirt_01.gif" width="980" height="36"></div>
-  <div class="m circuit_b">进口辅料，每位客户单独留版，全网独一无二体验</div>
-
-  <div class="m">
-    <% if @shirt_banner %>
-    <div class="circuit_c"><a href="javascript:;"><img src="/images/shirt_02.gif" width="379" height="366"></a> 
-      <a href="<%= @shirt_banner.link_to %>"><img src="<%= @shirt_banner.photo_url %>" width="581" height="366"></a></div></div>
-      <% end %>
-
-      <div class="m">
-        <ul class="clearfix circuit_d">
-          <% @shirt_products.each do |product| %>
-          <li class="circuit_e">
-            <ul>
-              <li><a href="/products/<%= product.id %>"><img src="<%= product.photos.last.url %>" width="180" height="220"></a></li>
-              <li class="circuit_f"> <%= product.name %> </li>
-              <li class="circuit_f circuit_g">￥<%= product.our_price %></li>
-            </ul>
-          </li>
-          <% end %>
-        </ul>
-      </div>
+<div class="m">
+  <ul class="clearfix circuit_d">
+    <li class="circuit_e"><a href=""><img src="/images/Sf_01.gif" width="180" height="60"></a></li>
+    <% @brand_suits.each do |bs| %>
+    <li class="circuit_e"><a href="<%= bs.link_to %>"><img src="<%= bs.photo_url %>" width="180" height="60"></a></li>
+    <% end %>
+  </ul>
+</div>
 
 
-      <div class="m">
-        <ul class="clearfix circuit_d">
-          <li class="circuit_e"><a href=""><img src="/images/Sf_06.gif" width="180" height="60"></a></li>
-          <% @brand_shirts.each do |bs| %>
-          <li class="circuit_e"><a href="<%= bs.link_to %>"><img src="<%= bs.photo_url %>" width="180" height="60"></a></li>
-          <% end %>
-        </ul>
-      </div>
+<div class="m circuit_a"><img src="/images/shirt_01.gif" width="980" height="36"></div>
+<div class="m circuit_b">进口辅料，每位客户单独留版，全网独一无二体验</div>
 
+<div class="m">
+  <% if @shirt_banner %>
+  <div class="circuit_c"><a href="javascript:;"><img src="/images/shirt_02.gif" width="379" height="366"></a> 
+    <a href="<%= @shirt_banner.link_to %>"><img src="<%= @shirt_banner.photo_url %>" width="581" height="366"></a></div></div>
+    <% end %>
 
-      <div class="m circuit_a"><img src="/images/evaluate_01.gif" width="980" height="36"></div>
-      <div class="m circuit_b circuit_bb">客户真实评价</div>
-      <div class="m">
-        <ul class="clearfix circuit_h">
-          <li><img src="/images/evaluate_02.gif" width="296" height="436"></li>
-          <li><img src="/images/evaluate_03.gif" width="297" height="437"></li>
-          <li><img src="/images/evaluate_04.gif" width="296" height="437"></li>
-        </ul>
-      </div>
-
-      <div class="m circuit_a"><img src="/images/customize.gif" width="980" height="36"></div>
-      <div class="m circuit_b">您可以选择实体店定制，预约上门量体、在线自助定制</div>
-
-
-      <div class="m clearfix customize">
-        <div class="fl cust_fl">
-
-          <div class="slideTxtBox">
-           <div class="hd">
-            <ul>
-              <li>预约体验店量体</li>
-              <li>预约上门量体</li>
-            </ul>
-          </div>
-
-          <div class="bd">
-            <%= form_tag reserve_shop_categories_path  do  %>
-            <%= hidden_field_tag "reserve_shop[status]"  , 1 %>
-            <div>
-              <table cellpadding="0" cellspacing="0" border="0" class="cust_fl_a">
-                <tr>
-                  <td class="cust_fl_b">时间：</td>
-                  <td>
-                    <%= text_field_tag "reserve_shop[reserve_at]", @reserve_shop.reserve_at, :class=>"cust_input" %>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="cust_fl_b">具体时间：</td>
-                  <td>
-                    <%= select_tag "reserve_shop[day_when]" , options_for_select(reserve_times),:include_blank=>true %>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="cust_fl_b">体验店：</td>
-                  <td> 
-                    <%= select_tag "reserve_shop[shop_id]" , options_from_collection_for_select(Shop.all,:id,:name), { :include_blank=>true }  %>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="cust_fl_b">要定：</td>
-                  <td>
-                    <% ["西服","衬衫","大衣","团体定制","其他咨询"].each do |ele| %>
-                    <%= check_box_tag "items[]", ele %> <%= ele %>
-                    <% end %>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="cust_fl_b">手机：</td>
-                  <td><%= text_field_tag "reserve_shop[phone]" , @reserve_shop.phone, :class=>"cust_input" %>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="cust_fl_b">联系人：</td>
-                  <td>
-                    <%= text_field_tag "reserve_shop[username]" , @reserve_shop.username, :class => "cust_input" %>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="cust_fl_b"></td>
-                  <td>
-                    <%= submit_tag "预约" , :class=>"btns" %>
-                  </td>
-                </tr>
-              </table>  
-
-            </div>
-            <% end %>
-
-            <div>
-
-              <%= form_for(@reserve_ruler , :url=>reserve_ruler_categories_path)  do  |f| %>
-              <%= hidden_field_tag "reserve_ruler[status]"  , 0 %>
-              <table cellpadding="0" cellspacing="0" border="0" class="cust_fl_a">
-                <tr>
-                  <td class="cust_fl_b">时间：</td>
-                  <td>
-                    <%= f.text_field :reserve_at, :class => "cust_input" %>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="cust_fl_b">具体时间：</td>
-                  <td>
-                    <%= f.select "day_when" , options_for_select(reserve_times),:include_blank=>true %>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="cust_fl_b">地点：</td>
-                  <td> 
-                    <%= select_tag "province" , raw("<option>北京市</option>")  %>
-                    <%= select_tag "city" , raw("<option>北京市</option>")  %>
-                    <%= f.select "place_id"  , options_from_collection_for_select(Place.all,'id','area') , :include_blank=>true %>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="cust_fl_b">详细地址：</td>
-                  <td>
-                    <%= f.text_field "office" ,:size=>40, :class=>"cust_input" %>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="cust_fl_b">要定：</td>
-                  <td>
-                    <% ["西服","衬衫","大衣","团体定制","其他咨询"].each do |ele| %>
-                    <%= check_box_tag "items[]"  , ele %> <%= ele %>
-                    <% end %>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="cust_fl_b">手机：</td>
-                  <td>
-                    <%= f.text_field "phone", :class=>"cust_input" %>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="cust_fl_b">联系人：</td>
-                  <td>
-                    <%= f.text_field "username", :class=>"cust_input" %>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="cust_fl_b">身高：</td>
-                  <td>
-                    <%= f.text_field "height", :class=>"cust_input" %> cm
-                  </td>
-                </tr>
-                <tr>
-                  <td class="cust_fl_b">体重：</td>
-                  <td>
-                    <%= f.text_field "weight", :class=>"cust_input" %> cm
-                  </td>
-                </tr>
-                <tr>
-                  <td class="cust_fl_b">预算：</td>
-                  <td>
-                    <%= f.text_field "fee", :class=>"cust_input" %> 元
-                  </td>
-                </tr>
-                <tr>
-                  <td class="cust_fl_b"></td>
-                  <td class="cust_fl_c">
-                    <%= submit_tag "预约量体师" , :class=>"btns" %>
-                  </td>
-                </tr>
-              </table> 
-              <% end %>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="fl cust_fr">
-        <div class="cust_fr_a">推荐量体师</div>
-        <div class="cust_fr_b">
-          <% @top_rulers.each do |tr| %>
-          <% user = tr.user %>
-          <ul class="cust_fr_c clearfix">
-            <li class="cust_fr_d"><a href="<%= ba_user_path(user) %>" ><img src="<%= user.avatar_medium %>" width="109" height="145"></a></li>
-            <li class="cust_fr_e">姓名：</li>
-            <li class="cust_fr_e cust_fr_f"><a href="<%= ba_user_path(user) %>"> <%= user.profile.name %></a> </li>
-            <li class="cust_fr_e">服务区域：</li>
-            <li class="cust_fr_e cust_fr_f"><%= "#{user.human_places.scan(/[\u4e00-\u9fa5]*/)[0]}等" if user.human_places.present? %></li>
-            <li class="cust_fr_e"> 手机：</li>
-            <li class="cust_fr_e cust_fr_f"><%= user.profile.phone %></li>
+    <div class="m">
+      <ul class="clearfix circuit_d">
+        <% @shirt_products.each do |product| %>
+        <li class="circuit_e">
+          <ul>
+            <li><a href="/products/<%= product.id %>"><img src="<%= product.photos.last.url %>" width="180" height="220"></a></li>
+            <li class="circuit_f"> <%= product.name %> </li>
+            <li class="circuit_f circuit_g">￥<%= product.our_price %></li>
           </ul>
-          <% end %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+
+
+    <div class="m">
+      <ul class="clearfix circuit_d">
+        <li class="circuit_e"><a href=""><img src="/images/Sf_06.gif" width="180" height="60"></a></li>
+        <% @brand_shirts.each do |bs| %>
+        <li class="circuit_e"><a href="<%= bs.link_to %>"><img src="<%= bs.photo_url %>" width="180" height="60"></a></li>
+        <% end %>
+      </ul>
+    </div>
+
+
+    <div class="m circuit_a"><img src="/images/evaluate_01.gif" width="980" height="36"></div>
+    <div class="m circuit_b circuit_bb">客户真实评价</div>
+    <div class="m">
+      <ul class="clearfix circuit_h">
+        <li><img src="/images/evaluate_02.gif" width="296" height="436"></li>
+        <li><img src="/images/evaluate_03.gif" width="297" height="437"></li>
+        <li><img src="/images/evaluate_04.gif" width="296" height="437"></li>
+      </ul>
+    </div>
+
+    <div class="m circuit_a"><img src="/images/customize.gif" width="980" height="36"></div>
+    <div class="m circuit_b">您可以选择实体店定制，预约上门量体、在线自助定制</div>
+
+
+    <div class="m clearfix customize">
+      <div class="fl cust_fl">
+
+        <div class="slideTxtBox">
+         <div class="hd">
+          <ul>
+            <li>预约体验店量体</li>
+            <li>预约上门量体</li>
+          </ul>
         </div>
 
+        <div class="bd">
+          <%= form_tag reserve_shop_categories_path  do  %>
+          <%= hidden_field_tag "reserve_shop[status]"  , 1 %>
+          <div>
+            <table cellpadding="0" cellspacing="0" border="0" class="cust_fl_a">
+              <tr>
+                <td class="cust_fl_b">时间：</td>
+                <td>
+                  <%= text_field_tag "reserve_shop[reserve_at]", @reserve_shop.reserve_at, :class=>"cust_input" %>
+                </td>
+              </tr>
 
+              <tr>
+                <td class="cust_fl_b">具体时间：</td>
+                <td>
+                  <%= select_tag "reserve_shop[day_when]" , options_for_select(reserve_times),:include_blank=>true %>
+                </td>
+              </tr>
+              <tr>
+                <td class="cust_fl_b">体验店：</td>
+                <td> 
+                  <%= select_tag "reserve_shop[shop_id]" , options_from_collection_for_select(Shop.all,:id,:name), { :include_blank=>true }  %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="cust_fl_b">要定：</td>
+                <td>
+                  <% ["西服","衬衫","大衣","团体定制","其他咨询"].each do |ele| %>
+                  <%= check_box_tag "items[]", ele %> <%= ele %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td class="cust_fl_b">手机：</td>
+                <td><%= text_field_tag "reserve_shop[phone]" , @reserve_shop.phone, :class=>"cust_input" %>
+                </td>
+              </tr>
+              <tr>
+                <td class="cust_fl_b">联系人：</td>
+                <td>
+                  <%= text_field_tag "reserve_shop[username]" , @reserve_shop.username, :class => "cust_input" %>
+                </td>
+              </tr>
+              <tr>
+                <td class="cust_fl_b"></td>
+                <td>
+                  <%= submit_tag "预约" , :class=>"btns" %>
+                </td>
+              </tr>
+            </table>  
+
+          </div>
+          <% end %>
+
+          <div>
+
+            <%= form_for(@reserve_ruler , :url=>reserve_ruler_categories_path)  do  |f| %>
+            <%= hidden_field_tag "reserve_ruler[status]"  , 0 %>
+            <table cellpadding="0" cellspacing="0" border="0" class="cust_fl_a">
+              <tr>
+                <td class="cust_fl_b">时间：</td>
+                <td>
+                  <%= f.text_field :reserve_at, :class => "cust_input" %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="cust_fl_b">具体时间：</td>
+                <td>
+                  <%= f.select "day_when" , options_for_select(reserve_times),:include_blank=>true %>
+                </td>
+              </tr>
+              <tr>
+                <td class="cust_fl_b">地点：</td>
+                <td> 
+                  <%= select_tag "province" , raw("<option>北京市</option>")  %>
+                  <%= select_tag "city" , raw("<option>北京市</option>")  %>
+                  <%= f.select "place_id"  , options_from_collection_for_select(Place.all,'id','area') , :include_blank=>true %>
+                </td>
+              </tr>
+              <tr>
+                <td class="cust_fl_b">详细地址：</td>
+                <td>
+                  <%= f.text_field "office" ,:size=>40, :class=>"cust_input" %>
+                </td>
+              </tr>
+              <tr>
+                <td class="cust_fl_b">要定：</td>
+                <td>
+                  <% ["西服","衬衫","大衣","团体定制","其他咨询"].each do |ele| %>
+                  <%= check_box_tag "items[]"  , ele %> <%= ele %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td class="cust_fl_b">手机：</td>
+                <td>
+                  <%= f.text_field "phone", :class=>"cust_input" %>
+                </td>
+              </tr>
+              <tr>
+                <td class="cust_fl_b">联系人：</td>
+                <td>
+                  <%= f.text_field "username", :class=>"cust_input" %>
+                </td>
+              </tr>
+              <tr>
+                <td class="cust_fl_b">身高：</td>
+                <td>
+                  <%= f.text_field "height", :class=>"cust_input" %> cm
+                </td>
+              </tr>
+              <tr>
+                <td class="cust_fl_b">体重：</td>
+                <td>
+                  <%= f.text_field "weight", :class=>"cust_input" %> kg
+                </td>
+              </tr>
+              <tr>
+                <td class="cust_fl_b">预算：</td>
+                <td>
+                  <%= f.text_field "fee", :class=>"cust_input" %> 元
+                </td>
+              </tr>
+              <tr>
+                <td class="cust_fl_b"></td>
+                <td class="cust_fl_c">
+                  <%= submit_tag "预约量体师" , :class=>"btns" %>
+                </td>
+              </tr>
+            </table> 
+            <% end %>
+          </div>
+        </div>
       </div>
+
     </div>
 
-
-
-
-
-
-    <div class="footer">
-      <div class="m">
-        <ul class="footer_a clearfix">
-          <li><a href="/helps/about">关于维衣</a></li>
-          <li>|</li>
-          <li><a href="/helps/how">购买指南</a></li>
-          <li>|</li>
-          <li><a href="/helps/company-process">团体定制流程</a></li>
-          <li>|</li>
-          <li><a href="/helps/individual-process">个人定制流程</a></li>
-          <li>|</li>
-          <li><a href="/helps/timeline">工期说明</a></li>
-          <li>|</li>
-          <li><a href="/helps/service">售后服务</a></li>
-          <li>|</li>
-          <li><a href="/helps/career">工作机会</a></li>
-          <li>|</li>
-          <li><a href="/helps/contact">联系我们</a></li>
+    <div class="fl cust_fr">
+      <div class="cust_fr_a">推荐量体师</div>
+      <div class="cust_fr_b">
+        <% @top_rulers.each do |tr| %>
+        <% user = tr.user %>
+        <ul class="cust_fr_c clearfix">
+          <li class="cust_fr_d"><a href="<%= ba_user_path(user) %>" ><img src="<%= user.avatar_medium %>" width="109" height="145"></a></li>
+          <li class="cust_fr_e">姓名：</li>
+          <li class="cust_fr_e cust_fr_f"><a href="<%= ba_user_path(user) %>"> <%= user.profile.name %></a> </li>
+          <li class="cust_fr_e">服务区域：</li>
+          <li class="cust_fr_e cust_fr_f"><%= "#{user.human_places.scan(/[\u4e00-\u9fa5]*/)[0]}等" if user.human_places.present? %></li>
+          <li class="cust_fr_e"> 手机：</li>
+          <li class="cust_fr_e cust_fr_f"><%= user.profile.phone %></li>
         </ul>
-
-        <div class="footer_b">营业时间：周一到周日 10:00-19:00 节假日无休    联系电话：400-010-0013</div>
+        <% end %>
       </div>
+
+
     </div>
-    <div class="footer_c">
-      <div class="m "><div class="footer_d"><a href="">www.365weiyi.com</a> 版权所有 [v2.11.0709] [粤ICP备11023687号-1]</div></div>
+  </div>
+
+
+
+
+
+
+  <div class="footer">
+    <div class="m">
+      <ul class="footer_a clearfix">
+        <li><a href="/helps/about">关于维衣</a></li>
+        <li>|</li>
+        <li><a href="/helps/how">购买指南</a></li>
+        <li>|</li>
+        <li><a href="/helps/company-process">团体定制流程</a></li>
+        <li>|</li>
+        <li><a href="/helps/individual-process">个人定制流程</a></li>
+        <li>|</li>
+        <li><a href="/helps/timeline">工期说明</a></li>
+        <li>|</li>
+        <li><a href="/helps/service">售后服务</a></li>
+        <li>|</li>
+        <li><a href="/helps/career">工作机会</a></li>
+        <li>|</li>
+        <li><a href="/helps/contact">联系我们</a></li>
+      </ul>
+
+      <div class="footer_b">营业时间：周一到周日 10:00-19:00 节假日无休    联系电话：400-010-0013</div>
     </div>
+  </div>
+  <div class="footer_c">
+    <div class="m "><div class="footer_d"><a href="">www.365weiyi.com</a> 版权所有 [v2.11.0709] [粤ICP备11023687号-1]</div></div>
+  </div>
 
 
 
-  </body>
-  </html>
-  <script type="text/javascript">jQuery(".slideTxtBox").slide();</script>
+</body>
+</html>
+<script type="text/javascript">jQuery(".slideTxtBox").slide();</script>
 
-  <script type="text/javascript">
+<script type="text/javascript">
 
-  function clickShop(){
-    $("#ruler_li").removeClass("focus");
-    $("#shop_li").addClass("focus");
-    $("#reserve_ruler").hide();
-    $("#reserve_shop").show();
-  };
+function clickShop(){
+  $("#ruler_li").removeClass("focus");
+  $("#shop_li").addClass("focus");
+  $("#reserve_ruler").hide();
+  $("#reserve_shop").show();
+};
 
-  <% if @errors %>
-  alert("<%=raw @errors %>");
-  <% end %>
+<% if @errors %>
+alert("<%=raw @errors %>");
+<% end %>
 
-  <% if @reserve_shop.status == ReserveRuler::Status::Shop %>
-  clickShop();
-  <% end %>
+<% if @reserve_shop.status == ReserveRuler::Status::Shop %>
+clickShop();
+<% end %>
 
-  $(function(){
-    $("#ruler_li").click(function(){
-      var $this = $(this);
-      if($this.attr("class") != "focus"){
-        $("#shop_li").removeClass("focus");
-        $this.addClass("focus");
-        $("#reserve_ruler").show();
-        $("#reserve_shop").hide();
-      }
-    });
-    $("#shop_li").click(function(){
-      var $this = $(this);
-      if($this.attr("class") != "focus"){
-        clickShop();
-      }
-    });
-
-    $.datepicker.regional[ "zh-CN" ]
-    $("input[name='reserve_ruler[reserve_at]'],input[name='reserve_shop[reserve_at]']").datepicker({ minDate: 0 });
-
-    $("#reserve_ruler_reserve_at,#reserve_shop_reserve_at").focus(function(){
-      var $this = $(this);
-      $this.next().hide();
-    });
+$(function(){
+  $("#ruler_li").click(function(){
+    var $this = $(this);
+    if($this.attr("class") != "focus"){
+      $("#shop_li").removeClass("focus");
+      $this.addClass("focus");
+      $("#reserve_ruler").show();
+      $("#reserve_shop").hide();
+    }
   });
-  </script>
+  $("#shop_li").click(function(){
+    var $this = $(this);
+    if($this.attr("class") != "focus"){
+      clickShop();
+    }
+  });
+
+  $.datepicker.regional[ "zh-CN" ]
+  $("input[name='reserve_ruler[reserve_at]'],input[name='reserve_shop[reserve_at]']").datepicker({ minDate: 0 });
+
+  $("#reserve_ruler_reserve_at,#reserve_shop_reserve_at").focus(function(){
+    var $this = $(this);
+    $this.next().hide();
+  });
+});
+</script>
 
 
 
