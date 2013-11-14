@@ -1,21 +1,21 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
-  <head>
-    <%= csrf_meta_tag %>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <meta name="description" content="维衣致力于提供高品质的工作服、西服定制、衬衫定制等服务。为白领、中产阶级、特体、婚礼礼服等群体提供西装定制、衬衣定制服务，也可为企事业单位提供团体工作服定制服务。在北京可上门量体。"/>
-    <meta name="keywords" content="工作服，西服定制，西装定制，衬衣定制，衬衫定制"/>
-    <link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon"/>
-    <title><%= yield(:title).present? ? "#{yield(:title)}--" : nil || @title.present? ? "#{@title}--" : nil %>维衣--工作服 西服定制 西装定制 衬衣定制 衬衫定制</title>
-    <%= javascript_include_tag "jquery","rails" %>
-    <%= stylesheet_link_tag "application","global","master","index" %>
-    <%= stylesheet_link_tag "jquery_ui/blitzer/jquery.ui.all" %>
-    <%= javascript_include_tag 'menu', 'flashs'  %>
-    <%= javascript_include_tag "jquery_ui/jquery.ui.core","jquery_ui/jquery.ui.widget","jquery_ui/jquery.ui.datepicker","jquery_ui/jquery.ui.datepicker-zh-CN" %>
-  </head>
-  <body>
-    <%= render "layouts/header" %>
-    <div id="wrapper">
+<head>
+  <%= csrf_meta_tag %>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <meta name="description" content="维衣致力于提供高品质的工作服、西服定制、衬衫定制等服务。为白领、中产阶级、特体、婚礼礼服等群体提供西装定制、衬衣定制服务，也可为企事业单位提供团体工作服定制服务。在北京可上门量体。"/>
+  <meta name="keywords" content="工作服，西服定制，西装定制，衬衣定制，衬衫定制"/>
+  <link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon"/>
+  <title><%= yield(:title).present? ? "#{yield(:title)}--" : nil || @title.present? ? "#{@title}--" : nil %>维衣--工作服 西服定制 西装定制 衬衣定制 衬衫定制</title>
+  <%= javascript_include_tag "jquery","rails" %>
+  <%= stylesheet_link_tag "application","global","master","index" %>
+  <%= stylesheet_link_tag "jquery_ui/blitzer/jquery.ui.all" %>
+  <%= javascript_include_tag 'menu', 'flashs'  %>
+  <%= javascript_include_tag "jquery_ui/jquery.ui.core","jquery_ui/jquery.ui.widget","jquery_ui/jquery.ui.datepicker","jquery_ui/jquery.ui.datepicker-zh-CN" %>
+</head>
+<body>
+  <%= render "layouts/header" %>
+  <div id="wrapper">
 
     <!--  
       <div id="shangmian">
@@ -39,94 +39,98 @@
       </ul>
     -->
 
-      <% if @top_banners %>
-        <% @top_banners.each do |top_banner| %>
-          <div class="top_banner">
-            <%= link_to raw("<img src='#{top_banner.photo_url}' alt='#{top_banner.name}' />"), top_banner.link_to, :title => top_banner.name %>
-          </div>
-        <% end %>
-      <% end %>
+    <% if @top_banners %>
+    <% @top_banners.each do |top_banner| %>
+    <div class="top_banner">
+      <%= link_to raw("<img src='#{top_banner.photo_url}' alt='#{top_banner.name}' />"), top_banner.link_to, :title => top_banner.name %>
+    </div>
+    <% end %>
+    <% end %>
 
-      <%= render_flash_messages %>
-      <% flash.discard %>
+    <%= render_flash_messages %>
+    <% flash.discard %>
 
-      <% if (controller.controller_name == 'categories' and  controller.action_name =~ /\bindex|reserve_ruler|reserve_shop\b/) %>
-        <%= render :partial=>"layouts/slide"  %>
-        <%= render :partial=>"layouts/ruler" %>
-      <% end %>
+    <% if (controller.controller_name == 'categories' and  controller.action_name =~ /\bindex|reserve_ruler|reserve_shop\b/) %>
+    <%= render :partial=>"layouts/slide"  %>
+    <%= render :partial=>"layouts/ruler" %>
+    <% end %>
 
-      <div id="wrap">
+    <div id="wrap">
 
-        <div class="left bkn">
-          <%= yield %>
-        </div>
-
-        <div class="rightWrap">
-          <%= render :partial => 'layouts/billing_info' %>
-          <div style="clear:both"></div>
-          <div class="right">
-            <h2 class="title">维衣答疑</h2>
-            <ul class="moxtxt">
-              <li class="dayi">
-                <%= link_to '查看全部(' + Inquiry.count.to_s + ')', inquiries_path %> | <%= link_to '我要提问', inquiries_path %>
-              </li>
-
-              <% @inquiries = Inquiry.order('popularity DESC, created_at DESC').limit(6) %>
-              <% unless @inquiries.blank? %>
-
-                <% @inquiries.each do |inquiry| %>
-                  <li class="xuxian">
-                    <%= link_to(truncate(inquiry.description, :length => 60), inquiries_path, :title => inquiry.description) %>
-                  </li>
-                <% end %>
-
-              <% end %>
-            </ul>
-          </div>
-
-
-          <% if params[:controller] == 'categories' and params[:action] == 'index' %>
-            <div class="right">
-              <h2 class="title">知识堂</h2>
-              <ul class="moxtxt">
-                <% @posts.each do |post| %>
-                  <li>
-                    <%= link_to post.title, blog_post_path(post) , :target=>"_blank" %>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-
-            <div class="right">
-              <h2 class="title">最新公告</h2>
-              <ul class="moxtxt">
-                <% @notices.each do |notice| %>
-                  <li>
-                    <%= link_to(truncate(notice.name, :length => 30), ((notice.url.blank?)? notice : (notice.url)), :title => notice.name, :target => '_blank') %>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-
-            <div>
-              <% @side_banners.each do |promotion| %>
-                <div class="side_banner">
-                  <%= link_to raw("<img src='#{promotion.photo_url}' alt='#{h promotion.name}' />"), promotion.link_to, :title => h(promotion.name) %>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
+      <div class="left bkn">
+        <%= yield %>
       </div>
 
-      <div class="clear"></div>
+      <div class="rightWrap">
+        <%= render :partial => 'layouts/billing_info' %>
+        <div style="clear:both"></div>
+        <div class="right">
+          <h2 class="title">维衣答疑</h2>
+          <ul class="moxtxt">
+            <li class="dayi">
+              <%= link_to '查看全部(' + Inquiry.count.to_s + ')', inquiries_path %> | <%= link_to '我要提问', inquiries_path %>
+            </li>
+
+            <% @inquiries = Inquiry.order('popularity DESC, created_at DESC').limit(6) %>
+            <% unless @inquiries.blank? %>
+
+            <% @inquiries.each do |inquiry| %>
+            <li class="xuxian">
+              <%= link_to(truncate(inquiry.description, :length => 60), inquiries_path, :title => inquiry.description) %>
+            </li>
+            <% end %>
+
+            <% end %>
+          </ul>
+        </div>
+
+
+        <% if params[:controller] == 'categories' and params[:action] == 'index' %>
+        <div class="right">
+          <h2 class="title">知识堂</h2>
+          <ul class="moxtxt">
+            <% @posts.each do |post| %>
+            <li>
+              <%= link_to post.title, blog_post_path(post) , :target=>"_blank" %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+
+        <div class="right">
+          <h2 class="title">最新公告</h2>
+          <ul class="moxtxt">
+            <% @notices.each do |notice| %>
+            <li>
+              <%= link_to(truncate(notice.name, :length => 30), ((notice.url.blank?)? notice : (notice.url)), :title => notice.name, :target => '_blank') %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+
+        <div>
+          <% @side_banners.each do |promotion| %>
+          <div class="side_banner">
+            <%= link_to raw("<img src='#{promotion.photo_url}' alt='#{h promotion.name}' />"), promotion.link_to, :title => h(promotion.name) %>
+          </div>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
     </div>
-    <%= render :partial => 'layouts/footer' %>
+
+    <div class="clear"></div>
+  </div>
+  <%= render :partial => 'layouts/footer' %>
 
     <!--
     <div id="chatbox">
       <a href="http://chat.365weiyi.com/new" target="_blank"><img src="/images/chat.gif" width="100px" height="100px"/></a>
     </div>
-    -->
-  </body>
+  -->
+
+  <div class="weixin">
+    <img src="/images/code.gif"/>
+  </div>
+</body>
 </html>
