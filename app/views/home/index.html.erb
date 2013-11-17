@@ -68,8 +68,8 @@
   <div class="nav_c"><div class="m nav_d">定制工期：衬衫3~5天，西服18~22天，请安排好时间。可加急，详情咨询客服</div></div>
 
 
-  <%= render_flash_messages %>
-  <% flash.discard %>
+  <%#= render_flash_messages %>
+  <% #flash.discard %>
 
   <div class="ber">
     <% banner = @scrolling_banners.first %>
@@ -202,7 +202,7 @@
           </ul>
         </div>
 
-        <div class="bd">
+        <div class="bd" id="bd">
           <%= form_tag reserve_shop_categories_path  do  %>
           <%= hidden_field_tag "reserve_shop[status]"  , 1 %>
           <div>
@@ -250,6 +250,13 @@
                 <td class="cust_fl_b"></td>
                 <td>
                   <%= submit_tag "预约" , :class=>"btns" %>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <%= render_flash_messages %>
+                  <% flash.discard %>
                 </td>
               </tr>
             </table>  
@@ -331,6 +338,13 @@
                 <td class="cust_fl_b"></td>
                 <td class="cust_fl_c">
                   <%= submit_tag "预约量体师" , :class=>"btns" %>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <%= render_flash_messages %>
+                  <% flash.discard %>
                 </td>
               </tr>
             </table> 

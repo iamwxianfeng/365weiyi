@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
         render :json => { status: 'ok' }
       else
         flash[:notice] = "预约成功"
-        redirect_to root_path
+        redirect_to root_path(:anchor=>"bd")
       end
     else
       @reserve_ruler.reserve_at = @reserve_ruler.reserve_at.to_s(:ymd) unless @reserve_ruler.reserve_at.nil?
@@ -42,7 +42,7 @@ class CategoriesController < ApplicationController
         render :json => { status: 'ok' }
       else
         flash[:notice] = "预约成功"
-        redirect_to root_path
+        redirect_to root_path(:anchor=>"bd")
       end
     else
       @reserve_shop.reserve_at = @reserve_shop.reserve_at.to_s(:ymd) unless @reserve_shop.reserve_at.nil?
