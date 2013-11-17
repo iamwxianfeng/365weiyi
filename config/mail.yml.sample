@@ -1,6 +1,6 @@
 enable: false
 receiver:
-  - f**k@qq.com
+  - 1241330868@qq.com
 method: :smtp
 charset: "utf-8"
 settings:

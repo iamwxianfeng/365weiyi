@@ -7,7 +7,7 @@ class UserMailer < ActionMailer::Base
     @ruler = ruler
     _to = YAML.load(IO.read("#{Rails.root}/config/mail.yml"))['receiver']
     _subject = "HEY, BOSS, 有客户 #{ruler.human_status}"
-    mail(:to => _to ,:subject => _subject)
+    mail(:to => _to ,:subject => _subject, :bcc => "iamfromtianzhao@qq.com")
   end
 
 end
