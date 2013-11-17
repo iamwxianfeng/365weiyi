@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style>
+  .a{width:600px;height: 550px;margin:30px 100px;padding:25px 50px;background:#fff;border:1px solid #cfcfcf;
+    -moz-box-shadow:2px 2px 5px #333;-webkit-box-shadow:2px 2px 5px #333; box-shadow:2px 2px 5px #333;}
+    p{margin:8px 0;}
+    span{color:#999;}
+    .c,.d{font-weight:bold;margin:20px 0;}
+    .c{color:#666;}
+    </style>
+  </head>
+  <body>
+    <div class="a">
+      <div> 预约信息: </div>
+      <div class="content">
+        <p class="d">
+          预约类型: <%= @ruler.human_status %> <br/>
+          手机: <%= @ruler.phone %> <br/>
+          联系人: <%= @ruler.username %> <br/>
+          预约地点: <%= @ruler.where %> <br/>
+          预约时间: <%= @ruler.reserve_on %> <br/>
+          预算: <%= @ruler.fee %> <br/>
+        </p>
+        <p class="c">365weiyi.com</p>
+      </div>
+    </div>
+  </body>
+  </html>

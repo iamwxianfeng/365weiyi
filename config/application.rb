@@ -29,6 +29,17 @@ module Inono
     # config.time_zone = 'Central Time (US & Canada)'
     config.time_zone = 'Beijing'
 
+    mail_settings = YAML.load(File.read("#{Rails.root}/config/mail.yml"))
+    begin
+      config.action_mailer.perform_deliveries = true
+      config.action_mailer.raise_delivery_errors = true
+      config.action_mailer.delivery_method = mail_settings['method']
+      config.action_mailer.smtp_settings = mail_settings['settings']
+    rescue
+      # Fall back to using sendmail by default
+      ActionMailer::Base.delivery_method = :sendmail
+    end
+
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de

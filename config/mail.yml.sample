@@ -1,0 +1,14 @@
+enable: false
+receiver:
+  - f**k@qq.com
+method: :smtp
+charset: "utf-8"
+settings:
+  :address: "smtp.exmail.qq.com"
+  :port: 25
+  :domain: "exmail.qq.com"
+  :authentication: :plain
+  :enable_starttls_auto: true
+  :user_name: "noreply@sqopen.com"
+  :password: "2013"
+  

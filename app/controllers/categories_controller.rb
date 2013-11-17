@@ -17,6 +17,10 @@ class CategoriesController < ApplicationController
       if params[:reserve_ruler][:product_id]
         render :json => { status: 'ok' }
       else
+        begin
+          UserMailer.reserve(@reserve_ruler).deliver!
+        rescue 
+        end
         flash[:notice] = "预约成功"
         redirect_to root_path(:anchor=>"bd")
       end
@@ -41,6 +45,10 @@ class CategoriesController < ApplicationController
       if params[:reserve_shop][:product_id]
         render :json => { status: 'ok' }
       else
+        begin
+          UserMailer.reserve(@reserve_shop).deliver!
+        rescue 
+        end
         flash[:notice] = "预约成功"
         redirect_to root_path(:anchor=>"bd")
       end

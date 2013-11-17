@@ -191,7 +191,7 @@
     <div class="m circuit_b">您可以选择实体店定制，预约上门量体、在线自助定制</div>
 
 
-    <div class="m clearfix customize">
+    <div class="m clearfix customize" id="bd">
       <div class="fl cust_fl">
 
         <div class="slideTxtBox">
@@ -202,7 +202,7 @@
           </ul>
         </div>
 
-        <div class="bd" id="bd">
+        <div class="bd">
           <%= form_tag reserve_shop_categories_path  do  %>
           <%= hidden_field_tag "reserve_shop[status]"  , 1 %>
           <div>

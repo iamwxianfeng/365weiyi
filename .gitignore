@@ -7,3 +7,4 @@ log
 log/development.log
 .DS_Store
 config/database.yml
+config/mail.yml
