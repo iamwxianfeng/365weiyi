@@ -11,10 +11,10 @@ class CustomersController < ApplicationController
       sql << "AND weight = '#{params[:weight]}' "
     end
     if params[:style]
-      sql << "AND style IN (#{params[:style].join(',')}) "
+      sql << "AND style IN (#{[params[:style]].flatten.join(',')}) "
     end
     if params[:other_style]
-      sql << "AND other_style IN (#{params[:other_style].join(',')}) "
+      sql << "AND other_style IN (#{[params[:other_style]].flatten.join(',')}) "
     end
     if request.xhr?
       sql = sql.sub(/^AND/, '')
