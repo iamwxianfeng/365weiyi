@@ -131,6 +131,7 @@
 
       <div class="show_fr_jj show_fr_l">
         <ul class="clearfix show_fr_k">
+          <% if @other_product1 %>
           <li class="show_fr_j">
             <ul>
               <li><a href="/products/<%= @other_product1.id %>"><img src="<%= @other_product1.photos[0].url %>" width="160" height="190"></a></li>
@@ -139,6 +140,8 @@
               <li class="show_fr_j3"><%= @other_product1.description %></li>
             </ul>
           </li>
+          <% end %>
+          <% if @other_product2 %>
           <li class="show_fr_j">
             <ul>
               <li><a href="/products/<%= @other_product2.id %>"><img src="<%= @other_product2.photos[0].url %>" width="160" height="190"></a></li>
@@ -147,6 +150,8 @@
               <li class="show_fr_j3"><%= @other_product2.description %></li>
             </ul>
           </li>
+          <% end %>
+          <% if @other_product3 %>
           <li class="show_fr_j">
             <ul>
               <li><a href="/products/<%= @other_product3.id %>"><img src="<%= @other_product3.photos[0].url %>" width="160" height="190"></a></li>
@@ -155,7 +160,7 @@
               <li class="show_fr_j3"><%= @other_product3.description %></li>
             </ul>
           </li>
-
+          <% end %>
         </ul>
 
       </div>
