@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery
   before_filter :prepare_data
-  around_filter :no_record
+  # around_filter :no_record
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
