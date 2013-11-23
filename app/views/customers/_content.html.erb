@@ -48,6 +48,7 @@
 
   <div class="show_fr_jj">
     <ul class="clearfix show_fr_k">
+      <% if @shirt_product1 %>
       <li class="show_fr_j">
         <ul>
           <li><a href="/products/<%= @shirt_product1.id %>">
@@ -57,6 +58,8 @@
             <li class="show_fr_j3"><%= @shirt_product1.description %></li>
           </ul>
         </li>
+        <% end %>
+        <% if @shirt_product2 %>
         <li class="show_fr_j">
           <ul>
             <li><a href="/products/<%= @shirt_product2.id %>">
@@ -66,6 +69,8 @@
               <li class="show_fr_j3"><%= @shirt_product2.description %></li>
             </ul>
           </li>
+          <% end %>
+          <% if @shirt_product3 %>
           <li class="show_fr_j">
             <ul>
               <li><a href="/products/<%= @shirt_product3.id %>"><img src="<%= @shirt_product3.photos[0].url %>" width="160" height="190"></a></li>
@@ -74,6 +79,7 @@
               <li class="show_fr_j3"><%= @shirt_product3.description %></li>
             </ul>
           </li>
+          <% end %>
 
         </ul>
 
@@ -85,6 +91,7 @@
 
       <div class="show_fr_jj">
         <ul class="clearfix show_fr_k">
+          <% if @suit_product1 %>
           <li class="show_fr_j">
             <ul>
               <li><a href="/products/<%= @suit_product1.id %>"><img src="<%= @suit_product1.photos[0].url %>" width="160" height="190"></a></li>
@@ -93,6 +100,8 @@
               <li class="show_fr_j3"><%= @suit_product1.description %></li>
             </ul>
           </li>
+          <% end %>
+          <% if @suit_product2 %>
           <li class="show_fr_j">
             <ul>
               <li><a href="/products/<%= @suit_product2.id %>"><img src="<%= @suit_product2.photos[0].url %>" width="160" height="190"></a></li>
@@ -101,6 +110,8 @@
               <li class="show_fr_j3"><%= @suit_product2.description %></li>
             </ul>
           </li>
+          <% end %>
+          <% if @suit_product3 %>
           <li class="show_fr_j">
             <ul>
               <li><a href="/products/<%= @suit_product3.id %>"><img src="<%= @suit_product3.photos[0].url %>" width="160" height="190"></a></li>
@@ -109,6 +120,7 @@
               <li class="show_fr_j3"><%= @suit_product3.description %></li>
             </ul>
           </li>
+          <% end %>
 
         </ul>
 
