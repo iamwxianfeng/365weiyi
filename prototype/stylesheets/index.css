@@ -131,6 +131,34 @@ ul, ol, li {list-style: none;}
 
 div.weixin img { bottom: 15px; right: 10px; position: fixed; }
 
+.size_bd{border:1px solid #ccc;}
+.sie_a{border-top:1px solid #ccc;}
+.sie_a p{width:830px;line-height:24px;color:#333;padding:45px 0 60px 80px;}
+.sie_b{width:570px;margin:0 auto;}
+.sie_b li{float:left;margin-right:10px;display:inline;line-height:20px;}
+.size_input{width:80px;height:20px;line-height:20px;color:#ccc;padding-left:5px;border:1px solid #d4d0c8;margin-right:70px;}
+.size_c{text-align:center;width:50px;}
+.size_d{width:146px;height:32px;margin:50px auto;}
+.size_e{width:850px;margin:0 auto;}
+.size_e b{font-size:14px;color:#000;line-height:26px;margin:35px 0;display:block;}
+.size_f{line-height:26px;color:#000;}
+.size_f span{margin-right:18px;}
+.size_g{width:848px;border-top:1px solid #999;border-left:1px solid #999;margin-top:10px;}
+.size_g td{border-bottom:1px solid #999;border-right:1px solid #999;height:50px;line-height:50px;font-size:14px;text-align:center;color:#000;}
+.size_h{margin:28px 0 70px;}
+.size_h li{float:left;line-height:32px;}
+.size_h1{width:540px;}
+.size_h2{margin-left:28px;}
+.size_i{font-size:14px;color:#000;border-bottom:1px solid #cfcfcf;line-height:28px;padding-bottom:10px;margin-top:70px;}
+.size_j{padding-bottom:50px;}
+
+
+
+
+
+
+
+
 
 
 
