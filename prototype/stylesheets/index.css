@@ -31,7 +31,11 @@ ul, ol, li {list-style: none;}
 .nav_d{padding-left:20px;color:#333;}
 .ber{width:1280px;margin:0 auto;}
 .ber_a{ background:url(../images/banner_01.jpg) no-repeat center top; height:429px;}
-.address{line-height:22px;width:290px;padding:16px 0 20px 36px;margin-top:34px;border-right:1px solid #999;}
+.address{width:290px;padding:16px 0 20px 36px;margin-top:34px;border-right:1px solid #999;}
+.address a{text-decoration:none;color:#333;}
+.address ul li{line-height:22px;}
+
+
 .address_a{border-right:none;}
 .address_b{/*margin-top:42px;*/}
 .address_a li{float:left;}
