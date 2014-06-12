@@ -21,6 +21,7 @@ namespace :deploy do
   desc "Creating database.yml"
   task :create_database_config do
     run "ln -s #{shared_path}/config/database.yml #{current_path}/config/database.yml"
+    run "ln -s #{shared_path}/config/mail.yml #{current_path}/config/mail.yml"
     run "ln -s #{shared_path}/upload #{current_path}/public/images/upload"
     run "ln -s #{shared_path}/ckeditor_assets #{current_path}/public/ckeditor_assets"
   end
