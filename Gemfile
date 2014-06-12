@@ -1,3 +1,5 @@
+# ruby 1.9.2 + rails 3.0.3
+
 source 'http://rubygems.org'
 
 gem "rails", "3.0.3"
@@ -17,6 +19,7 @@ gem 'wxianfeng_simple_captcha', '0.1.0', require: 'simple_captcha'
 group :development, :test do
   gem "capistrano", '2.5.19'
   # gem "unicorn" , '3.3.1'
+  # gem 'net-ssh', '2.7.0'
 end
 
 group :production do

@@ -10,9 +10,9 @@ set :use_sudo, false
 set :copy_strategy, :export
 set :copy_via, :scp
 
-set :user, "wxianfeng"
+set :user, "admin"
 
-server "220.194.47.219", :web, :app, :db, :primary => true
+server "112.126.70.25", :web, :app, :db, :primary => true
 
 namespace :deploy do
   task :start do ; end
