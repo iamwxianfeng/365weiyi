@@ -23,9 +23,9 @@ namespace :deploy do
   task :create_database_config do
     run "ln -s #{shared_path}/config/database.yml #{current_path}/config/database.yml"
     run "ln -s #{shared_path}/config/mail.yml #{current_path}/config/mail.yml"
-    run "ln -s #{shared_path}/log #{current_path}/log"
-    run "ln -s #{shared_path}/public/upload #{current_path}/public/images/upload"
-    run "ln -s #{shared_path}/public/ckeditor_assets #{current_path}/public/ckeditor_assets"
+    run "ln -nfs #{shared_path}/log #{current_path}/log"
+    run "ln -nfs #{shared_path}/public/images/upload #{current_path}/public/images/upload"
+    run "ln -nfs #{shared_path}/public/ckeditor_assets #{current_path}/public/ckeditor_assets"
   end
 
   desc "Restarting passenger"
