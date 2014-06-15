@@ -12,6 +12,7 @@ set :copy_via, :scp
 
 set :user, "admin"
 
+# Aliyun
 server "112.126.70.25", :web, :app, :db, :primary => true
 
 namespace :deploy do
@@ -23,8 +24,8 @@ namespace :deploy do
     run "ln -s #{shared_path}/config/database.yml #{current_path}/config/database.yml"
     run "ln -s #{shared_path}/config/mail.yml #{current_path}/config/mail.yml"
     run "ln -s #{shared_path}/log #{current_path}/log"
-    run "ln -s #{shared_path}/upload #{current_path}/public/images/upload"
-    run "ln -s #{shared_path}/ckeditor_assets #{current_path}/public/ckeditor_assets"
+    run "ln -s #{shared_path}/public/upload #{current_path}/public/images/upload"
+    run "ln -s #{shared_path}/public/ckeditor_assets #{current_path}/public/ckeditor_assets"
   end
 
   desc "Restarting passenger"
