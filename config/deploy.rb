@@ -26,6 +26,7 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/log #{current_path}/log"
     run "ln -nfs #{shared_path}/public/images/upload #{current_path}/public/images/upload"
     run "ln -nfs #{shared_path}/public/ckeditor_assets #{current_path}/public/ckeditor_assets"
+    run "ln -nfs #{shared_path}/public/system #{current_path}/public/system"
   end
 
   desc "Restarting passenger"
