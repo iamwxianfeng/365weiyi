@@ -31,7 +31,8 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.save
         flash[:notice] = '商品项添加完成.'
-        format.html { redirect_to(@order) }
+        # format.html { redirect_to(@order) }
+        format.html { redirect_to("http://www.365weiyi.com/orders/#{@order.id}") }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @item.errors, :status => :unprocessable_entity }
@@ -45,7 +46,8 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.update_attributes(params[:item])
         flash[:notice] = '订单商品项已更新'
-        format.html { redirect_to(@order) }
+        # format.html { redirect_to(@order) }
+        format.html { redirect_to("http://www.365weiyi.com/orders/#{@order.id}") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -59,7 +61,8 @@ class ItemsController < ApplicationController
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to(@order) }
+      # format.html { redirect_to(@order) }
+      format.html { redirect_to("http://www.365weiyi.com/orders/#{@order.id}") }
       format.xml  { head :ok }
     end
   end
@@ -72,7 +75,8 @@ private
   def order_editable?
     if @order.progress != Order::PENDING
       flash[:notice] = '工作人员已经在处理您的订单。当前不可修改'
-      redirect_to @order and return
+      # redirect_to @order and return
+      format.html { redirect_to("http://www.365weiyi.com/orders/#{@order.id}") } and return
     end
   end
 end

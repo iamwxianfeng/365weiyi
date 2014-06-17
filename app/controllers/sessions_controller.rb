@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         self.current_user.remember_me unless current_user.remember_token?
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
-      redirect_back_or_default('/')
+      redirect_back_or_default('http://www.365weiyi.com')
     else
       flash[:error] = "邮箱或者密码错误"
       render :action => 'new'

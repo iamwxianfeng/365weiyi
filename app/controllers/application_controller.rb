@@ -31,13 +31,15 @@ class ApplicationController < ActionController::Base
       yield
     rescue ActiveRecord::RecordNotFound
       flash[:notice] = '请确认您的输入是否正确'
-      redirect_to root_path
+      # redirect_to root_path
+      redirect_to "http://www.365weiyi.com"
     end
   end
 
   def go_home(msg = nil)
     flash[:notice] = msg
-    redirect_to root_path
+    # redirect_to root_path
+    redirect_to "http://www.365weiyi.com"
   end
 
 end
