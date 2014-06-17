@@ -73,7 +73,7 @@ class CategoriesController < ApplicationController
     if subcategory.nil?
       go_home('您要查看的分类下暂无商品') and return
     else
-      redirect_to "/#{category.url}/#{subcategory.url}"
+      redirect_to "http://www.365weiyi.com/#{category.url}/#{subcategory.url}"
     end
   end
 
