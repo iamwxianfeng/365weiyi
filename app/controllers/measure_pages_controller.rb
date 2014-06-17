@@ -4,7 +4,8 @@ class MeasurePagesController < ApplicationController
   
   def index
     @measure_page = MeasurePage.find(:first)
-    redirect_to @measure_page
+    # redirect_to @measure_page
+    redirect_to "http://www.365weiyi.com/measure_pages/#{@measure_page.id}"
   end
 
   def show
