@@ -19,7 +19,8 @@ class UsersController < ApplicationController
         self.current_user = @user
       end
       flash[:notice] = "欢迎加入维衣,体验衬衫、西服定制慢生活:-)"
-      redirect_back_or_default('/') and return
+      # redirect_back_or_default('/') and return
+      redirect_back_or_default('http://www.365weiyi.com') and return
     else
       @user.password = nil
       @user.password_confirmation = nil
