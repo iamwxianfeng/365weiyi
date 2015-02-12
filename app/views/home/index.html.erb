@@ -14,6 +14,7 @@
   <link href="/stylesheets/master.css" type="text/css" rel="stylesheet">
   <link href="/stylesheets/scaffold.css" type="text/css" rel="stylesheet">
   <link href="/stylesheets/index.css" type="text/css" rel="stylesheet">
+  <link href="/stylesheets/slidebox.css" type="text/css" rel="stylesheet">
   <%= stylesheet_link_tag "jquery_ui/blitzer/jquery.ui.all" %>
 
   <script type="text/javascript"  src="/javascripts/jquery1.42.min.js"></script>
@@ -71,11 +72,45 @@
   <%#= render_flash_messages %>
   <% #flash.discard %>
 
-  <div class="ber">
-    <% banner = @scrolling_banners.first %>
-    <%= link_to(raw("<img src='#{banner.photo_url}' alt='#{h banner.name}' />"), banner.link_to, :title => h(banner.name)) %>
-    <!-- <img src="/images/banner_01.jpg" width="1280" height="429"> -->
-  </div>
+   <!-- 轮播改动 -->
+		<div class="ber">
+			<!-- <a href="http://www.365weiyi.com/#" title=""><img src="res/1384523226.jpg" alt=""></a> -->
+			<!-- <img src="/images/banner_01.jpg" width="1280" height="429"> -->
+
+			<div id="slideBox" class="slideBox">
+				<div class="hd">
+					<ul>
+          <% @scrolling_banners.length.times { |i| %>
+						<li><%= i + 1 %></li>
+          <% } %>
+					</ul>
+				</div>
+				<div class="bd">
+					<div class="tempWrap">
+						<ul>
+              <% @scrolling_banners.each do |banner| %>
+                <li>
+                  <%= link_to(raw("<img src='#{banner.photo_url}' alt='#{h banner.name}' />"), banner.link_to, :target => "_blank", :title => h(banner.name)) %>
+							  </li>
+              <% end %>
+						</ul>
+					</div>
+				</div>
+
+				<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+				<a class="prev" href="javascript:void(0)"></a>
+				<a class="next" href="javascript:void(0)"></a>
+
+			</div>
+			<script>
+				$(".slideBox").slide({
+					mainCell : ".bd ul",
+					effect : "left",
+					autoPlay : true
+				});
+			</script>
+		</div>
+		<!-- / 轮播改动 -->
 
   <div class="m clearfix">
     <ul class="address fl">
